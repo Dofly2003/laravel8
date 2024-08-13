@@ -11,9 +11,9 @@
 </head>
 <body class="h-full ">
 <div class="min-h-full">
-    <nav class="sticky top-0  bg-white " x-data="{ isOpen: false }">
+    <nav class="sticky top-0  bg-blue-500 " x-data="{ isOpen: false }">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center bg-white justify-between">
+        <div class="flex h-16 items-center  justify-between">
           <div class="flex items-center">
             <div class="flex-shrink-0 ">
               <a href="/">
@@ -25,17 +25,17 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-4  flex items-center md:ml-6">
-              <div class="ml-10 flex items-baseline space-x-4 border-b-2">
-                <a href="/" class=" rounded-md px-3 py-2 text-sm font-medium text-gray-700  hover:text-gray-900" aria-current="page">
+              <div class="ml-10 flex items-baseline text-white space-x-4 border-b-2">
+                <a href="/" class=" rounded-md px-3 py-2 text-sm font-medium  hover:text-gray-900" aria-current="page">
                   Beranda
                 </a>
-                <a href="/katalog" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700  hover:text-gray-900 ">
+                <a href="/katalog" class="rounded-md px-3 py-2 text-sm font-medium  hover:text-gray-900 ">
                   Katalog
                 </a>
-                <a href="/tentang-kami" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700  hover:text-gray-900 ">
+                <a href="/tentang-kami" class="rounded-md px-3 py-2 text-sm font-medium  hover:text-gray-900 ">
                   Tentang Kami
                 </a>
-                <a href="/kontak" class="rounded-md px-3 py-2 text-sm font-medium text-gray-700  hover:text-gray-900">
+                <a href="/kontak" class="rounded-md px-3 py-2 text-sm font-medium  hover:text-gray-900">
                   Kontak
                 </a>
               </div>
@@ -43,7 +43,7 @@
           </div>
           <div class="-mr-2 flex md:hidden">
             <!-- Mobile menu button -->
-            <button @click="isOpen = !isOpen" type="button" class="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" aria-controls="mobile-menu" aria-expanded="false">
+            <button @click="isOpen = !isOpen" type="button" class="relative inline-flex items-center justify-center rounded-md bg-blue-500 p-2 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" aria-controls="mobile-menu" aria-expanded="false">
               <span class="absolute -inset-0.5"></span>
               <span class="sr-only">Open main menu</span>
               <!-- Menu open: "hidden", Menu closed: "block" -->
@@ -68,7 +68,7 @@
       x-transition:leave-start="opacity-100 scale-100"
       x-transition:leave-end="opacity-0 scale-95" 
        class="md:hidden" id="mobile-menu">
-        <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3 bg-white">
+        <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
           <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
           <a href="/katalog" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700  hover:text-gray-500">Beranda</a>
           <a href="/katalog" class="block rounded-md px-3 py-2 text-base font-medium text-gray-700  hover:text-gray-500">Katalog</a>
@@ -78,7 +78,7 @@
       </div>
     </nav>
   
-    <header class="bg-white shadow">
+    <header class="  shadow">
       <div class=" ">
         @yield('container')
       </div>
