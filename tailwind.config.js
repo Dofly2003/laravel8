@@ -10,16 +10,7 @@
      darkMode: false, // or 'media' or 'class'
      theme: {
        extend: {
-        backgroundImage: {
-          'slider': "url('https://dinamikaindomedia.co.id/sliders/ZOje5kj4ZCSup0iXRkOf2p4uzMqMaH6T1vV5B2Fc.png')",
-        },
-        height: {
-          'calc-100-minus-2rem': 'calc(100% - 2rem)', // sm:h-[calc(100%_-_2rem)]
-          'calc-100-minus-4rem': 'calc(100% - 4rem)', // md:h-[calc(100%_-_4rem)]
-        },
-        borderRadius: {
-          'ss-30px': '30px', // sm:rounded-ss-[30px]
-        },
+
        },
      },
      variants: {
@@ -30,12 +21,16 @@
        },
      },
      plugins: [
-      function ({ addUtilities }) {
-        addUtilities({
-          '.self-end': {
-            alignSelf: 'end', // sm:self-end
-          },      
-        });
-        },
+      require('taos/plugin'),
      ],
+     safelist: [
+      '!duration-[0ms]',
+      '!delay-[0ms]',
+      'html.js :where([class*="taos:"]:not(.taos-init))'
+    ],
+    content: {
+      relative: true,
+      transform: (content) => content.replace(/taos:/g, ''),
+      files: ['./src/*.{html,js}'],
+    },
    }
