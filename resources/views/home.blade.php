@@ -1,56 +1,62 @@
 @extends('layout.main')
 <style>
     .carousel-item {
-    transition: opacity 0.5s ease-in-out;
-}
+        transition: opacity 0.5s ease-in-out;
+    }
 
-.hidden {
-    display: none;  
-}
-
+    .hidden {
+        display: none;
+    }
+    
 </style>
 @section('container')
-    <div id="beranda" class="container scroll-smooth mx-auto md:block bg-gray-900 text-white md:px-4 py-6 sm:px-6 lg:px-0">
+    <div id="beranda" class="container scroll-smooth mx-auto md:block bg-gray-900 text-white md:px-4 py-0 sm:px-6 lg:px-0">
         <header class="flex flex-col justify-center item-center">
-            <div>
-                <div id="carouselExample" class="relative w-full">
-                    <!-- Carousel wrapper -->
-                    <div class="relative w-full overflow-hidden rounded-lg">
-                        <!-- Item 1 -->
-                        <div class="carousel-item duration-200 ease-linear">
-                            <img src="https://dinamikaindomedia.co.id/sliders/GFc0ytKYo6BB4cWlZ7lh5dVxtVMOxZuLnhTYauve.png" class="w-full" alt="...">
-                        </div>
-                        <!-- Item 2 -->
-                        <div class="carousel-item duration-200 ease-linear hidden">
-                            <img src="https://dinamikaindomedia.co.id/sliders/u2PFm2n2qRXBOMHyxmfLzrmqmxakLS8vlepkcOWS.png" class="w-full" alt="...">
-                        </div>
-                        <!-- Item 3 -->
-                        <div class="carousel-item duration-200 ease-linear hidden">
-                            <img src="https://dinamikaindomedia.co.id/sliders/kQ6mLDnGCdpCnm1CkxxeIyJehj9Ymjop5pGsZDiu.png" class="w-full" alt="...">
-                        </div>
-                        <!-- Item 4 -->
-                        <div class="carousel-item duration-200 ease-linear hidden">
-                            <img src="https://dinamikaindomedia.co.id/sliders/GCOk0ftAf02OWXzcTXoAZBvWNjho7Eqvo3Fvn53P.png" class="w-full" alt="...">
-                        </div>
+            <div id="carouselExample" class="relative max-w-8xl h-screen">
+                <!-- Carousel wrapper -->
+                <div class="relative w-full overflow-hidden rounded-lg">
+                    <!-- Item 1 -->
+                    <div class="carousel-item ease-in-out duration-300 ">
+                        <img src="https://dinamikaindomedia.co.id/sliders/GFc0ytKYo6BB4cWlZ7lh5dVxtVMOxZuLnhTYauve.png"
+                            class="w-full object-cover" alt="...">
                     </div>
-                    <!-- Slider controls -->
-                    <button type="button" class="absolute top-0 left-0 z-40 flex items-center justify-center h-full px-6 cursor-pointer group focus:outline-none" onclick="prevSlide()">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-black/50 text-white group-hover:bg-black/70 group-focus:ring-4 group-focus:ring-white">
-                            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                            </svg>
-                            <span class="sr-only">Previous</span>
-                        </span>
-                    </button>
-                    <button type="button" class="absolute top-0 right-0 z-40 flex items-center justify-center h-full px-6 cursor-pointer group focus:outline-none" onclick="nextSlide()">
-                        <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-black/50 text-white group-hover:bg-black/70 group-focus:ring-4 group-focus:ring-white">
-                            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                            </svg>
-                            <span class="sr-only">Next</span>
-                        </span>
-                    </button>
-                </div>                
+                    <!-- Item 2 -->
+                    <div class="carousel-item ease-in-out duration-300  hidden">
+                        <img src="https://dinamikaindomedia.co.id/sliders/u2PFm2n2qRXBOMHyxmfLzrmqmxakLS8vlepkcOWS.png"
+                            class="w-full object-cover" alt="...">
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="carousel-item ease-in-out duration-300  hidden">
+                        <img src="https://dinamikaindomedia.co.id/sliders/kQ6mLDnGCdpCnm1CkxxeIyJehj9Ymjop5pGsZDiu.png"
+                            class="w-full object-cover" alt="...">
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="carousel-item ease-in-out duration-300  hidden">
+                        <img src="https://dinamikaindomedia.co.id/sliders/GCOk0ftAf02OWXzcTXoAZBvWNjho7Eqvo3Fvn53P.png"
+                            class="w-full object-cover" alt="...">
+                    </div>
+                </div>
+                <!-- Slider controls -->
+                <button type="button"
+                    class="absolute top-1/2 -translate-y-1/2 left-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
+                    data-carousel-prev>
+                    <svg class="w-6 h-6 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 1 1 5l4 4" />
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                </button>
+                <button type="button"
+                    class="absolute top-1/2 -translate-y-1/2 right-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
+                    data-carousel-next>
+                    <svg class="w-6 h-6 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 9 4-4-4-4" />
+                    </svg>
+                    <span class="sr-only">Next</span>
+                </button>
             </div>
             <div>
                 <h1 id="profil"
@@ -116,14 +122,14 @@
                                 <div class='top border-b-2 text-white text-2xl py-1 text-center'>
                                     Retail
                                 </div>
-                                <p class="ub px-10 ">
+                                <p class="ub px-10 text-center">
                                     PT. Dinamika Indo Media adalah penyedia jasa terkemuka di bidang konstruksi dan bangunan
                                     yang bertujuan untuk membantu Anda mewujudkan proyek-proyek impian Anda.
                                 </p>
                             </div>
                             <div class="w-96 h-44 ">
                                 <div class='top border-b-2 text-white text-2xl py-1 text-center'>Penyedia Jasa</div>
-                                <p class="ub px-10  ">
+                                <p class="ub px-10  text-center">
                                     PT. Dinamika Indo Media adalah penyedia solusi retail yang berkomitmen untuk memberikan
                                     layanan dan teknologi inovatif kepada pelanggan kami. Kami hadir untuk membantu bisnis
                                     Anda.
@@ -187,7 +193,7 @@
                                 Penyedia Jasa
                             </h2>
 
-                            <p class=" text-gray-500 md:mt-4 md:block">
+                            <p class="text-center text-gray-500 md:mt-4 md:block">
                                 Kami melayani pembangunan berbagai jenis bangunan, termasuk sekolah,
                                 kantor atau instansi, dan gudang, dengan dedikasi untuk memberikan hasil
                                 terbaik sesuai kebutuhan dan standar Anda.
@@ -209,7 +215,7 @@
                                 Retail
                             </h2>
 
-                            <p class=" text-gray-500 md:mt-4 md:block">
+                            <p class="text-center text-gray-500 md:mt-4 md:block">
                                 Kami menyediakan berbagai produk dan layanan, termasuk moco, multimedia, meubelair, alat
                                 praktik,
                                 alat permainan edukatif (APE), alat kesehatan, alat tulis kantor, serta berbagai
@@ -376,33 +382,35 @@
 
 
     </div>
-    <script src="https://unpkg.com/taos@1.0.5/dist/taos.js">
-        let currentIndex = 0;
-        const items = document.querySelectorAll('.carousel-item');
-        const totalItems = items.length;
+    <script src="https://unpkg.com/taos@1.0.5/dist/taos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.getElementById('carouselExample');
+            const items = carousel.querySelectorAll('.carousel-item');
+            let currentIndex = 0;
 
-        function showSlide(index) {
-            items.forEach((item, i) => {
-                item.classList.add('hidden');
-            });
-            items[index].classList.remove('hidden');
-        }
+            function showSlide(index) {
+                items.forEach((item, i) => {
+                    item.classList.toggle('hidden', i !== index);
+                    item.style.opacity = i === index ? 1 : 0;
+                });
+            }
 
-        function prevSlide() {
-            currentIndex = (currentIndex === 0) ? totalItems - 1 : currentIndex - 1;
-            showSlide(currentIndex);
-        }
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % items.length;
+                showSlide(currentIndex);
+            }
 
-        function nextSlide() {
-            currentIndex = (currentIndex === totalItems - 1) ? 0 : currentIndex + 1;
-            showSlide(currentIndex);
-        }
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                showSlide(currentIndex);
+            }
 
-        // Auto slide every 5 seconds
-        setInterval(nextSlide, 5000);
+            document.querySelector('button').addEventListener('click', nextSlide);
+            document.querySelector('button').addEventListener('click', prevSlide);
 
-        // Initialize the first slide
-        showSlide(currentIndex);
+            setInterval(nextSlide, 1000); // Automatic slide every 3 seconds
+        });
     </script>
     </body>
     </div>
