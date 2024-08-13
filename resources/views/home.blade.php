@@ -10,7 +10,7 @@
 
 </style>
 @section('container')
-    <div class="container mx-auto md:block bg-gray-900 text-white md:px-4 py-6 sm:px-6 lg:px-0">
+    <div id="beranda" class="container scroll-smooth mx-auto md:block bg-gray-900 text-white md:px-4 py-6 sm:px-6 lg:px-0">
         <header class="flex flex-col justify-center item-center">
             <div>
                 <div id="carouselExample" class="relative w-full">
@@ -53,8 +53,8 @@
                 </div>                
             </div>
             <div>
-                <h1
-                    class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 flex justify-center bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+                <h1 id="profil"
+                    class="bg-gradient-to-r  from-green-300 via-blue-500 to-purple-600 flex justify-center bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
                     Dinamika Indo Media
 
                 </h1>
@@ -220,7 +220,7 @@
 
                     <img alt=""
                         src="https://dinamikaindomedia.co.id/sliders/heFECnIjhvwBigISarzDj2lt9xIqddC6CGq9C8m8.png"
-                        class="h-full w-full object-cover  xl:rounded-tl-full" />
+                        class="w-full object-cover  xl:rounded-tl-full" />
                 </section>
             </div>
 
@@ -228,7 +228,7 @@
             </section>
 
             <section class="">
-                <div class="text-center my-10">
+                <div id="produkKami" class="text-center my-10">
                     <h3>Produk Kami</h3>
                     <p>Kami telah meningkatkan kinerja perusahaan dengan menjalin kerja sama bersama beberapa klien.</p>
                 </div>
@@ -244,7 +244,7 @@
 
                         </div>
                     </a>
-                    <a href="#" class="group  block overflow-hidden">
+                    <a href="" class="group  block overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
                             alt=""
                             class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />
@@ -304,7 +304,7 @@
 
 
             <section>
-                <div class="gap-7 flex flex-col">
+                <div id="customer" class="gap-7 flex flex-col">
                     <h1 class="text-4xl flex justify-center">Customer Kami</h1>
                     <div class="flex justify-center text-center">
                         <p class="max-w-md">Kami besar dengan kepercayaan pelanggan dan kami memiliki visi untuk

@@ -570,6 +570,10 @@ video {
   border-color: rgba(229, 231, 235, var(--tw-border-opacity));
 }
 
+html.js :where([class*="taos:"]:not(.taos-init)) {
+  visibility: hidden;
+}
+
 .container {
   width: 100%;
 }
@@ -6390,14 +6394,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-calc-100-minus-2rem {
-  height: calc(100% - 2rem);
-}
-
-.h-calc-100-minus-4rem {
-  height: calc(100% - 4rem);
 }
 
 .max-h-0 {
@@ -12451,10 +12447,6 @@ video {
   border-radius: 9999px;
 }
 
-.rounded-ss-30px {
-  border-radius: 30px;
-}
-
 .rounded-t-none {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
@@ -12498,11 +12490,6 @@ video {
 .rounded-t-full {
   border-top-left-radius: 9999px;
   border-top-right-radius: 9999px;
-}
-
-.rounded-t-ss-30px {
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
 }
 
 .rounded-r-none {
@@ -12550,11 +12537,6 @@ video {
   border-bottom-right-radius: 9999px;
 }
 
-.rounded-r-ss-30px {
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-}
-
 .rounded-b-none {
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
@@ -12598,11 +12580,6 @@ video {
 .rounded-b-full {
   border-bottom-right-radius: 9999px;
   border-bottom-left-radius: 9999px;
-}
-
-.rounded-b-ss-30px {
-  border-bottom-right-radius: 30px;
-  border-bottom-left-radius: 30px;
 }
 
 .rounded-l-none {
@@ -12650,11 +12627,6 @@ video {
   border-bottom-left-radius: 9999px;
 }
 
-.rounded-l-ss-30px {
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-}
-
 .rounded-tl-none {
   border-top-left-radius: 0px;
 }
@@ -12689,10 +12661,6 @@ video {
 
 .rounded-tl-full {
   border-top-left-radius: 9999px;
-}
-
-.rounded-tl-ss-30px {
-  border-top-left-radius: 30px;
 }
 
 .rounded-tr-none {
@@ -12731,10 +12699,6 @@ video {
   border-top-right-radius: 9999px;
 }
 
-.rounded-tr-ss-30px {
-  border-top-right-radius: 30px;
-}
-
 .rounded-br-none {
   border-bottom-right-radius: 0px;
 }
@@ -12771,10 +12735,6 @@ video {
   border-bottom-right-radius: 9999px;
 }
 
-.rounded-br-ss-30px {
-  border-bottom-right-radius: 30px;
-}
-
 .rounded-bl-none {
   border-bottom-left-radius: 0px;
 }
@@ -12809,10 +12769,6 @@ video {
 
 .rounded-bl-full {
   border-bottom-left-radius: 9999px;
-}
-
-.rounded-bl-ss-30px {
-  border-bottom-left-radius: 30px;
 }
 
 .border-0 {
@@ -17749,10 +17705,6 @@ video {
 
 .bg-gradient-to-tl {
   background-image: linear-gradient(to top left, var(--tw-gradient-stops));
-}
-
-.bg-slider {
-  background-image: url('https://dinamikaindomedia.co.id/sliders/ZOje5kj4ZCSup0iXRkOf2p4uzMqMaH6T1vV5B2Fc.png');
 }
 
 .from-transparent {
@@ -36737,14 +36689,6 @@ video {
     height: 100vh;
   }
 
-  .sm\:h-calc-100-minus-2rem {
-    height: calc(100% - 2rem);
-  }
-
-  .sm\:h-calc-100-minus-4rem {
-    height: calc(100% - 4rem);
-  }
-
   .sm\:max-h-0 {
     max-height: 0px;
   }
@@ -42765,10 +42709,6 @@ video {
     border-radius: 9999px;
   }
 
-  .sm\:rounded-ss-30px {
-    border-radius: 30px;
-  }
-
   .sm\:rounded-t-none {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -42812,11 +42752,6 @@ video {
   .sm\:rounded-t-full {
     border-top-left-radius: 9999px;
     border-top-right-radius: 9999px;
-  }
-
-  .sm\:rounded-t-ss-30px {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
   }
 
   .sm\:rounded-r-none {
@@ -42864,11 +42799,6 @@ video {
     border-bottom-right-radius: 9999px;
   }
 
-  .sm\:rounded-r-ss-30px {
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-  }
-
   .sm\:rounded-b-none {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -42912,11 +42842,6 @@ video {
   .sm\:rounded-b-full {
     border-bottom-right-radius: 9999px;
     border-bottom-left-radius: 9999px;
-  }
-
-  .sm\:rounded-b-ss-30px {
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
   }
 
   .sm\:rounded-l-none {
@@ -42964,11 +42889,6 @@ video {
     border-bottom-left-radius: 9999px;
   }
 
-  .sm\:rounded-l-ss-30px {
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-  }
-
   .sm\:rounded-tl-none {
     border-top-left-radius: 0px;
   }
@@ -43003,10 +42923,6 @@ video {
 
   .sm\:rounded-tl-full {
     border-top-left-radius: 9999px;
-  }
-
-  .sm\:rounded-tl-ss-30px {
-    border-top-left-radius: 30px;
   }
 
   .sm\:rounded-tr-none {
@@ -43045,10 +42961,6 @@ video {
     border-top-right-radius: 9999px;
   }
 
-  .sm\:rounded-tr-ss-30px {
-    border-top-right-radius: 30px;
-  }
-
   .sm\:rounded-br-none {
     border-bottom-right-radius: 0px;
   }
@@ -43085,10 +42997,6 @@ video {
     border-bottom-right-radius: 9999px;
   }
 
-  .sm\:rounded-br-ss-30px {
-    border-bottom-right-radius: 30px;
-  }
-
   .sm\:rounded-bl-none {
     border-bottom-left-radius: 0px;
   }
@@ -43123,10 +43031,6 @@ video {
 
   .sm\:rounded-bl-full {
     border-bottom-left-radius: 9999px;
-  }
-
-  .sm\:rounded-bl-ss-30px {
-    border-bottom-left-radius: 30px;
   }
 
   .sm\:border-0 {
@@ -48063,10 +47967,6 @@ video {
 
   .sm\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
-  }
-
-  .sm\:bg-slider {
-    background-image: url('https://dinamikaindomedia.co.id/sliders/ZOje5kj4ZCSup0iXRkOf2p4uzMqMaH6T1vV5B2Fc.png');
   }
 
   .sm\:from-transparent {
@@ -67039,14 +66939,6 @@ video {
     height: 100vh;
   }
 
-  .md\:h-calc-100-minus-2rem {
-    height: calc(100% - 2rem);
-  }
-
-  .md\:h-calc-100-minus-4rem {
-    height: calc(100% - 4rem);
-  }
-
   .md\:max-h-0 {
     max-height: 0px;
   }
@@ -73067,10 +72959,6 @@ video {
     border-radius: 9999px;
   }
 
-  .md\:rounded-ss-30px {
-    border-radius: 30px;
-  }
-
   .md\:rounded-t-none {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -73114,11 +73002,6 @@ video {
   .md\:rounded-t-full {
     border-top-left-radius: 9999px;
     border-top-right-radius: 9999px;
-  }
-
-  .md\:rounded-t-ss-30px {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
   }
 
   .md\:rounded-r-none {
@@ -73166,11 +73049,6 @@ video {
     border-bottom-right-radius: 9999px;
   }
 
-  .md\:rounded-r-ss-30px {
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-  }
-
   .md\:rounded-b-none {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -73214,11 +73092,6 @@ video {
   .md\:rounded-b-full {
     border-bottom-right-radius: 9999px;
     border-bottom-left-radius: 9999px;
-  }
-
-  .md\:rounded-b-ss-30px {
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
   }
 
   .md\:rounded-l-none {
@@ -73266,11 +73139,6 @@ video {
     border-bottom-left-radius: 9999px;
   }
 
-  .md\:rounded-l-ss-30px {
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-  }
-
   .md\:rounded-tl-none {
     border-top-left-radius: 0px;
   }
@@ -73305,10 +73173,6 @@ video {
 
   .md\:rounded-tl-full {
     border-top-left-radius: 9999px;
-  }
-
-  .md\:rounded-tl-ss-30px {
-    border-top-left-radius: 30px;
   }
 
   .md\:rounded-tr-none {
@@ -73347,10 +73211,6 @@ video {
     border-top-right-radius: 9999px;
   }
 
-  .md\:rounded-tr-ss-30px {
-    border-top-right-radius: 30px;
-  }
-
   .md\:rounded-br-none {
     border-bottom-right-radius: 0px;
   }
@@ -73387,10 +73247,6 @@ video {
     border-bottom-right-radius: 9999px;
   }
 
-  .md\:rounded-br-ss-30px {
-    border-bottom-right-radius: 30px;
-  }
-
   .md\:rounded-bl-none {
     border-bottom-left-radius: 0px;
   }
@@ -73425,10 +73281,6 @@ video {
 
   .md\:rounded-bl-full {
     border-bottom-left-radius: 9999px;
-  }
-
-  .md\:rounded-bl-ss-30px {
-    border-bottom-left-radius: 30px;
   }
 
   .md\:border-0 {
@@ -78365,10 +78217,6 @@ video {
 
   .md\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
-  }
-
-  .md\:bg-slider {
-    background-image: url('https://dinamikaindomedia.co.id/sliders/ZOje5kj4ZCSup0iXRkOf2p4uzMqMaH6T1vV5B2Fc.png');
   }
 
   .md\:from-transparent {
@@ -97341,14 +97189,6 @@ video {
     height: 100vh;
   }
 
-  .lg\:h-calc-100-minus-2rem {
-    height: calc(100% - 2rem);
-  }
-
-  .lg\:h-calc-100-minus-4rem {
-    height: calc(100% - 4rem);
-  }
-
   .lg\:max-h-0 {
     max-height: 0px;
   }
@@ -103369,10 +103209,6 @@ video {
     border-radius: 9999px;
   }
 
-  .lg\:rounded-ss-30px {
-    border-radius: 30px;
-  }
-
   .lg\:rounded-t-none {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -103416,11 +103252,6 @@ video {
   .lg\:rounded-t-full {
     border-top-left-radius: 9999px;
     border-top-right-radius: 9999px;
-  }
-
-  .lg\:rounded-t-ss-30px {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
   }
 
   .lg\:rounded-r-none {
@@ -103468,11 +103299,6 @@ video {
     border-bottom-right-radius: 9999px;
   }
 
-  .lg\:rounded-r-ss-30px {
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-  }
-
   .lg\:rounded-b-none {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -103516,11 +103342,6 @@ video {
   .lg\:rounded-b-full {
     border-bottom-right-radius: 9999px;
     border-bottom-left-radius: 9999px;
-  }
-
-  .lg\:rounded-b-ss-30px {
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
   }
 
   .lg\:rounded-l-none {
@@ -103568,11 +103389,6 @@ video {
     border-bottom-left-radius: 9999px;
   }
 
-  .lg\:rounded-l-ss-30px {
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-  }
-
   .lg\:rounded-tl-none {
     border-top-left-radius: 0px;
   }
@@ -103607,10 +103423,6 @@ video {
 
   .lg\:rounded-tl-full {
     border-top-left-radius: 9999px;
-  }
-
-  .lg\:rounded-tl-ss-30px {
-    border-top-left-radius: 30px;
   }
 
   .lg\:rounded-tr-none {
@@ -103649,10 +103461,6 @@ video {
     border-top-right-radius: 9999px;
   }
 
-  .lg\:rounded-tr-ss-30px {
-    border-top-right-radius: 30px;
-  }
-
   .lg\:rounded-br-none {
     border-bottom-right-radius: 0px;
   }
@@ -103689,10 +103497,6 @@ video {
     border-bottom-right-radius: 9999px;
   }
 
-  .lg\:rounded-br-ss-30px {
-    border-bottom-right-radius: 30px;
-  }
-
   .lg\:rounded-bl-none {
     border-bottom-left-radius: 0px;
   }
@@ -103727,10 +103531,6 @@ video {
 
   .lg\:rounded-bl-full {
     border-bottom-left-radius: 9999px;
-  }
-
-  .lg\:rounded-bl-ss-30px {
-    border-bottom-left-radius: 30px;
   }
 
   .lg\:border-0 {
@@ -108667,10 +108467,6 @@ video {
 
   .lg\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
-  }
-
-  .lg\:bg-slider {
-    background-image: url('https://dinamikaindomedia.co.id/sliders/ZOje5kj4ZCSup0iXRkOf2p4uzMqMaH6T1vV5B2Fc.png');
   }
 
   .lg\:from-transparent {
@@ -127643,14 +127439,6 @@ video {
     height: 100vh;
   }
 
-  .xl\:h-calc-100-minus-2rem {
-    height: calc(100% - 2rem);
-  }
-
-  .xl\:h-calc-100-minus-4rem {
-    height: calc(100% - 4rem);
-  }
-
   .xl\:max-h-0 {
     max-height: 0px;
   }
@@ -133671,10 +133459,6 @@ video {
     border-radius: 9999px;
   }
 
-  .xl\:rounded-ss-30px {
-    border-radius: 30px;
-  }
-
   .xl\:rounded-t-none {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -133718,11 +133502,6 @@ video {
   .xl\:rounded-t-full {
     border-top-left-radius: 9999px;
     border-top-right-radius: 9999px;
-  }
-
-  .xl\:rounded-t-ss-30px {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
   }
 
   .xl\:rounded-r-none {
@@ -133770,11 +133549,6 @@ video {
     border-bottom-right-radius: 9999px;
   }
 
-  .xl\:rounded-r-ss-30px {
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-  }
-
   .xl\:rounded-b-none {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -133818,11 +133592,6 @@ video {
   .xl\:rounded-b-full {
     border-bottom-right-radius: 9999px;
     border-bottom-left-radius: 9999px;
-  }
-
-  .xl\:rounded-b-ss-30px {
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
   }
 
   .xl\:rounded-l-none {
@@ -133870,11 +133639,6 @@ video {
     border-bottom-left-radius: 9999px;
   }
 
-  .xl\:rounded-l-ss-30px {
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-  }
-
   .xl\:rounded-tl-none {
     border-top-left-radius: 0px;
   }
@@ -133909,10 +133673,6 @@ video {
 
   .xl\:rounded-tl-full {
     border-top-left-radius: 9999px;
-  }
-
-  .xl\:rounded-tl-ss-30px {
-    border-top-left-radius: 30px;
   }
 
   .xl\:rounded-tr-none {
@@ -133951,10 +133711,6 @@ video {
     border-top-right-radius: 9999px;
   }
 
-  .xl\:rounded-tr-ss-30px {
-    border-top-right-radius: 30px;
-  }
-
   .xl\:rounded-br-none {
     border-bottom-right-radius: 0px;
   }
@@ -133991,10 +133747,6 @@ video {
     border-bottom-right-radius: 9999px;
   }
 
-  .xl\:rounded-br-ss-30px {
-    border-bottom-right-radius: 30px;
-  }
-
   .xl\:rounded-bl-none {
     border-bottom-left-radius: 0px;
   }
@@ -134029,10 +133781,6 @@ video {
 
   .xl\:rounded-bl-full {
     border-bottom-left-radius: 9999px;
-  }
-
-  .xl\:rounded-bl-ss-30px {
-    border-bottom-left-radius: 30px;
   }
 
   .xl\:border-0 {
@@ -138969,10 +138717,6 @@ video {
 
   .xl\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
-  }
-
-  .xl\:bg-slider {
-    background-image: url('https://dinamikaindomedia.co.id/sliders/ZOje5kj4ZCSup0iXRkOf2p4uzMqMaH6T1vV5B2Fc.png');
   }
 
   .xl\:from-transparent {
@@ -157945,14 +157689,6 @@ video {
     height: 100vh;
   }
 
-  .\32xl\:h-calc-100-minus-2rem {
-    height: calc(100% - 2rem);
-  }
-
-  .\32xl\:h-calc-100-minus-4rem {
-    height: calc(100% - 4rem);
-  }
-
   .\32xl\:max-h-0 {
     max-height: 0px;
   }
@@ -163973,10 +163709,6 @@ video {
     border-radius: 9999px;
   }
 
-  .\32xl\:rounded-ss-30px {
-    border-radius: 30px;
-  }
-
   .\32xl\:rounded-t-none {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -164020,11 +163752,6 @@ video {
   .\32xl\:rounded-t-full {
     border-top-left-radius: 9999px;
     border-top-right-radius: 9999px;
-  }
-
-  .\32xl\:rounded-t-ss-30px {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
   }
 
   .\32xl\:rounded-r-none {
@@ -164072,11 +163799,6 @@ video {
     border-bottom-right-radius: 9999px;
   }
 
-  .\32xl\:rounded-r-ss-30px {
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-  }
-
   .\32xl\:rounded-b-none {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -164120,11 +163842,6 @@ video {
   .\32xl\:rounded-b-full {
     border-bottom-right-radius: 9999px;
     border-bottom-left-radius: 9999px;
-  }
-
-  .\32xl\:rounded-b-ss-30px {
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
   }
 
   .\32xl\:rounded-l-none {
@@ -164172,11 +163889,6 @@ video {
     border-bottom-left-radius: 9999px;
   }
 
-  .\32xl\:rounded-l-ss-30px {
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-  }
-
   .\32xl\:rounded-tl-none {
     border-top-left-radius: 0px;
   }
@@ -164211,10 +163923,6 @@ video {
 
   .\32xl\:rounded-tl-full {
     border-top-left-radius: 9999px;
-  }
-
-  .\32xl\:rounded-tl-ss-30px {
-    border-top-left-radius: 30px;
   }
 
   .\32xl\:rounded-tr-none {
@@ -164253,10 +163961,6 @@ video {
     border-top-right-radius: 9999px;
   }
 
-  .\32xl\:rounded-tr-ss-30px {
-    border-top-right-radius: 30px;
-  }
-
   .\32xl\:rounded-br-none {
     border-bottom-right-radius: 0px;
   }
@@ -164293,10 +163997,6 @@ video {
     border-bottom-right-radius: 9999px;
   }
 
-  .\32xl\:rounded-br-ss-30px {
-    border-bottom-right-radius: 30px;
-  }
-
   .\32xl\:rounded-bl-none {
     border-bottom-left-radius: 0px;
   }
@@ -164331,10 +164031,6 @@ video {
 
   .\32xl\:rounded-bl-full {
     border-bottom-left-radius: 9999px;
-  }
-
-  .\32xl\:rounded-bl-ss-30px {
-    border-bottom-left-radius: 30px;
   }
 
   .\32xl\:border-0 {
@@ -169271,10 +168967,6 @@ video {
 
   .\32xl\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
-  }
-
-  .\32xl\:bg-slider {
-    background-image: url('https://dinamikaindomedia.co.id/sliders/ZOje5kj4ZCSup0iXRkOf2p4uzMqMaH6T1vV5B2Fc.png');
   }
 
   .\32xl\:from-transparent {
