@@ -22,9 +22,14 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 
 
-    <style>
+    {{-- <style>
         html {
             scroll-behavior: smooth;
+            overflow: auto;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* Internet Explorer 10+ */
         }
 
         /* .carousel-item {
@@ -41,14 +46,14 @@
             opacity: 1;
             position: relative;
         } */
-    </style>
+    </style> --}}
 
     <title>Jp Books | Home </title>
 </head>
 
 <body class="h-full ">
-    <div class="min-h-full">
-        <nav class="sticky top-0 z-50 bg-blue-500 " x-data="{ isOpen: false }">
+    <div class="min-h-full bg-gray-900 ">
+        <nav class="sticky bg-gray-900 top-0 z-50" x-data="{ isOpen: false }">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center  justify-between">
                     <div class="flex items-center">
@@ -133,7 +138,7 @@
         </nav>
 
         <header class="  shadow">
-            <div class=" ">
+            <div class="">
                 @yield('container')
             </div>
         </header>

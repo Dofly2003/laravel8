@@ -1,16 +1,78 @@
 @extends('layout.main')
 <style>
-    .carousel-item {
-        transition: opacity 0.5s ease-in-out;
+    html {
+        scroll-behavior: smooth;
+        overflow: auto;
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* Internet Explorer 10+ */
     }
 
-    .hidden {
-        display: none;
+    .carousel-item {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .carousel-item.active {
+        opacity: 1;
+        position: relative;
     }
 </style>
 @section('container')
-    <div id="beranda" class="container scroll-smooth mx-auto md:block bg-gray-900 text-white md:px-4 py-0 sm:px-6 lg:px-0">
+    <div id="beranda" class="container w-screen scroll-smooth mx-auto md:block bg-gray-900 text-white md:px-4 py-0 sm:px-6 lg:px-0">
         <header class="flex flex-col justify-center item-center">
+            <div id="carouselExample" class="relative xl:max-w-full h-4/6">
+                <!-- Carousel wrapper -->
+                <div class="relative w-full h-full overflow-hidden rounded-lg">
+                    <!-- Item 1 -->
+                    <div class="carousel-item active">
+                        <img src="https://dinamikaindomedia.co.id/sliders/GFc0ytKYo6BB4cWlZ7lh5dVxtVMOxZuLnhTYauve.png"
+                            class="w-full h-full object-cover" alt="Slide 1">
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="carousel-item">
+                        <img src="https://dinamikaindomedia.co.id/sliders/u2PFm2n2qRXBOMHyxmfLzrmqmxakLS8vlepkcOWS.png"
+                            class="w-full h-full object-cover" alt="Slide 2">
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="carousel-item">
+                        <img src="https://dinamikaindomedia.co.id/sliders/kQ6mLDnGCdpCnm1CkxxeIyJehj9Ymjop5pGsZDiu.png"
+                            class="w-full h-full object-cover" alt="Slide 3">
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="carousel-item">
+                        <img src="https://dinamikaindomedia.co.id/sliders/GCOk0ftAf02OWXzcTXoAZBvWNjho7Eqvo3Fvn53P.png"
+                            class="w-full h-full object-cover" alt="Slide 4">
+                    </div>
+                </div>
+                <!-- Slider controls -->
+                <button type="button"
+                    class="sm:hidden  absolute top-1/2 -translate-y-1/2 left-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
+                    onclick="prevSlide()">
+                    <svg class="w-6 h-6 text-white rtl:rotate-180 xs:hidden " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 1 1 5l4 4" />
+                    </svg>
+                    <span class="sr-only">Previous</span>
+                </button>
+                <button type="button"
+                    class="absolute top-1/2 -translate-y-1/2 right-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
+                    onclick="nextSlide()">
+                    <svg class="w-6 h-6 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 9 4-4-4-4" />
+                    </svg>
+                    <span class="sr-only">Next</span>
+                </button>
+            </div>
 
             <div>
                 <h1 id="profil"
@@ -97,43 +159,43 @@
                         <div class="w-full  justify-center flex ">
                             <div class="gap-5 flex-wrap mx-10 item-center justify-center w-full flex">
                                 <img src="https://dinamikaindomedia.co.id/brands/BEwtk9M1UwhfRUztL8JXw8w7dIB0HCrugRRu0P18.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/a8pQ5F8EwUfLsNGzogKFG0ydCwqL3IEAt4fPvE7f.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/bPRxWjWq8gJEW9APClpy0d9P2DEECBReBkTAQrpm.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/yIQOqyP0VwLM9H3UowAfamBoyzWXf0pvNrOw6zUC.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/yIQOqyP0VwLM9H3UowAfamBoyzWXf0pvNrOw6zUC.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/jlcaWNCWbRKKlX28VA0ekyanSdfD94qJfsdz4T6c.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/IWWMeqCXJSijxo7F0E3iF97rNuEpbD9yiNwnxaWe.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/YloE7NnpGYJsxPlmfi7C3qmULtjfRlvyHyGw1z5w.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/nTxKCAaA1yktW1N48ezPKFxJBL29INB3rWzPBKsc.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/O4pBLdAZDKVk3q8NJlhIMyVS5IyQoXCbAxQhQmwQ.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/LRUFTEfJAoaID95dfCBJoi3MAh00G5lPGuH1wFSR.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/3ekrDH6aeJL4eBHGagASlpijy4yMg8ktkFtagDmv.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/9HjYzMS80vzhzFyu4qcwZ4IFXu8O4SgdlsthlMT3.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/X9XfkaPw03pwQtDs1s2EO9FMW5Y8D59TgOd0wX1h.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/6bQMeHD8TiSx5yHNPCQjsEVCsp08NrFLBIMDvNL0.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/Kzj3BZwviLfXrohkkgBnzUmxeG4J91dwhmZZlvYh.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/9HmNVYFLUan8hnHcOeJG34MmCMPvg2mFsiFDuQvk.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/3UUAPsSeCn8AyIAOmF52vDnCzqlWe3nlHjC41huL.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                                 <img src="https://dinamikaindomedia.co.id/brands/Q8voEAdP9NPXsDqjp6rqxrFzGUvij5V1HPf3Xpyn.png"
-                                    class="w-20 object-contain" alt="Brand Product">
+                                    class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                             </div>
                         </div>
                     </div>
@@ -188,8 +250,8 @@
             </section>
 
             <section class="">
-                <div id="produkKami" class="text-center my-10">
-                    <h3>Produk Kami</h3>
+                <div id="produkKami" class="text-center  my-10">
+                    <h3 class="text-2xl font-semibold">Produk Kami</h3>
                     <p>Kami telah meningkatkan kinerja perusahaan dengan menjalin kerja sama bersama beberapa klien.</p>
                 </div>
                 <div class="flex flex-wrap gap-4 justify-center">
@@ -273,29 +335,29 @@
                     <div class="w-full  justify-center flex ">
                         <div class="gap-5 flex-wrap mx-10 item-center justify-center w-full flex">
                             <img src="https://www.dinamikaindomedia.co.id/clients/q2mzIwWksEENHvXlbs0CiguuKAaMFHboo9iYfIMl.png"
-                                class="w-20 object-contain" alt="Brand Product">
+                                class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                             <img src="https://www.dinamikaindomedia.co.id/clients/1CdNUAFLpfbAt85R4RYZJLjNoL4PAGmn7zjfn5ll.jpg"
-                                class="w-20 object-contain" alt="Brand Product">
+                                class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                             <img src="https://www.dinamikaindomedia.co.id/clients/mi6PONdxC9UMPAE9Wg33EWRx6lcu2oiyHbhhAbH9.png"
-                                class="w-20 object-contain" alt="Brand Product">
+                                class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                             <img src="https://www.dinamikaindomedia.co.id/clients/nRwH86BcCUAxqbZisXWHM2uYr2tya8z0jzVPL33E.png"
-                                class="w-20 object-contain" alt="Brand Product">
+                                class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                             <img src="https://www.dinamikaindomedia.co.id/clients/2xTQgtw1i3zlof14Y0TlAfvgaeWgT9qbSLTUfbzx.png"
-                                class="w-20 object-contain" alt="Brand Product">
+                                class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                             <img src="https://www.dinamikaindomedia.co.id/clients/AqvWkHCGlTxC1X82FX3oNAaLm6C2vRHuzcseBZXN.jpg"
-                                class="w-20 object-contain" alt="Brand Product">
+                                class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                             <img src="https://www.dinamikaindomedia.co.id/clients/ADiApzk7EDZH6m36C6q3w2KcoHYbR95VxXTTonbf.png"
-                                class="w-20 object-contain" alt="Brand Product">
+                                class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                             <img src="https://www.dinamikaindomedia.co.id/clients/KfpbdaGAyZa9z8LNflwsq9TivUD2TLC11SY1pjdJ.png"
-                                class="w-20 object-contain" alt="Brand Product">
+                                class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                             <img src="https://www.dinamikaindomedia.co.id/clients/qsXLuNLQBNerZr0Gr1uR3L4yhn8P5fSquCeVdKeC.png"
-                                class="w-20 object-contain" alt="Brand Product">
+                                class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                             <img src="https://www.dinamikaindomedia.co.id/clients/MmtUzTRwUcl4bKwdbxRWqxevB3eHvValN7W95D2P.png"
-                                class="w-20 object-contain" alt="Brand Product">
+                                class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                             <img src="https://www.dinamikaindomedia.co.id/clients/1D4aaLQqYGGn6UisGUQg4QTSdQ6XE3xqfCfdRWVP.png"
-                                class="w-20 object-contain" alt="Brand Product">
+                                class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                             <img src="https://www.dinamikaindomedia.co.id/clients/eE3KwH7io3BCVc2umzaosfmN1pFxa6GI23wRwnYL.png"
-                                class="w-20 object-contain" alt="Brand Product">
+                                class="w-20 object-contain bg-white rounded-xl py-1 px-1" alt="Brand Product">
                         </div>
                     </div>
             </section>
@@ -359,34 +421,29 @@
     </div>
     <script src="https://unpkg.com/taos@1.0.5/dist/taos.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const carousel = document.getElementById('carouselExample');
-            const items = carousel.querySelectorAll('.carousel-item');
-            let currentIndex = 0;
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item');
 
-            function showSlide(index) {
-                items.forEach((item, i) => {
-                    item.classList.toggle('hidden', i !== index);
-                    item.style.opacity = i === index ? 1 : 0;
-                });
-            }
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
 
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % items.length;
-                showSlide(currentIndex);
-            }
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
 
-            function prevSlide() {
-                currentIndex = (currentIndex - 1 + items.length) % items.length;
-                showSlide(currentIndex);
-            }
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
 
-            document.querySelector('button').addEventListener('click', nextSlide);
-            document.querySelector('button').addEventListener('click', prevSlide);
-
-            setInterval(nextSlide, 1000); // Automatic slide every 3 seconds
-        });
+        // Pindah slide secara otomatis setiap 5 detik
+        setInterval(nextSlide, 5000);
     </script>
+<script src="js/slider"></script>
     </body>
     </div>
 @endsection
