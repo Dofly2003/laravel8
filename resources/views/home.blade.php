@@ -118,7 +118,7 @@
                                 bisnis:</p>
                         </div>
                         <div class="flex gap-4 justify-evenly items-center flex-wrap">
-                            <div class="w-96 h-44 ">
+                            <div class="max-w-sm h-44 ">
                                 <div class='top border-b-2 text-white text-2xl py-1 text-center'>
                                     Retail
                                 </div>
@@ -202,7 +202,7 @@
                     </div>
                     <img alt=""
                         src="https://dinamikaindomedia.co.id/sliders/ggnkdjEPgomtyu0QvyaiiAYAq9uQ5p6IeyxKqMF8.png"
-                        class="h-full w-full object-cover xl:rounded-br-full xl:row-start-1" />
+                        class="max-h-96 w-full object-cover xl:rounded-br-full xl:row-start-1" />
 
 
                 </section>
@@ -226,7 +226,7 @@
 
                     <img alt=""
                         src="https://dinamikaindomedia.co.id/sliders/heFECnIjhvwBigISarzDj2lt9xIqddC6CGq9C8m8.png"
-                        class="w-full object-cover  xl:rounded-tl-full" />
+                        class="w-full max-h-96 object-cover  xl:rounded-tl-full" />
                 </section>
             </div>
 

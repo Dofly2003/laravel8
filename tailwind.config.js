@@ -4,6 +4,7 @@ module.exports = {
     './resources/**/*.blade.php',
     './resources/**/*.js',
     './resources/**/*.vue',
+     "./node_modules/flowbite/**/*.js",
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -11,7 +12,8 @@ module.exports = {
   },
   variants: {},
   plugins: [
-    require('taos/plugin'),  // Plugin TAOS dimasukkan di sini
+    require('taos/plugin'), 
+    require('flowbite/plugin'),
   ],
   safelist: [
     '!duration-[0ms]',
@@ -22,5 +24,9 @@ module.exports = {
     relative: true,
     transform: (content) => content.replace(/taos:/g, ''),
     files: ['./src/*.{html,js}'],
+    
   },
+  // content:[
+  //    "./node_modules/flowbite/**/*.js"
+  // ]
 }
