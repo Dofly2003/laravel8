@@ -14,6 +14,6 @@ class Product extends Model
         return $this->belongsTo(Kategori::class);
     }
     protected $fillable = [
-        'name', 'price', 'kategori_id', 'description',
+        'name', 'slug', 'description',
     ];
 }

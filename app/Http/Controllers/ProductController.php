@@ -37,7 +37,7 @@ class ProductController extends Controller
         // Simpan data ke database
         Product::create([
             'name' => $request->Nama,
-            'price' => $request->price,
+            'slug' => $request->slug,
             'kategori_id' => $request->kategori, // Simpan ID kategori ke field kategori_id
             'description' => $request->deskripsi,
         ]);

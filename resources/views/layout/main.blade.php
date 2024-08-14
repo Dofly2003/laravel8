@@ -59,7 +59,7 @@
                     <div class="flex items-center">
                         <div class="flex-shrink-0 ">
                             <a href="/">
-                                <img class="w-24 bg-gray-50 rounded-full" src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
+                                <img class="w-24 bg-gray-50 px-2 rounded-full" src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
                                     alt="Jp Books">
                             </a>
                         </div>

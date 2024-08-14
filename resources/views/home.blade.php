@@ -250,78 +250,32 @@
             </section>
 
             <section class="">
-                <div id="produkKami" class="text-center  my-10">
+                <div id="produkKami" class="text-center my-10">
                     <h3 class="text-2xl font-semibold">Produk Kami</h3>
                     <p>Kami telah meningkatkan kinerja perusahaan dengan menjalin kerja sama bersama beberapa klien.</p>
                 </div>
                 <div class="flex flex-wrap gap-4 justify-center">
-                    <a href="#" class="group  block overflow-hidden">
+                    @foreach ($products as $product)
+                        
+                    <a href="#" class="group rounded-xl max-w-xs w-56 block overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
                             alt=""
-                            class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />
+                            class="h-60 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />
 
-                        <div class="relative border border-gray-100 bg-white p-6">
+                        <div class="relative border border-gray-100 bg-white flex py-2 justify-center">
 
-                            <h3 class="mt-4 text-lg font-medium text-gray-900">Robot Toy</h3>
+                            <h3 class="text-lg font-medium text-gray-900"> {{$product->name}} </h3>
 
                         </div>
                     </a>
-                    <a href="" class="group  block overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
-                            alt=""
-                            class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />
 
-                        <div class="relative border border-gray-100 bg-white p-6">
-
-                            <h3 class="mt-4 text-lg font-medium text-gray-900">Robot Toy</h3>
-
-                        </div>
-                    </a>
-                    <a href="#" class="group  block overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
-                            alt=""
-                            class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />
-
-                        <div class="relative border border-gray-100 bg-white p-6">
-
-                            <h3 class="mt-4 text-lg font-medium text-gray-900">Robot Toy</h3>
-
-                        </div>
-                    </a>
-                    <a href="#" class="group  block overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
-                            alt=""
-                            class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />
-
-                        <div class="relative border border-gray-100 bg-white p-6">
-
-                            <h3 class="mt-4 text-lg font-medium text-gray-900">Robot Toy</h3>
-
-                        </div>
-                    </a>
-                    <a href="#" class="group  block overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
-                            alt=""
-                            class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />
-
-                        <div class="relative border border-gray-100 bg-white p-6">
-
-                            <h3 class="mt-4 text-lg font-medium text-gray-900">Robot Toy</h3>
-
-                        </div>
-                    </a>
-                    <a href="#" class="group  block overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
-                            alt=""
-                            class="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />
-
-                        <div class="relative border border-gray-100 bg-white p-6">
-
-                            <h3 class="mt-4 text-lg font-medium text-gray-900">Robot Toy</h3>
-
-                        </div>
-                    </a>
+                    @endforeach
                 </div>
+                <a href="#" class=" flex justify-center text-gray-50 py-5">
+                    <div class="bg-gray-800 py-3 px-3 rounded-xl border-gray-500  border-2">
+                        show all
+                    </div>
+                </a>
             </section>
 
 
@@ -361,7 +315,7 @@
                         </div>
                     </div>
             </section>
-            <section id="kontak" class="flex flex-wrap flex-row pt-10 justify-evenly gap-4 bg-indigo-700 text-left">
+            <section id="kontak" class="flex flex-wrap flex-row py-20 justify-evenly gap-4 bg-indigo-700 text-left">
                 <div class="px-2 max-w-1/4 gap-3 items-center flex flex-col">
                     <img src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
                         class="w-36" alt="">

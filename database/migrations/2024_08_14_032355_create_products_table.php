@@ -19,9 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             // $table->string('price');
             $table->string('description');
-            $table->foreignId('kategori_id')
-            ->constrained('kategoris')
-            ->index('kategori_Product_id');      
+            $table->foreignId('kategori_id')->index('kategori_Product_id')->nullable();      
             $table->timestamps();
         });
     }
