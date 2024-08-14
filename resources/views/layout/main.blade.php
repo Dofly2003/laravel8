@@ -55,11 +55,11 @@
     <div class="min-h-full bg-gray-900 ">
         <nav class="sticky bg-gray-900 top-0 z-50" x-data="{ isOpen: false }">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="flex h-16 items-center  justify-between">
+                <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
                         <div class="flex-shrink-0 ">
                             <a href="/">
-                                <img class="w-40" src="https://jpbooks.co.id/files/upload/logo-utama.png"
+                                <img class="w-24 bg-gray-50 rounded-full" src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
                                     alt="Jp Books">
                             </a>
                         </div>
@@ -67,32 +67,32 @@
                         </div>
                     </div>
                     <div class="hidden md:block">
-                        <div class="ml-4  flex items-center md:ml-6">
+                        <div class="ml-4 flex items-center md:ml-6">
                             <div class="ml-10 flex items-baseline text-white space-x-4 border-b-2">
-                                <a href="/beranda" id="beranda"
-                                    class=" rounded-md px-3 py-2 text-sm font-medium  hover:text-gray-900"
-                                    aria-current="page">
+                                <a href="#beranda" id="nav-beranda"
+                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium hover:text-gray-500">
                                     Beranda
                                 </a>
-                                <a href="/profil"
-                                    class="rounded-md px-3 py-2 text-sm font-medium  hover:text-gray-900 ">
-                                    profil
+                                <a href="#profil" id="nav-profil"
+                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium hover:text-gray-500">
+                                    Profil
                                 </a>
-                                <a href="/produkKami" id="tentangKami"
-                                    class="rounded-md px-3 py-2 text-sm font-medium  hover:text-gray-900 ">
+                                <a href="#produkKami" id="nav-produkKami"
+                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium hover:text-gray-500">
                                     Produk Kami
                                 </a>
-                                <a href="/customer" id="kontak"
-                                    class="rounded-md px-3 py-2 text-sm font-medium  hover:text-gray-900">
+                                <a href="#customer" id="nav-customer"
+                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium hover:text-gray-500">
                                     Customer
                                 </a>
-                                <a href="/customer" id="kontak"
-                                    class="rounded-md px-3 py-2 text-sm font-medium  hover:text-gray-900">
+                                <a href="#kontak" id="nav-kontak"
+                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium hover:text-gray-500">
                                     Kontak
                                 </a>
                             </div>
                         </div>
                     </div>
+
                     <div class="-mr-2 flex md:hidden">
                         <!-- Mobile menu button -->
                         <button @click="isOpen = !isOpen" type="button"
@@ -155,6 +155,33 @@
                     behavior: 'smooth' // Scrolling smooth
                 });
             });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            function updateActiveLink() {
+                let currentSection = '';
+                const sections = document.querySelectorAll('section');
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (pageYOffset >= sectionTop) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-blue-500');
+                    link.classList.add('text-gray-500');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('text-blue-500');
+                        link.classList.remove('text-gray-500');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveLink);
+            updateActiveLink(); // Call once on load to set the initial active link
         });
     </script>
 </body>

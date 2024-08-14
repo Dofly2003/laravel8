@@ -361,7 +361,7 @@
                         </div>
                     </div>
             </section>
-            <section class="flex flex-wrap flex-row pt-10 justify-evenly gap-4 bg-indigo-700 text-left">
+            <section id="kontak" class="flex flex-wrap flex-row pt-10 justify-evenly gap-4 bg-indigo-700 text-left">
                 <div class="px-2 max-w-1/4 gap-3 items-center flex flex-col">
                     <img src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
                         class="w-36" alt="">
