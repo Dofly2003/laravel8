@@ -17,10 +17,17 @@
                 <div>
                     <label for="price" class="block text-sm font-medium leading-6 text-gray-900">Price</label>
                     <div class="mt-2">
-                        <input id="price" name="price" type="text" autocomplete="current-password" required
+                        <input id="price" name="price" type="text" autocomplete="none" required
                             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
+                {{-- <div>
+                    <label for="image" class="block text-sm font-medium leading-6 text-gray-900">image</label>
+                    <div class="mt-2">
+                        <input id="image" name="image" type="text" autocomplete="none" required
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                </div> --}}
 
                 <div>
                     <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900">Kategori</label>
@@ -31,6 +38,10 @@
                                 <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
                             @endforeach
                         </select>
+                        {{-- <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
+                            <option value="AL">Alabama</option>
+
+                          </select> --}}
                     </div>
                 </div>
 

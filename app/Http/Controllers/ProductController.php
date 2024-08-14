@@ -67,12 +67,14 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'description' => 'nullable|string',
             'kategori' => 'required|exists:kategoris,id',
+            'image' => 'nullable|string',
         ]);
 
         // Update data produk
         $product->update([
             'name' => $request->name,
             'price' => $request->price,
+            // 'image' => $request->image,
             'kategori_id' => $request->kategori,
             'description' => $request->description,
         ]);

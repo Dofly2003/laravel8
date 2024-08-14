@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kategori;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(10)->create();
+        $this->call(KategoriSeeder::class);
+        Product::factory(57)->recycle([
+            Kategori::all(),
+        ])->create();
     }
 }

@@ -12,6 +12,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
@@ -20,11 +22,12 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 
 
-        <style>
-            html {
+    <style>
+        html {
             scroll-behavior: smooth;
         }
-            /* .carousel-item {
+
+        /* .carousel-item {
             opacity: 0;
             position: absolute;
             top: 0;
@@ -134,11 +137,6 @@
                 @yield('container')
             </div>
         </header>
-        <main>
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                <!-- Your content -->
-            </div>
-        </main>
     </div>
     <script>
         document.querySelectorAll('nav a').forEach(anchor => {

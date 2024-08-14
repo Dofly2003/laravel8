@@ -7,57 +7,11 @@
     .hidden {
         display: none;
     }
-    
 </style>
 @section('container')
     <div id="beranda" class="container scroll-smooth mx-auto md:block bg-gray-900 text-white md:px-4 py-0 sm:px-6 lg:px-0">
         <header class="flex flex-col justify-center item-center">
-            <div id="carouselExample" class="relative max-w-8xl h-screen">
-                <!-- Carousel wrapper -->
-                <div class="relative w-full overflow-hidden rounded-lg">
-                    <!-- Item 1 -->
-                    <div class="carousel-item ease-in-out duration-300 ">
-                        <img src="https://dinamikaindomedia.co.id/sliders/GFc0ytKYo6BB4cWlZ7lh5dVxtVMOxZuLnhTYauve.png"
-                            class="w-full object-cover" alt="...">
-                    </div>
-                    <!-- Item 2 -->
-                    <div class="carousel-item ease-in-out duration-300  hidden">
-                        <img src="https://dinamikaindomedia.co.id/sliders/u2PFm2n2qRXBOMHyxmfLzrmqmxakLS8vlepkcOWS.png"
-                            class="w-full object-cover" alt="...">
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="carousel-item ease-in-out duration-300  hidden">
-                        <img src="https://dinamikaindomedia.co.id/sliders/kQ6mLDnGCdpCnm1CkxxeIyJehj9Ymjop5pGsZDiu.png"
-                            class="w-full object-cover" alt="...">
-                    </div>
-                    <!-- Item 4 -->
-                    <div class="carousel-item ease-in-out duration-300  hidden">
-                        <img src="https://dinamikaindomedia.co.id/sliders/GCOk0ftAf02OWXzcTXoAZBvWNjho7Eqvo3Fvn53P.png"
-                            class="w-full object-cover" alt="...">
-                    </div>
-                </div>
-                <!-- Slider controls -->
-                <button type="button"
-                    class="absolute top-1/2 -translate-y-1/2 left-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
-                    data-carousel-prev>
-                    <svg class="w-6 h-6 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5 1 1 5l4 4" />
-                    </svg>
-                    <span class="sr-only">Previous</span>
-                </button>
-                <button type="button"
-                    class="absolute top-1/2 -translate-y-1/2 right-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
-                    data-carousel-next>
-                    <svg class="w-6 h-6 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 9 4-4-4-4" />
-                    </svg>
-                    <span class="sr-only">Next</span>
-                </button>
-            </div>
+
             <div>
                 <h1 id="profil"
                     class="bg-gradient-to-r  from-green-300 via-blue-500 to-purple-600 flex justify-center bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
@@ -77,7 +31,7 @@
                 </a>
             </div>
             <section class=" text-white ">
-                <div class="mx-auto max-w-screen-2xl  px-4 py-32 lg:flex lg:h-2/4 ">
+                <div class="mx-auto max-w-screen-2xl  px-4 py-10 lg:flex lg:h-2/4 ">
                     <div class="mx-auto max-w-3xl text-center ">
                         <div class="delay-[300ms] duration-[600ms] taos:translate-x-[-200px] taos:opacity-0"
                             data-taos-offset="400 ">
@@ -309,7 +263,7 @@
             </section>
 
 
-            <section>
+            <section class="pb-5">
                 <div id="customer" class="gap-7 flex flex-col">
                     <h1 class="text-4xl flex justify-center">Customer Kami</h1>
                     <div class="flex justify-center text-center">
@@ -345,38 +299,59 @@
                         </div>
                     </div>
             </section>
-            <section class="flex flex-row pt-10 ">
-                <div class="px-2 max-w-1/4">
+            <section class="flex flex-wrap flex-row pt-10 justify-evenly gap-4 bg-indigo-700 text-left">
+                <div class="px-2 max-w-1/4 gap-3 items-center flex flex-col">
                     <img src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
                         class="w-36" alt="">
-                    <p class="">PT. DINAMIKA INDO MEDIA
+                    <p class="max-w-xs">PT. DINAMIKA INDO MEDIA
                         berdiri pada hari Kamis tanggal 10 Februari 2011 di Kabupaten Bekasi,
                         saat ini kami bergerak dibidang pengadaan barang untuk pemenuhan kebutuhan instansi,
                         Lembaga, dan satuan kerja pemerintahan yang bertempat di Kota Surabaya</p>
                 </div>
-                <div class=" px-2 max-w-1/4">
-                    <img src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
-                        class="w-36" alt="">
-                    <p class="">PT. DINAMIKA INDO MEDIA
-                        berdiri pada hari Kamis tanggal 10 Februari 2011 di Kabupaten Bekasi,
-                        saat ini kami bergerak dibidang pengadaan barang untuk pemenuhan kebutuhan instansi,
-                        Lembaga, dan satuan kerja pemerintahan yang bertempat di Kota Surabaya</p>
+                <div class=" px-2 max-w-1/4  flex flex-col items-center gap-3">
+                    <h1 class="text-4xl ">Office</h1>
+                    <p class="max-w-xs">JL. Karah Agung Surabaya,Jawa Timur</p>
+                    <img src="https://dinamikaindomedia.co.id/images/PT.DIM.png" class="w-64 rounded-lg" alt="">
                 </div>
-                <div class=" px-2 max-w-1/4">
-                    <img src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
-                        class="w-36" alt="">
-                    <p class="">PT. DINAMIKA INDO MEDIA
-                        berdiri pada hari Kamis tanggal 10 Februari 2011 di Kabupaten Bekasi,
-                        saat ini kami bergerak dibidang pengadaan barang untuk pemenuhan kebutuhan instansi,
-                        Lembaga, dan satuan kerja pemerintahan yang bertempat di Kota Surabaya</p>
+                <div class=" px-2 max-w-xs w-full items-center gap-5  sm:text-center  flex flex-col">
+                    <h1 class="text-4xl">links</h1>
+                    <div class=" w-40 xl:text-left flex flex-col">
+                        <a class="text-xs hover:underline" href="https://siplah.temprina.co.id/">SIPLah Temprina</a>
+                        <a class="text-xs hover:underline" href="https://www.jpbooks.id/">JPBooks Store</a>
+                        <a class="text-xs hover:underline" href="https://cahayaquran.com/">Cahaya Quran</a>
+                        <a class="text-xs hover:underline" href="https://temprina.com/main/index#">TemaTrade</a>
+                        <a class="text-xs hover:underline" href="https://www.temapack.co.id/">TemaPack</a>
+                        <a class="text-xs hover:underline" href="https://temprina.com/main/index#">Bela Pengadaan</a>
+                    </div>
                 </div>
+
                 <div class=" px-2 max-w-1/4">
-                    <img src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
-                        class="w-36" alt="">
-                    <p class="">PT. DINAMIKA INDO MEDIA
-                        berdiri pada hari Kamis tanggal 10 Februari 2011 di Kabupaten Bekasi,
-                        saat ini kami bergerak dibidang pengadaan barang untuk pemenuhan kebutuhan instansi,
-                        Lembaga, dan satuan kerja pemerintahan yang bertempat di Kota Surabaya</p>
+                    <h1 class="text-4xl">Contact</h1>
+                    <p class="max-w-xs"> info.dinamikaindomedia@gmail.com</p>
+                    <form class="max-w-sm mx-auto">
+                        <div class="mb-5">
+                            <label for="email"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                            <input type="email" id="email"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="name@flowbite.com" required />
+                        </div>
+                        <div class="mb-5">
+                            <label for="numberPhone"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number Phone</label>
+                            <input type="password" id="password"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required />
+                        </div>
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                            message</label>
+                        <textarea id="message" rows="4"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Leave a comment..."></textarea>
+                        <button type="submit"
+                            class="text-white bg-blue-800 mt-5 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                    </form>
+
                 </div>
             </section>
 
