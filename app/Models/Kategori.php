@@ -4,14 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-
+use App\Models\Product;
 
 class Kategori extends Model
 {
     use HasFactory;
-    public function posts():HasMany
+
+    protected $fillable = ['name_kategori'];
+
+    public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class, 'kategori_produk', 'kategori_id', 'product_id');
     }
 }
+

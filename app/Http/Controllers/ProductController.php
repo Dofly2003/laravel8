@@ -11,9 +11,13 @@ class ProductController extends Controller
     // Tampilkan daftar semua produk
     public function index()
     {
-        // Menampilkan daftar kategori saat memuat halaman create
+        // Ambil produk dengan relasi kategori_product
+        $products = Product::with('kategori_product')->get();
+
+        // Kirim data ke tampilan
         return view('create', [
-            'kategories' => Kategori::all(),
+            'products' => $products,
+            // dd($products)
         ]);
     }
 

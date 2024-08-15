@@ -53,7 +53,7 @@
                 </div>
                 <!-- Slider controls -->
                 <button type="button"
-                    class="sm:hidden  absolute top-1/2 -translate-y-1/2 left-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
+                    class="absolute top-1/2 -translate-y-1/2 left-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
                     onclick="prevSlide()">
                     <svg class="w-6 h-6 text-white rtl:rotate-180 xs:hidden " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 6 10">
@@ -199,7 +199,6 @@
                             </div>
                         </div>
                     </div>
-
                 </section>
 
                 <section class="overflow-hidden text sm:grid sm:grid-cols-2 sm:items-center">
@@ -255,7 +254,7 @@
                     <p>Kami telah meningkatkan kinerja perusahaan dengan menjalin kerja sama bersama beberapa klien.</p>
                 </div>
                 <div class="flex flex-wrap gap-4 justify-center">
-                    @foreach ($products as $product)
+                    @foreach ($products->take(6) as $product)
                         
                     <a href="#" class="group rounded-xl max-w-xs w-56 block overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
@@ -264,7 +263,7 @@
 
                         <div class="relative border border-gray-100 bg-white flex py-2 justify-center">
 
-                            <h3 class="text-lg font-medium text-gray-900"> {{$product->name}} </h3>
+                            <h3 class="text-lg font-medium text-gray-900"> {{$product->name_product}} </h3>
 
                         </div>
                     </a>

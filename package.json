@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "flowbite": "^2.5.1",
+        "select2": "^4.1.0-rc.0",
         "tailwindcss": "^2.2.16",
         "taos": "^1.0.5"
     }
