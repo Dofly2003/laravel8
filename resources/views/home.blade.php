@@ -95,17 +95,17 @@
             <section class=" text-white ">
                 <div class="mx-auto max-w-screen-2xl  px-4 py-10 lg:flex lg:h-2/4 ">
                     <div class="mx-auto max-w-3xl text-center ">
-                        <div class="delay-[300ms] duration-[600ms] taos:translate-x-[-200px] taos:opacity-0"
+                        <div class="delay-[300ms] duration-[600ms] taos:translate-x-[-200px] ease-in-out duration-300 taos:opacity-0"
                             data-taos-offset="400 ">
 
                             <h1
-                                class="bg-gradient-to-r  from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+                                class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
                                 Cari mitra tepercaya?
                                 <span class="sm:block">Butuh partner bisnis?</span>
                             </h1>
                         </div>
 
-                        <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed delay-[300ms] duration-[600ms] taos:translate-x-[200px] taos:opacity-0"
+                        <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed ease-in-out duration-300 delay-[300ms] duration-[600ms] taos:translate-x-[200px] taos:opacity-0"
                             data-taos-offset="400">
                             Percayakan proyek Anda kepada PT. Dinamika Indo Media dan nikmati
                             layanan terbaik dari mitra yang berpengalaman dan berdedikasi.
@@ -133,7 +133,7 @@
                             <p class="w-full max-w-2xl text-center font-thin text-md">Perusahaan kami bergerak di dua unit
                                 bisnis:</p>
                         </div>
-                        <div class="flex gap-4 justify-evenly items-center flex-wrap">
+                        <div class="flex gap-4 ease-in-out duration-300  justify-evenly items-center flex-wrap">
                             <div class="max-w-sm h-44 ">
                                 <div class='top border-b-2 text-white text-2xl py-1 text-center'>
                                     Retail
@@ -256,7 +256,7 @@
                 <div class="flex flex-wrap gap-4 justify-center">
                     @foreach ($products->take(6) as $product)
                         
-                    <a href="#" class="group rounded-xl max-w-xs w-56 block overflow-hidden">
+                            <a href="/product/{{$product->slug}}" class="group rounded-xl max-w-xs w-56 block overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
                             alt=""
                             class="h-60 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />

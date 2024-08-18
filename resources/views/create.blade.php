@@ -1,11 +1,14 @@
 @extends('layout.main')
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-<!-- CSS -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
-<!-- JS -->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+<style>
+    select {
+        scrollbar-width: none;
+    }
+    trix-editor{
+        scrollbar-width: none;
+    }
+</style>
 
 @section('container')
     <div class="w-full flex justify-center ">
@@ -38,22 +41,19 @@
                 <div>
                     <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900">Kategori</label>
                     <div class="mt-2">
-                        <select id="kategori" name="kategori" multiple="multiple"
-                            class="bg-gray-50 js-example-basic-multiple border states[] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <select id="kategori" name="kategori"
+                            class="bg-gray-50 js-example-basic-multiple border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="states[]" multiple="multiple" >
                             @foreach ($products as $item)
                                 @foreach ($item->kategori_product as $kategori)
                                     <option value="{{ $kategori->id }}">{{ $kategori->name_kategori }}</option>
                                 @endforeach
                             @endforeach
                         </select>
-                        {{-- <select class="js-example-basic-multiple" name="states[]" multiple="multiple">
-                            <option value="AL">Alabama</option>
 
-                          </select> --}}
                     </div>
                 </div>
 
-                <div class="mt-4">
+                <div class="mt-4 bg-gray-50 p-5 rounded-xl">
                     <label for="Deskripsi" class="block text-sm font-medium leading-6 text-gray-900">Deskripsi</label>
                     <input id="Deskripsi" type="hidden" name="deskripsi">
                     <trix-editor input="Deskripsi"></trix-editor>
@@ -65,27 +65,35 @@
                     </button>
                 </div>
             </form>
-
-            <div>
-                @foreach ($products as $product)
-                    <div class="flex flex-row max-w-xl bg-white gap-5">
-                        <h3 class="">Nama: {{ $product->name_product }}</h3>
-                        <div class="flex flex-row max-w-xs gap-2">
-                            <p> Deskripsi: {{ $product->description }}</p>
-                            <ul>
-                                @foreach ($product->kategori_product as $kategori)
-                                    <li class="">Kategori :{{ $kategori->name_kategori }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                @endforeach
-
-                {{-- @dd($products->kategori_product) --}}
-            </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
     </script>
-    <script src="{{ asset('js/app.js') }}"></script>
 @endsection
+
+{{-- 
+<div>
+    @foreach ($products as $product)
+        <div class="flex flex-row max-w-xl bg-white gap-5">
+            <h3 class="">Nama: {{ $product->name_product }}</h3>
+            <div class="flex flex-row max-w-xs gap-2">
+                <p> Deskripsi : {{ $product->description }}</p>
+                <p> slug : {{ $product->slug }}</p>
+                <ul>
+                    @foreach ($product->kategori_product as $kategori)
+                        <li class="">Kategori :{{ $kategori->name_kategori }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    @endforeach
+
+</div> --}}

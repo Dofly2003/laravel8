@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use App\Models\Kategori;
 use App\Models\Product;
@@ -51,10 +51,52 @@ class ProductController extends Controller
     }
 
     // Tampilkan produk berdasarkan ID
-    public function show(Product $product)
+    public function show(Product $product, $slug)
     {
-        return view('products.show', compact('product'));
+        // Load product with kategori_product relationship
+        $product->load('kategori_product');
+
+        // // Get filters from request
+        // $filters = $request->only('kategori');
+
+        // // Query untuk produk dengan filter kategori
+        // $products = Product::with('kategori_product')
+        //     ->when(isset($filters['kategori']) && $filters['kategori'], function ($query) use ($filters) {
+        //         $query->whereHas('kategori_product', function ($query) use ($filters) {
+        //             $query->where('slug', $filters['kategori']);
+        //         });
+        //     })
+        //     ->get();
+
+        $product = Product::where('slug', $slug)->with('kategori_product')->firstOrFail();
+        // dd($product);
+        return view('product', compact('product'), [
+            'products' => $product,
+        ]);
     }
+    public function showByKategori(Kategori $kategori){
+        $products = Product::whereHas('kategori_product', function ($query) use ($kategori) {
+            $query->where('name_kategori', $kategori->name_kategori);
+        })->with('kategori_product')->get();
+    
+        // Mengembalikan view dengan produk yang telah difilter
+        return view('products', [
+            'products' => $products,
+            'kategori' => $kategori->name_kategori, // Mengirimkan nama kategori ke view jika diperlukan
+        ]);
+    }
+
+    // public function showBySlug($slug, Request $request)
+    // {
+    //         // Cari produk berdasarkan slug
+    // $product = Product::where('slug', $slug)->with('kategori_product')->firstOrFail();
+
+    //     // Return ke view dengan produk yang ditemukan
+    //     return view('products', [
+    //         'product' => $product,
+    //     ]);
+    // }
+
 
     // Tampilkan form untuk mengedit produk
     public function edit(Product $product)

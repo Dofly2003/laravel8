@@ -39,31 +39,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    {{-- <style>
-        html {
-            scroll-behavior: smooth;
-            overflow: auto;
-            scrollbar-width: none;
-            /* Firefox */
-            -ms-overflow-style: none;
-            /* Internet Explorer 10+ */
-        }
-
-        /* .carousel-item {
-            opacity: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .carousel-item.active {
-            opacity: 1;
-            position: relative;
-        } */
-    </style> --}}
 
     <title>Jp Books | Home </title>
 </head>
@@ -76,34 +51,32 @@
                     <div class="flex items-center">
                         <div class="flex-shrink-0 ">
                             <a href="/">
-                                <img class="w-24 bg-gray-50 px-2 rounded-full" src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
+                                <img class="w-24 bg-gray-50 px-2 hover:bg-gray-200 rounded-full" src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
                                     alt="Jp Books">
                             </a>
-                        </div>
-                        <div class="hidden md:block">
                         </div>
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-4 flex items-center md:ml-6">
                             <div class="ml-10 flex items-baseline text-white space-x-4 border-b-2">
                                 <a href="#beranda" id="nav-beranda"
-                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium hover:text-gray-500">
+                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium   ease-in-out duration-300 hover:text-gray-500">
                                     Beranda
                                 </a>
                                 <a href="#profil" id="nav-profil"
-                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium hover:text-gray-500">
+                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium  ease-in-out duration-300 hover:text-gray-500 ">
                                     Profil
                                 </a>
                                 <a href="#produkKami" id="nav-produkKami"
-                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium hover:text-gray-500">
+                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium  ease-in-out duration-300 hover:text-gray-500 ">
                                     Produk Kami
                                 </a>
                                 <a href="#customer" id="nav-customer"
-                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium hover:text-gray-500">
+                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium  ease-in-out duration-300 hover:text-gray-500 ">
                                     Customer
                                 </a>
                                 <a href="#kontak" id="nav-kontak"
-                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium hover:text-gray-500">
+                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium  ease-in-out duration-300 hover:text-gray-500 ">
                                     Kontak
                                 </a>
                             </div>
@@ -192,15 +165,15 @@
                     }
                 });
 
-                navLinks.forEach(link => {
-                    link.classList.remove('text-blue-500');
-                    link.classList.add('text-gray-500');
-                    if (link.getAttribute('href') === `#${currentSection}`) {
-                        link.classList.add('text-blue-500');
-                        link.classList.remove('text-gray-500');
-                    }
-                });
-            }
+            //     navLinks.forEach(link => {
+            //         link.classList.remove('text-blue-500');
+            //         link.classList.add('text-gray-500');
+            //         if (link.getAttribute('href') === `#${currentSection}`) {
+            //             link.classList.add('text-blue-500');
+            //             link.classList.remove('text-gray-500');
+            //         }
+            //     });
+            // }
 
             window.addEventListener('scroll', updateActiveLink);
             updateActiveLink(); // Call once on load to set the initial active link
