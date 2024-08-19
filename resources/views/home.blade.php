@@ -25,7 +25,8 @@
     }
 </style>
 @section('container')
-    <div id="beranda" class="container w-screen scroll-smooth mx-auto md:block bg-gray-900 text-white md:px-4 py-0 sm:px-6 lg:px-0">
+    <div id="beranda"
+        class="container w-screen scroll-smooth mx-auto md:block bg-gray-900 text-white md:px-4 py-0 sm:px-6 lg:px-0">
         <header class="flex flex-col justify-center item-center">
             <div id="carouselExample" class="relative xl:max-w-full h-4/6">
                 <!-- Carousel wrapper -->
@@ -34,29 +35,120 @@
                     <div class="carousel-item active">
                         <img src="https://dinamikaindomedia.co.id/sliders/GFc0ytKYo6BB4cWlZ7lh5dVxtVMOxZuLnhTYauve.png"
                             class="w-full h-full object-cover" alt="Slide 1">
+                        <div class="hidden md:block">
+                            <div class="absolute cursor-pointer  bottom-14 left-10 gap-3 flex flex-row">
+                                <a href="#Shopee"
+                                    class="cursor-pointer z-30 text-gray-700 flex gap-3 ease-in-out duration-300  rounded-xl flex-row border-orange-600 bg-orange-600 py-3 hover:bg-transparent items-center px-7 ">
+                                    <img src="https://www.freepnglogos.com/uploads/shopee-logo-png/shopee-logo-shop-with-the-gentlemen-collection-and-win-the-shopee-0.png"
+                                        class="w-7 p-1 object-fit bg-white rounded-xl" alt="">
+                                    <p class="text-white">Shopee</p>
+                                </a>
+                                <a href="#Tokopedia"
+                                    class="cursor-pointer text-gray-700 flex gap-3 ease-in-out duration-300  z-30 rounded-xl flex-row border-green-500 bg-green-500 py-3 hover:bg-transparent items-center px-7 ">
+                                    <img src="https://www.freepnglogos.com/uploads/logo-tokopedia-png/berita-tokopedia-info-berita-terbaru-tokopedia-6.png"
+                                        class="w-7 p-1 bg-white  object-contain rounded-xl" alt="">
+                                    <p class="text-white">Tokopedia</p>
+                                </a>
+                                <a href="#Tiktok"
+                                    class=" cursor-pointer text-gray-700 flex gap-3 ease-in-out duration-300  z-30 rounded-xl flex-row border-black bg-black py-3 hover:bg-transparent items-center px-7 ">
+                                    <img src="https://seeklogo.com/images/T/tiktok-logo-B9AC5FE794-seeklogo.com.png"
+                                        class="w-7 p-1 bg-white object-contain rounded-xl" alt="">
+                                    <p class="text-white">Tiktok</p>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                     <!-- Item 2 -->
                     <div class="carousel-item">
                         <img src="https://dinamikaindomedia.co.id/sliders/u2PFm2n2qRXBOMHyxmfLzrmqmxakLS8vlepkcOWS.png"
                             class="w-full h-full object-cover" alt="Slide 2">
+                        <div class="hidden md:block">
+                            <div class="absolute cursor-pointer  bottom-14 left-10 gap-3 flex flex-row">
+                                <a href="#Shopee"
+                                    class="cursor-pointer z-30 text-gray-700 flex gap-3 ease-in-out duration-300  rounded-xl flex-row border-orange-600 bg-orange-600 py-3 hover:bg-transparent items-center px-7 ">
+                                    <img src="https://www.freepnglogos.com/uploads/shopee-logo-png/shopee-logo-shop-with-the-gentlemen-collection-and-win-the-shopee-0.png"
+                                        class="w-7 p-1 object-fit bg-white rounded-xl" alt="">
+                                    <p class="text-white">Shopee</p>
+                                </a>
+                                <a href="#Tokopedia"
+                                    class="cursor-pointer text-gray-700 flex gap-3 ease-in-out duration-300  z-30 rounded-xl flex-row border-green-500 bg-green-500 py-3 hover:bg-transparent items-center px-7 ">
+                                    <img src="https://www.freepnglogos.com/uploads/logo-tokopedia-png/berita-tokopedia-info-berita-terbaru-tokopedia-6.png"
+                                        class="w-7 p-1 bg-white  object-contain rounded-xl" alt="">
+                                    <p class="text-white">Tokopedia</p>
+                                </a>
+                                <a href="#Tiktok"
+                                    class=" cursor-pointer text-gray-700 flex gap-3 ease-in-out duration-300  z-30 rounded-xl flex-row border-black bg-black py-3 hover:bg-transparent items-center px-7 ">
+                                    <img src="https://seeklogo.com/images/T/tiktok-logo-B9AC5FE794-seeklogo.com.png"
+                                        class="w-7 p-1 bg-white object-contain rounded-xl" alt="">
+                                    <p class="text-white">Tiktok</p>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <!-- Item 3 -->
                     <div class="carousel-item">
                         <img src="https://dinamikaindomedia.co.id/sliders/kQ6mLDnGCdpCnm1CkxxeIyJehj9Ymjop5pGsZDiu.png"
                             class="w-full h-full object-cover" alt="Slide 3">
+                        <div class="hidden md:block">
+                            <div class="absolute cursor-pointer  bottom-14 left-10 gap-3 flex flex-row">
+                                <a href="#Shopee"
+                                    class="cursor-pointer z-30 text-gray-700 flex gap-3 ease-in-out duration-300  rounded-xl flex-row border-orange-600 bg-orange-600 py-3 hover:bg-transparent items-center px-7 ">
+                                    <img src="https://www.freepnglogos.com/uploads/shopee-logo-png/shopee-logo-shop-with-the-gentlemen-collection-and-win-the-shopee-0.png"
+                                        class="w-7 p-1 object-fit bg-white rounded-xl" alt="">
+                                    <p class="text-white">Shopee</p>
+                                </a>
+                                <a href="#Tokopedia"
+                                    class="cursor-pointer text-gray-700 flex gap-3 ease-in-out duration-300  z-30 rounded-xl flex-row border-green-500 bg-green-500 py-3 hover:bg-transparent items-center px-7 ">
+                                    <img src="https://www.freepnglogos.com/uploads/logo-tokopedia-png/berita-tokopedia-info-berita-terbaru-tokopedia-6.png"
+                                        class="w-7 p-1 bg-white  object-contain rounded-xl" alt="">
+                                    <p class="text-white">Tokopedia</p>
+                                </a>
+                                <a href="#Tiktok"
+                                    class=" cursor-pointer text-gray-700 flex gap-3 ease-in-out duration-300  z-30 rounded-xl flex-row border-black bg-black py-3 hover:bg-transparent items-center px-7 ">
+                                    <img src="https://seeklogo.com/images/T/tiktok-logo-B9AC5FE794-seeklogo.com.png"
+                                        class="w-7 p-1 bg-white object-contain rounded-xl" alt="">
+                                    <p class="text-white">Tiktok</p>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     <!-- Item 4 -->
                     <div class="carousel-item">
                         <img src="https://dinamikaindomedia.co.id/sliders/GCOk0ftAf02OWXzcTXoAZBvWNjho7Eqvo3Fvn53P.png"
                             class="w-full h-full object-cover" alt="Slide 4">
+                        <div class="hidden md:block">
+                            <div class="absolute cursor-pointer  bottom-14 left-10 gap-3 flex flex-row">
+                                <a href="#Shopee"
+                                    class="cursor-pointer z-30 text-gray-700 flex gap-3 ease-in-out duration-300  rounded-xl flex-row border-orange-600 bg-orange-600 py-3 hover:bg-transparent items-center px-7 ">
+                                    <img src="https://www.freepnglogos.com/uploads/shopee-logo-png/shopee-logo-shop-with-the-gentlemen-collection-and-win-the-shopee-0.png"
+                                        class="w-7 p-1 object-fit bg-white rounded-xl" alt="">
+                                    <p class="text-white">Shopee</p>
+                                </a>
+                                <a href="#Tokopedia"
+                                    class="cursor-pointer text-gray-700 flex gap-3 ease-in-out duration-300  z-30 rounded-xl flex-row border-green-500 bg-green-500 py-3 hover:bg-transparent items-center px-7 ">
+                                    <img src="https://www.freepnglogos.com/uploads/logo-tokopedia-png/berita-tokopedia-info-berita-terbaru-tokopedia-6.png"
+                                        class="w-7 p-1 bg-white  object-contain rounded-xl" alt="">
+                                    <p class="text-white">Tokopedia</p>
+                                </a>
+                                <a href="#Tiktok"
+                                    class=" cursor-pointer text-gray-700 flex gap-3 ease-in-out duration-300  z-30 rounded-xl flex-row border-black bg-black py-3 hover:bg-transparent items-center px-7 ">
+                                    <img src="https://seeklogo.com/images/T/tiktok-logo-B9AC5FE794-seeklogo.com.png"
+                                        class="w-7 p-1 bg-white object-contain rounded-xl" alt="">
+                                    <p class="text-white">Tiktok</p>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                {{-- mobile menu slider --}}
+
                 <!-- Slider controls -->
                 <button type="button"
                     class="absolute top-1/2 -translate-y-1/2 left-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
                     onclick="prevSlide()">
-                    <svg class="w-6 h-6 text-white rtl:rotate-180 xs:hidden " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 6 10">
+                    <svg class="w-6 h-6 text-white rtl:rotate-180 xs:hidden " aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M5 1 1 5l4 4" />
                     </svg>
@@ -114,7 +206,7 @@
                         </p>
 
                         <div class="mt-8 flex flex-wrap justify-center gap-4">
-                            <a class="block w-full rounded border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
+                            <a class="block w-full rounded border border-blue-600  ease-in-out duration-300  bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
                                 href="https://e-katalog.lkpp.go.id/user/login">
                                 Get Started
                             </a>
@@ -217,16 +309,16 @@
                     </div>
                     <img alt=""
                         src="https://dinamikaindomedia.co.id/sliders/ggnkdjEPgomtyu0QvyaiiAYAq9uQ5p6IeyxKqMF8.png"
-                        class="max-h-96 w-full object-cover xl:rounded-br-full xl:row-start-1" />
+                        class="max-h-96 w-full object-cover md:rounded-br-full xl:rounded-br-full md:row-start-1 xl:row-start-1" />
 
 
                 </section>
             </div>
             <div>
                 <section class="overflow-hidden text sm:grid sm:grid-cols-2 sm:items-center">
-                    <div class="p-8 md:p-12 lg:px-16 lg:py-24">
+                    <div class="p-8 md:p-6 lg:px-16 lg:py-24">
                         <div class="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
-                            <h2 class="text-2xl font-bold text- md:texwitet-3xl">
+                            <h2 class="text-2xl font-bold text-white md:text-3xl">
                                 Retail
                             </h2>
 
@@ -241,7 +333,7 @@
 
                     <img alt=""
                         src="https://dinamikaindomedia.co.id/sliders/heFECnIjhvwBigISarzDj2lt9xIqddC6CGq9C8m8.png"
-                        class="w-full max-h-96 object-cover  xl:rounded-tl-full" />
+                        class="w-full max-h-96 object-cover md:rounded-tl-full xl:rounded-tl-full" />
                 </section>
             </div>
 
@@ -255,23 +347,23 @@
                 </div>
                 <div class="flex flex-wrap gap-4 justify-center">
                     @foreach ($products->take(6) as $product)
-                        
-                            <a href="/product/{{$product->slug}}" class="group rounded-xl max-w-xs w-56 block overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
-                            alt=""
-                            class="h-60 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />
+                        <a href="/product/{{ $product->slug }}"
+                            class="group rounded-xl max-w-xs w-56 object-contain rounded-sm6 block overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
+                                alt=""
+                                class="h-60 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />
 
-                        <div class="relative border border-gray-100 bg-white flex py-2 justify-center">
+                            <div class="relative border border-gray-100 bg-white flex py-2 justify-center">
 
-                            <h3 class="text-lg font-medium text-gray-900"> {{$product->name_product}} </h3>
+                                <h3 class="text-lg font-medium text-gray-900"> {{ $product->name_product }} </h3>
 
-                        </div>
-                    </a>
-
+                            </div>
+                        </a>
                     @endforeach
                 </div>
                 <a href="#" class=" flex justify-center text-gray-50 py-5">
-                    <div class="bg-gray-800 py-3 px-3 rounded-xl border-gray-500  border-2">
+                    <div
+                        class=" py-3 px-3 block w-full rounded border border-blue-600  ease-in-out duration-300  bg-blue-600  text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto">
                         show all
                     </div>
                 </a>
@@ -317,7 +409,7 @@
             <section id="kontak" class="flex flex-wrap flex-row py-20 justify-evenly gap-4 bg-indigo-700 text-left">
                 <div class="px-2 max-w-1/4 gap-3 items-center flex flex-col">
                     <img src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
-                        class="w-36" alt="">
+                        class="w-36 p-1 rounded-xl" alt="">
                     <p class="max-w-xs">PT. DINAMIKA INDO MEDIA
                         berdiri pada hari Kamis tanggal 10 Februari 2011 di Kabupaten Bekasi,
                         saat ini kami bergerak dibidang pengadaan barang untuk pemenuhan kebutuhan instansi,
@@ -343,11 +435,11 @@
                 <div class=" px-2 max-w-1/4">
                     <h1 class="text-4xl">Contact</h1>
                     <p class="max-w-xs"> info.dinamikaindomedia@gmail.com</p>
-                    <form class="max-w-sm mx-auto">
+                    <form action="#" class="max-w-sm mx-auto">
                         <div class="mb-5">
                             <label for="email"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                            <input type="email" id="email"
+                            <input type="email" id="email" autocomplete="n"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="name@flowbite.com" required />
                         </div>
@@ -394,9 +486,9 @@
         }
 
         // Pindah slide secara otomatis setiap 5 detik
-        setInterval(nextSlide, 5000);
+        // setInterval(nextSlide, 5000);
     </script>
-<script src="js/slider"></script>
+    <script src="js/slider"></script>
     </body>
     </div>
 @endsection

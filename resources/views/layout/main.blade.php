@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-gray-100">
-
+@extends('layout.watermark')
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -127,7 +127,7 @@
             </div>
         </nav>
 
-        <header class="  shadow">
+        <header class="">
             <div class="">
                 @yield('container')
             </div>

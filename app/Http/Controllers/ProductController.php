@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Models\Kategori;
 use App\Models\Product;
 
@@ -14,11 +15,13 @@ class ProductController extends Controller
         // Ambil produk dengan relasi kategori_product
         $products = Product::with('kategori_product')->get();
 
-        // Kirim data ke tampilan
-        return view('create', [
-            'products' => $products,
-            // dd($products)
-        ]);
+        $kategoris = Kategori::all();
+        return view('create', compact('kategoris'));
+
+        // return view('create', [
+        //     'products' => $products,
+        //     // dd($products)
+        // ]);
     }
 
     // Tampilkan form untuk membuat produk baru
@@ -28,27 +31,44 @@ class ProductController extends Controller
     }
 
     // Simpan produk baru ke database
+
     public function store(Request $request)
     {
         // Validasi input dari form
         $request->validate([
             'Nama' => 'required|string|max:255',
+            'slug' => 'required|string|max:255',
             'price' => 'required|numeric',
             'deskripsi' => 'nullable|string',
-            'kategori' => 'required|exists:kategoris,id', // Validasi ID kategori
+            'kategori' => 'required|array',
+            'kategori.*' => 'exists:kategoris,id',
         ]);
 
-        // Simpan data ke database
-        Product::create([
-            'name' => $request->Nama,
+        // Log data input
+        Log::info('Request Data:', $request->all());
+
+        // Simpan data produk ke database
+        $product = Product::create([
+            'name_product' => $request->Nama,
             'slug' => $request->slug,
-            'kategori_id' => $request->kategori, // Simpan ID kategori ke field kategori_id
             'description' => $request->deskripsi,
         ]);
+
+        // Log produk yang baru dibuat
+        Log::info('Product Created:', $product->toArray());
+
+        // Hubungkan kategori ke produk
+        $hasil = $product->kategoris()->sync($request->kategori);
+
+        // Log hasil sync
+        Log::info('Sync Result:', $hasil);
 
         // Redirect setelah sukses menyimpan
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
+
+
+
 
     // Tampilkan produk berdasarkan ID
     public function show(Product $product, $slug)
@@ -71,14 +91,16 @@ class ProductController extends Controller
         $product = Product::where('slug', $slug)->with('kategori_product')->firstOrFail();
         // dd($product);
         return view('product', compact('product'), [
-            'products' => $product,
+            'product' => $product,
+            'products' => Product::all(),
         ]);
     }
-    public function showByKategori(Kategori $kategori){
+    public function showByKategori(Kategori $kategori)
+    {
         $products = Product::whereHas('kategori_product', function ($query) use ($kategori) {
             $query->where('name_kategori', $kategori->name_kategori);
         })->with('kategori_product')->get();
-    
+
         // Mengembalikan view dengan produk yang telah difilter
         return view('products', [
             'products' => $products,

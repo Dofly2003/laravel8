@@ -13,7 +13,8 @@
 @section('container')
     <div class="w-full flex justify-center ">
         <div class="xl:w-1/3">
-            <form class="space-y-6 bg-blue-800 py-10 px-10 rounded-xl" action="/products" method="POST">
+            <form class="space-y-6 bg-blue-800 py-10 px-10 rounded-xl" action="{{ route('products.store') }}" method="POST">
+
                 @csrf
                 <div>
                     <label for="nama" class="block text-sm font-medium leading-6 text-gray-900">Nama</label>
@@ -43,11 +44,10 @@
                     <div class="mt-2">
                         <select id="kategori" name="kategori"
                             class="bg-gray-50 js-example-basic-multiple border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="states[]" multiple="multiple" >
-                            @foreach ($products as $item)
-                                @foreach ($item->kategori_product as $kategori)
-                                    <option value="{{ $kategori->id }}">{{ $kategori->name_kategori }}</option>
-                                @endforeach
-                            @endforeach
+                            @foreach ($kategoris as $kategori)
+                            <option value="{{ $kategori->id }}">{{ $kategori->name_kategori }}</option>
+                        @endforeach
+                    
                         </select>
 
                     </div>

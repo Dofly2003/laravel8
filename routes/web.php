@@ -20,4 +20,5 @@ Route::get('/test', function () {
 Route::get('/create', [test::class, 'index']);
 Route::get('/product/{slug}', [ProductController::class, 'show']);
 Route::get('/kategories/{kategori:name_kategori}', [ProductController::class, 'showByKategori']);
-Route::resource('/products', ProductController::class)->names('product.submit');
+Route::resource('products', ProductController::class);
+
