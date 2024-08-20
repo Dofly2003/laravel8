@@ -361,17 +361,17 @@
                         </a>
                     @endforeach
                 </div>
-                <a href="#" class=" flex justify-center text-gray-50 py-5">
-                    <div
+                <div  class=" flex justify-center text-gray-50 py-5">
+                    <a href="/products"
                         class=" py-3 px-3 block w-full rounded border border-blue-600  ease-in-out duration-300  bg-blue-600  text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto">
                         show all
-                    </div>
-                </a>
+                    </a>
+                </div>
             </section>
 
 
-            <section class="pb-5">
-                <div id="customer" class="gap-7 flex flex-col">
+            <section id="customer" class="pb-5">
+                <div  class="gap-7 flex flex-col">
                     <h1 class="text-4xl flex justify-center">Customer Kami</h1>
                     <div class="flex justify-center text-center">
                         <p class="max-w-md">Kami besar dengan kepercayaan pelanggan dan kami memiliki visi untuk

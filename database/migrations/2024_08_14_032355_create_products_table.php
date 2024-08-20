@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name_product');
             $table->string('slug')->unique();
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }

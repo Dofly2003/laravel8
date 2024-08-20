@@ -67,7 +67,7 @@
                                     class="rounded-md nav-link px-3 py-2 text-sm font-medium  ease-in-out duration-300 hover:text-gray-500 ">
                                     Profil
                                 </a>
-                                <a href="#produkKami" id="nav-produkKami"
+                                <a href="/products" id="nav-produkKami"
                                     class="rounded-md nav-link px-3 py-2 text-sm font-medium  ease-in-out duration-300 hover:text-gray-500 ">
                                     Produk Kami
                                 </a>

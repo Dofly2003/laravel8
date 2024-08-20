@@ -10,18 +10,21 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     // Tampilkan daftar semua produk
-    public function index()
+    public function index(Request $request)
     {
         // Ambil produk dengan relasi kategori_product
-        $products = Product::with('kategori_product')->get();
+        // $product = Product::with('kategori_product')->get();
+
+        $selectedCategory = 'All Product';
+
+        $product = Product::with('kategori_product')->filter(request(['search','kategori']))->get();
 
         $kategoris = Kategori::all();
-        return view('create', compact('kategoris'));
-
-        // return view('create', [
-        //     'products' => $products,
-        //     // dd($products)
-        // ]);
+        return view('products', compact('product', 'kategoris', 'selectedCategory'), [
+            'products' => $product,
+            // 'search' => $search,
+            'kategoris' => $kategoris
+        ]);
     }
 
     // Tampilkan form untuk membuat produk baru
@@ -95,18 +98,36 @@ class ProductController extends Controller
             'products' => Product::all(),
         ]);
     }
-    public function showByKategori(Kategori $kategori)
-    {
+    public function showByKategori(Kategori $kategori = null)
+{
+    $products = Product::whereHas('kategori_product', function ($query) use ($kategori) {
+        $query->where('name_kategori', $kategori->name_kategori);
+    })->with('kategori_product')->get();
+
+    if ($kategori) {
+        // Filter produk berdasarkan kategori yang dipilih
         $products = Product::whereHas('kategori_product', function ($query) use ($kategori) {
             $query->where('name_kategori', $kategori->name_kategori);
         })->with('kategori_product')->get();
 
-        // Mengembalikan view dengan produk yang telah difilter
-        return view('products', [
-            'products' => $products,
-            'kategori' => $kategori->name_kategori, // Mengirimkan nama kategori ke view jika diperlukan
-        ]);
+        $selectedCategory = $kategori->name_kategori;
+    } else {
+        // Tampilkan semua produk jika tidak ada kategori yang dipilih
+        $products = Product::with('kategori_product')->get();
+
+        $selectedCategory = 'All';
     }
+
+    $allKategoris = Kategori::all(); // Mengambil semua kategori
+
+    // Mengembalikan view dengan produk yang telah difilter dan semua kategori
+    return view('products', [
+        'products' => $products,
+        'selectedCategory' => $selectedCategory,
+        'kategoris' => $allKategoris, // Mengirimkan semua kategori ke view
+    ]);
+}
+
 
     // public function showBySlug($slug, Request $request)
     // {
