@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestZoneController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -11,12 +12,16 @@ Route::get('/', function () {
         // dd($request->all())
     ]);
 });
-Route::get('/test', function () {
-    return view('testZone',[
-        'products' => Product::all(),
-        
-    ]);
-});
+
+
+Route::get('/test', [TestZoneController::class, 'index'])->name('testZone.index');
+Route::post('/test', [TestZoneController::class, 'store'])->name('testZone.store');
+Route::get('/test/{id}/edit', [TestZoneController::class, 'edit'])->name('testZone.edit');
+Route::put('/test/{id}', [TestZoneController::class, 'update'])->name('testZone.update');
+Route::delete('/test/{id}', [TestZoneController::class, 'destroy'])->name('testZone.destroy');
+Route::patch('/testZone/{id}/toggle', [TestZoneController::class, 'toggle'])->name('testZone.toggle');
+
+
 Route::get('/create', [test::class, 'index']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/product/{slug}', [ProductController::class, 'show']);

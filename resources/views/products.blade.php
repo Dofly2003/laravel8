@@ -6,6 +6,9 @@
             <div>
 
                 <form class="max-w-screen-sm mx-auto pt-5">
+                    @if (request('kategori'))
+                        <input type="hidden" id="search" name="kategori" value="{{ request('kategori') }}">
+                    @endif
                     <div class="flex items-stretch">
                         <label for="search-dropdown" class="sr-only">Search</label>
                         <!-- Search Input -->
@@ -27,7 +30,7 @@
                         </div>
                     </div>
                 </form>
-                <div class=" text-gray-900 w-full mx-auto pt-5 flex justify-center">
+                <div class=" text-white w-full mx-auto pt-5 flex justify-center">
                     <div>
                         Sortired by: {{ $selectedCategory }}
                     </div>
@@ -38,7 +41,7 @@
                     <div class="pt-10 xl:w-10/12 w-full flex justify-center ">
                         <div class="gap-5 px-3 flex justify-center flex-wrap">
 
-                            @foreach ($products as $product)
+                            @forelse ($products as $product)
                                 <div
                                     class="h-64 w-48 bg-gray-500 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
                                     <a href="/product/{{ $product->slug }}">
@@ -46,7 +49,8 @@
                                             alt="Product" class="w-48 object-cover rounded-t-xl justify-center" />
                                         <div class=" text-center flex flex-col-reverse items-center">
                                             @foreach ($product->kategori_product->take(2) as $kategori)
-                                                <p class="text-gray-400 w-full justify-center flex flex-wrap flex-row uppercase text-xs">
+                                                <p
+                                                    class="text-gray-400 w-full justify-center flex flex-wrap flex-row uppercase text-xs">
                                                     {{ Str::limit($kategori->name_kategori) }}</span>
                                             @endforeach
                                             <p class="text-lg font-bold text-gray-100 truncate block capitalize">
@@ -54,28 +58,35 @@
                                         </div>
                                     </a>
                                 </div>
+                            @empty
+                                <div class="h-96 ">
+                                    <p class="font-semibold text-xl overflow-hidden w-11/12 flex justify-center">Product Not
+                                        Found</p>
+                                </div>
+                            @endforelse
+                        </div>
+                    </div>
+                    <div class="hidden md:block py-10 w-2/12  sticky text-gray-400 ">
+                        <div class="flex gap-1 flex-col">
+                            <h1 class="text-lg  font-bold">Kategori :</h1>
+                            @foreach ($kategoris as $kategori)
+                                <a href="/products/kategories/{{ $kategori->name_kategori }}" id="kategori" name="kategori"
+                                    class="bg-purple-900 border w-8/12 border-gray-300 text-gray-300 text-sm rounded-lg flex gap-3 focus:ring-blue-500 focus:border-blue-500  p-2.5">
+                                    <svg class="h-5 w-5 text-gray-400 rtl:rotate-180" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                        viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m9 5 7 7-7 7" />
+                                    </svg>
+                                    <div>{{ $kategori->name_kategori }}</div>
+                                </a>
                             @endforeach
                         </div>
 
                     </div>
-                    <div class="hidden md:block py-10 w-2/12 text-gray-900 ">
-                        <div class="flex gap-1 flex-col">
-                        <h1 class="text-lg font-bold">Kategori :</h1>
-                        @foreach ($kategoris as $kategori)
-                            <a href="/products/kategories/{{ $kategori->name_kategori }}" id="kategori" name="kategori"
-                                class="bg-purple-900 border w-8/12 border-gray-300 text-gray-300 text-sm rounded-lg flex gap-3 focus:ring-blue-500 focus:border-blue-500  p-2.5">
-                                <svg class="h-5 w-5 text-gray-400 rtl:rotate-180" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                    viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="m9 5 7 7-7 7" />
-                                </svg>
-                                <div>{{ $kategori->name_kategori }}</div>
-                            </a>
-                        @endforeach
-                    </div>
-
-                    </div>
+                </div>
+                <div class="py-4 flex justify-center">
+                    {{-- {{ $products->links() }} --}}
                 </div>
 
                 <section id="kontak" class="flex flex-wrap flex-row py-20 justify-evenly gap-4 bg-indigo-700 text-left">
@@ -126,7 +137,8 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     required />
                             </div>
-                            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                            <label for="message"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 message</label>
                             <textarea id="message" rows="4"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

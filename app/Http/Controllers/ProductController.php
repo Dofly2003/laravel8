@@ -12,20 +12,18 @@ class ProductController extends Controller
     // Tampilkan daftar semua produk
     public function index(Request $request)
     {
-        // Ambil produk dengan relasi kategori_product
-        // $product = Product::with('kategori_product')->get();
-
         $selectedCategory = 'All Product';
-
-        $product = Product::with('kategori_product')->filter(request(['search','kategori']))->get();
-
+    
+        $products = Product::filter(request(['search', 'kategori']))
+            ->with('kategori_product')
+            ->latest()
+            ->paginate(20) 
+            ->withQueryString();
+        
         $kategoris = Kategori::all();
-        return view('products', compact('product', 'kategoris', 'selectedCategory'), [
-            'products' => $product,
-            // 'search' => $search,
-            'kategoris' => $kategoris
-        ]);
+        return view('products', compact('products', 'kategoris', 'selectedCategory'));
     }
+    
 
     // Tampilkan form untuk membuat produk baru
     public function create()
@@ -113,7 +111,7 @@ class ProductController extends Controller
         $selectedCategory = $kategori->name_kategori;
     } else {
         // Tampilkan semua produk jika tidak ada kategori yang dipilih
-        $products = Product::with('kategori_product')->get();
+        $products = Product::with('kategori_product')->paginate(20)->get();
 
         $selectedCategory = 'All';
     }

@@ -1,62 +1,109 @@
-@extends('layout.main')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Sliders</title>
+    <style>
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
 
-{{-- $request->all(); --}}
-@section('container')
-    <div class="text-white p-10 ">
-        <a href="/" class="p-4 hover:text-gray-700 hover:bg-gray-200 ease-in-out duration-300 rounded-xl bg-gray-700  ">LogOut  </a>
-    </div>
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="px-6 py-3">
-                        Id
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Name
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Slug
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Deskripsi
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Kategori
-                    </th>
-                    <th scope="col" class="pr-2 py-3">
-                        Action
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($products as $product)
-                    <tr
-                        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $loop->iteration }}
-                        </th>
-                        <td class="px-6 py-4">
-                            {{ $product->name_product }}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $product->slug }}
-                        </td>
-                        <td class="py-4">
-                            {{ $product->description }}
-                        </td>
-                        @foreach ($product->kategori_product as $kategori)
-                            <td class="flex">
-                                <li>{{ $kategori->name_kategori }}</li>
-                            </td>
-                        @endforeach
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
 
-                        <td class="py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-@endsection
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            border-radius: 50%;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+    @if (session('success'))
+        <p>{{ session('success') }}</p>
+    @endif
+
+    <form action="{{ route('testZone.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+
+        <label for="name_img">Name Image:</label>
+        <input type="text" id="name_img" name="name_img" required>
+
+        <label for="img">Upload Image:</label>
+        <input type="file" id="img" name="img" required>
+
+        <label for="is_publish">Publish:</label>
+        <label class="toggle-switch">
+            <input type="checkbox" id="is_publish" name="is_publish">
+            <span class="slider"></span>
+        </label>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    @if($sliders->isEmpty())
+        <p>No sliders available.</p>
+    @else
+        @foreach ($sliders as $slider)
+        <div>
+            <h2>{{ $slider->name_img }}</h2>
+            @if ($slider->img)
+                <img src="{{ asset('uploads/' . $slider->img) }}" alt="{{ $slider->name_img }}" width="200">
+            @else
+                <p>No image available.</p>
+            @endif
+
+            <form action="{{ route('testZone.toggle', $slider->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('PATCH')
+                <label class="toggle-switch">
+                    <input type="checkbox" name="is_publish" onchange="this.form.submit()" {{ $slider->is_publish ? 'checked' : '' }}>
+                    <span class="slider"></span>
+                </label>
+            </form>
+
+            <a href="{{ route('testZone.edit', $slider->id) }}">Edit</a>
+
+            <form action="{{ route('testZone.destroy', $slider->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" onclick="return confirm('Are you sure you want to delete this slider?');">Delete</button>
+            </form>
+        </div>
+        @endforeach
+    @endif
+</body>
+</html>

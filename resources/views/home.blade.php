@@ -35,7 +35,7 @@
                     <div class="carousel-item active">
                         <img src="https://dinamikaindomedia.co.id/sliders/GFc0ytKYo6BB4cWlZ7lh5dVxtVMOxZuLnhTYauve.png"
                             class="w-full h-full object-cover" alt="Slide 1">
-                        <div class="hidden md:block">
+                        <div class="hidden lg:block">
                             <div class="absolute cursor-pointer  bottom-14 left-10 gap-3 flex flex-row">
                                 <a href="#Shopee"
                                     class="cursor-pointer z-30 text-gray-700 flex gap-3 ease-in-out duration-300  rounded-xl flex-row border-orange-600 bg-orange-600 py-3 hover:bg-transparent items-center px-7 ">
@@ -63,7 +63,7 @@
                     <div class="carousel-item">
                         <img src="https://dinamikaindomedia.co.id/sliders/u2PFm2n2qRXBOMHyxmfLzrmqmxakLS8vlepkcOWS.png"
                             class="w-full h-full object-cover" alt="Slide 2">
-                        <div class="hidden md:block">
+                        <div class="hidden lg:block">
                             <div class="absolute cursor-pointer  bottom-14 left-10 gap-3 flex flex-row">
                                 <a href="#Shopee"
                                     class="cursor-pointer z-30 text-gray-700 flex gap-3 ease-in-out duration-300  rounded-xl flex-row border-orange-600 bg-orange-600 py-3 hover:bg-transparent items-center px-7 ">
@@ -90,7 +90,7 @@
                     <div class="carousel-item">
                         <img src="https://dinamikaindomedia.co.id/sliders/kQ6mLDnGCdpCnm1CkxxeIyJehj9Ymjop5pGsZDiu.png"
                             class="w-full h-full object-cover" alt="Slide 3">
-                        <div class="hidden md:block">
+                        <div class="hidden lg:block">
                             <div class="absolute cursor-pointer  bottom-14 left-10 gap-3 flex flex-row">
                                 <a href="#Shopee"
                                     class="cursor-pointer z-30 text-gray-700 flex gap-3 ease-in-out duration-300  rounded-xl flex-row border-orange-600 bg-orange-600 py-3 hover:bg-transparent items-center px-7 ">
@@ -117,7 +117,7 @@
                     <div class="carousel-item">
                         <img src="https://dinamikaindomedia.co.id/sliders/GCOk0ftAf02OWXzcTXoAZBvWNjho7Eqvo3Fvn53P.png"
                             class="w-full h-full object-cover" alt="Slide 4">
-                        <div class="hidden md:block">
+                        <div class="hidden lg:block">
                             <div class="absolute cursor-pointer  bottom-14 left-10 gap-3 flex flex-row">
                                 <a href="#Shopee"
                                     class="cursor-pointer z-30 text-gray-700 flex gap-3 ease-in-out duration-300  rounded-xl flex-row border-orange-600 bg-orange-600 py-3 hover:bg-transparent items-center px-7 ">
@@ -363,7 +363,7 @@
                 </div>
                 <div  class=" flex justify-center text-gray-50 py-5">
                     <a href="/products"
-                        class=" py-3 px-3 block w-full rounded border border-blue-600  ease-in-out duration-300  bg-blue-600  text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto">
+                        class=" py-3 px-3 block  rounded border border-blue-600  ease-in-out duration-300  bg-blue-600  text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto">
                         show all
                     </a>
                 </div>
@@ -422,13 +422,13 @@
                 </div>
                 <div class=" px-2 max-w-xs w-full items-center gap-5  sm:text-center  flex flex-col">
                     <h1 class="text-4xl">links</h1>
-                    <div class=" w-40 xl:text-left flex flex-col">
-                        <a class="text-xs hover:underline" href="https://siplah.temprina.co.id/">SIPLah Temprina</a>
-                        <a class="text-xs hover:underline" href="https://www.jpbooks.id/">JPBooks Store</a>
-                        <a class="text-xs hover:underline" href="https://cahayaquran.com/">Cahaya Quran</a>
-                        <a class="text-xs hover:underline" href="https://temprina.com/main/index#">TemaTrade</a>
-                        <a class="text-xs hover:underline" href="https://www.temapack.co.id/">TemaPack</a>
-                        <a class="text-xs hover:underline" href="https://temprina.com/main/index#">Bela Pengadaan</a>
+                    <div class="text-sm  w-40 xl:text-left flex flex-col">
+                        <a class="hover:underline" href="https://siplah.temprina.co.id/">SIPLah Temprina</a>
+                        <a class="hover:underline" href="https://www.jpbooks.id/">JPBooks Store</a>
+                        <a class="hover:underline" href="https://cahayaquran.com/">Cahaya Quran</a>
+                        <a class="hover:underline" href="https://temprina.com/main/index#">TemaTrade</a>
+                        <a class="hover:underline" href="https://www.temapack.co.id/">TemaPack</a>
+                        <a class="hover:underline" href="https://temprina.com/main/index#">Bela Pengadaan</a>
                     </div>
                 </div>
 
