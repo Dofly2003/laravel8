@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\TestZone;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -13,7 +14,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $selectedCategory = 'All Product';
-    
+        $sliders = TestZone::all();
         $products = Product::filter(request(['search', 'kategori']))
             ->with('kategori_product')
             ->latest()
@@ -21,7 +22,7 @@ class ProductController extends Controller
             ->withQueryString();
         
         $kategoris = Kategori::all();
-        return view('products', compact('products', 'kategoris', 'selectedCategory'));
+        return view('products', compact('products', 'kategoris', 'selectedCategory','sliders'));
     }
     
 

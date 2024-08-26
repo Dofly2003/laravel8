@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-gray-100">
-@extends('layout.watermark')
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,7 +85,7 @@
                     <div class="-mr-2 flex md:hidden">
                         <!-- Mobile menu button -->
                         <button @click="isOpen = !isOpen" type="button"
-                            class="relative inline-flex items-center justify-center rounded-md bg-blue-500 p-2 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                            class="relative inline-flex items-center justify-center rounded-md bg-blue-500 p-2 text-gray-50 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-50"
                             aria-controls="mobile-menu" aria-expanded="false">
                             <span class="absolute -inset-0.5"></span>
                             <span class="sr-only">Open main menu</span>
@@ -112,26 +111,34 @@
                 x-transition:leave="transition ease-in duration-75 transform"
                 x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
                 class="md:hidden" id="mobile-menu">
-                <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                <div class="space-y-1 text-gray-50 px-2 pb-3 pt-2 sm:px-3">
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                    <a href="/"
+                        class="block rounded-md px-3 py-2 text-base font-medium   hover:text-gray-500">
+                        Beranda</a>
                     <a href="/katalog"
-                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-700  hover:text-gray-500">Beranda</a>
-                    <a href="/katalog"
-                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-700  hover:text-gray-500">Katalog</a>
-                    <a href="/tentang-kami"
-                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-700  hover:text-gray-500">Tentang
-                        Kami</a>
-                    <a href="/kontak"
-                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-700  hover:text-gray-500">Kontak</a>
+                        class="block rounded-md px-3 py-2 text-base font-medium   hover:text-gray-500">
+                        Profil</a>
+                    <a href="/products"
+                        class="block rounded-md px-3 py-2 text-base font-medium   hover:text-gray-500">
+                        Produk Kami</a>
+                    <a href="#customer"
+                        class="block rounded-md px-3 py-2 text-base font-medium   hover:text-gray-500">
+                        Customer</a>
+                    <a href="#kontak"
+                        class="block rounded-md px-3 py-2 text-base font-medium   hover:text-gray-500">
+                        kontak</a>
                 </div>
             </div>
         </nav>
 
-        <header class="">
+        <body class="">
             <div class="">
                 @yield('container')
             </div>
-        </header>
+            @include('layout.footer')
+        </body>
+
     </div>
     <script>
         $(document).ready(function(){

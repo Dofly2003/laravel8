@@ -1,33 +1,34 @@
-@section('endWeb')
-    <section id="kontak" class="flex flex-wrap flex-row py-20 justify-evenly gap-4 bg-indigo-700 text-left">
+
+
+    <section id="kontak" class="flex flex-wrap text-white flex-row py-20 justify-evenly gap-4 bg-indigo-700 text-left">
         <div class="px-2 max-w-1/4 gap-3 items-center flex flex-col">
             <img src="https://dinamikaindomedia.co.id/tests/wUeRvwqCPJpADXYoiPBsJ3u0cCzuUvE1f2TbYZbF.png"
-                class="w-36 p-1 rounded-xl" alt="">
-            <p class="max-w-xs">PT. DINAMIKA INDO MEDIA
+                class="w-28 lg:w-36 p-1 rounded-xl" alt="">
+            <p class="max-w-xs text-center text-xs sm:text-sm lg:text-base">PT. DINAMIKA INDO MEDIA
                 berdiri pada hari Kamis tanggal 10 Februari 2011 di Kabupaten Bekasi,
                 saat ini kami bergerak dibidang pengadaan barang untuk pemenuhan kebutuhan instansi,
                 Lembaga, dan satuan kerja pemerintahan yang bertempat di Kota Surabaya</p>
         </div>
         <div class=" px-2 max-w-1/4  flex flex-col items-center gap-3">
-            <h1 class="text-4xl ">Office</h1>
-            <p class="max-w-xs">JL. Karah Agung Surabaya,Jawa Timur</p>
-            <img src="https://dinamikaindomedia.co.id/images/PT.DIM.png" class="w-64 rounded-lg" alt="">
+            <h1 class="lg:text-4xl text-2xl sm:text-sm ">Office</h1>
+            <p class="max-w-xs text-xs sm:text-sm lg:text-base">JL. Karah Agung Surabaya,Jawa Timur</p>
+            <img src="https://dinamikaindomedia.co.id/images/PT.DIM.png" class="w-44 lg:w-64 rounded-lg" alt="">
         </div>
         <div class=" px-2 max-w-xs w-full items-center gap-5  sm:text-center  flex flex-col">
-            <h1 class="text-4xl">links</h1>
-            <div class=" w-40 xl:text-left flex flex-col">
-                <a class="text-xs hover:underline" href="https://siplah.temprina.co.id/">SIPLah Temprina</a>
-                <a class="text-xs hover:underline" href="https://www.jpbooks.id/">JPBooks Store</a>
-                <a class="text-xs hover:underline" href="https://cahayaquran.com/">Cahaya Quran</a>
-                <a class="text-xs hover:underline" href="https://temprina.com/main/index#">TemaTrade</a>
-                <a class="text-xs hover:underline" href="https://www.temapack.co.id/">TemaPack</a>
-                <a class="text-xs hover:underline" href="https://temprina.com/main/index#">Bela Pengadaan</a>
+            <h1 class="lg:text-4xl text-2xl sm:text-sm">links</h1>
+            <div class="text-sm  w-40 text-center lg:text-left flex flex-col">
+                <a class="hover:underline" href="https://siplah.temprina.co.id/">SIPLah Temprina</a>
+                <a class="hover:underline" href="https://www.jpbooks.id/">JPBooks Store</a>
+                <a class="hover:underline" href="https://cahayaquran.com/">Cahaya Quran</a>
+                <a class="hover:underline" href="https://temprina.com/main/index#">TemaTrade</a>
+                <a class="hover:underline" href="https://www.temapack.co.id/">TemaPack</a>
+                <a class="hover:underline" href="https://temprina.com/main/index#">Bela Pengadaan</a>
             </div>
         </div>
 
         <div class=" px-2 max-w-1/4">
-            <h1 class="text-4xl">Contact</h1>
-            <p class="max-w-xs"> info.dinamikaindomedia@gmail.com</p>
+            <h1 class="lg:text-3xl font-semibold text-2xl ">Contact</h1>
+            <p class="max-w-xs text-md"> info.dinamikaindomedia@gmail.com</p>
             <form action="#" class="max-w-sm mx-auto">
                 <div class="mb-5">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
@@ -54,4 +55,3 @@
 
         </div>
     </section>
-@endsection
