@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Slider;
 use App\Models\TestZone;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class TestZoneController extends Controller
         ]);
 
         // Handle file upload
-        $fileName = time().'.'.$request->img->extension();  
+        $fileName = time() . '.' . $request->img->extension();
         $request->img->move(public_path('uploads'), $fileName);
 
         // Create a new slider record
@@ -39,7 +40,7 @@ class TestZoneController extends Controller
     public function edit($id)
     {
         $slider = TestZone::findOrFail($id);
-        return view('editSlider', compact('slider')); // Assuming you have an editSlider view
+        return view('testEdit', compact('slider')); // Assuming you have an editSlider view
     }
 
     public function update(Request $request, $id)
@@ -69,7 +70,7 @@ class TestZoneController extends Controller
                 }
             }
 
-            $fileName = time().'.'.$request->img->extension();
+            $fileName = time() . '.' . $request->img->extension();
             $request->img->move(public_path('uploads'), $fileName);
             $data['img'] = $fileName;
         }
@@ -103,4 +104,17 @@ class TestZoneController extends Controller
 
         return redirect()->route('testZone.index')->with('success', 'Slider visibility updated successfully.');
     }
+
+    public function publish($id)
+    {
+        $photo = Slider::findOrFail($id);
+        $photo->is_publish = $photo->is_publish ? 0 : 1;
+        $photo->save();
+    
+        $sliders = Slider::all();
+        return view('testZone', ['sliders' => $sliders])->with('success', 'Photo visibility has been toggled.');
+    }
+    
+
+
 }

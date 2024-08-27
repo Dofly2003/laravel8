@@ -10,6 +10,14 @@ use App\Http\Controllers\test;
 
 //home
 Route::get('/',[HomeController::class, 'index']);
+Route::get('/kontak',
+    function () {
+        return view('kontak');
+    });
+Route::get('/profil',
+    function () {
+        return view('profilPerusahaan');
+    });
 
 
 Route::get('/test', [TestZoneController::class, 'index'])->name('testZone.index');
@@ -18,6 +26,8 @@ Route::get('/test/{id}/edit', [TestZoneController::class, 'edit'])->name('testZo
 Route::put('/test/{id}', [TestZoneController::class, 'update'])->name('testZone.update');
 Route::delete('/test/{id}', [TestZoneController::class, 'destroy'])->name('testZone.destroy');
 Route::patch('/testZone/{id}/toggle', [TestZoneController::class, 'toggle'])->name('testZone.toggle');
+Route::patch('/test/{id}', [TestZoneController::class, 'publish'])->name('photos.publish');
+
 
 //product
 Route::get('/create', [test::class, 'index']);

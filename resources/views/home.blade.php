@@ -24,6 +24,7 @@
         position: relative;
     }
 </style>
+
 @section('container')
     <div id="beranda"
         class="container w-screen scroll-smooth mx-auto md:block bg-gray-900 text-white md:px-4 py-0 sm:px-6 lg:px-0">
@@ -34,114 +35,116 @@
                     <!-- Item 1 -->
                     <div id="carouselExample" class="carousel slide relative" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            @foreach($sliders as $index => $slider)
-                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                <img src="{{ asset('uploads/' . $slider->img) }}"
-                                    class="w-full h-full object-cover" alt="Slide {{ $index + 1 }}">
-                                <div class="carousel-caption hidden lg:block absolute bottom-4 lg:bottom-14 left-5 lg:left-10">
-                                    <div class="flex flex-row gap-1 lg:gap-3">
-                                        <a href="#Shopee"
-                                            class="cursor-pointer z-30 text-gray-700 flex gap-1 lg:gap-3 ease-in-out duration-300 rounded-md lg:rounded-xl flex-row border-orange-600 bg-orange-600 hover:bg-transparent items-center px-3 h-7 lg:h-14 lg:px-7 ">
-                                            <img src="https://www.freepnglogos.com/uploads/shopee-logo-png/shopee-logo-shop-with-the-gentlemen-collection-and-win-the-shopee-0.png"
-                                                class="lg:w-7 w-3 object-fit bg-white rounded-xl" alt="Shopee">
-                                            <p class="text-white text-xs sm:text-sm lg:text-base">Shopee</p>
-                                        </a>
-                                        <a href="#Tokopedia"
-                                            class="cursor-pointer text-gray-700 flex  gap-1 lg:gap-3 ease-in-out duration-300  z-30 rounded-md lg:rounded-xl flex-row border-green-500 bg-green-500 py-3 hover:bg-transparent items-center px-3 h-7 lg:h-14 lg:px-7">
-                                            <img src="img/tokopedia-icon.png"
-                                                class="lg:w-7 w-4 p-1 bg-white  object-fill rounded-xl" alt="Tokopedia">
-                                            <p class="text-white text-xs sm:text-sm lg:text-base">Tokopedia</p>
-                                        </a>
-                                        <a href="#Tiktok"
-                                            class=" cursor-pointer text-gray-700 flex  gap-1 lg:gap-3 ease-in-out duration-300  z-30 rounded-md lg:rounded-xl flex-row border-black bg-black py-3 hover:bg-transparent items-center px-3 h-7 lg:h-14 lg:px-7">
-                                            <img src="https://seeklogo.com/images/T/tiktok-logo-B9AC5FE794-seeklogo.com.png"
-                                                class="lg:w-7 w-4 p-1 bg-white object-fit rounded-xl" alt="Tiktok">
-                                            <p class="text-white text-xs sm:text-sm lg:text-base">Tiktok</p>
-                                        </a>
+                            @foreach ($sliders as $index => $slider)
+                                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                    <img src="{{ asset('uploads/' . $slider->img) }}" class="w-full h-full object-cover"
+                                        alt="Slide {{ $index + 1 }}">
+                                    <div
+                                        class="carousel-caption hidden lg:block absolute bottom-4 lg:bottom-14 left-5 lg:left-10">
+                                        <div class="flex flex-row gap-1 lg:gap-3">
+                                            <a href="#Shopee"
+                                                class="cursor-pointer z-30 text-gray-700 flex gap-1 lg:gap-3 ease-in-out duration-300 rounded-md lg:rounded-xl flex-row border-orange-600 bg-orange-600 hover:bg-transparent items-center px-3 h-7 lg:h-14 lg:px-7 ">
+                                                <img src="https://www.freepnglogos.com/uploads/shopee-logo-png/shopee-logo-shop-with-the-gentlemen-collection-and-win-the-shopee-0.png"
+                                                    class="lg:w-7 w-3 object-fit bg-white rounded-xl" alt="Shopee">
+                                                <p class="text-white text-xs sm:text-sm lg:text-base">Shopee</p>
+                                            </a>
+                                            <a href="#Tokopedia"
+                                                class="cursor-pointer text-gray-700 flex  gap-1 lg:gap-3 ease-in-out duration-300  z-30 rounded-md lg:rounded-xl flex-row border-green-500 bg-green-500 py-3 hover:bg-transparent items-center px-3 h-7 lg:h-14 lg:px-7">
+                                                <img src="img/tokopedia-icon.png"
+                                                    class="lg:w-7 w-4 p-1 bg-white  object-fill rounded-xl" alt="Tokopedia">
+                                                <p class="text-white text-xs sm:text-sm lg:text-base">Tokopedia</p>
+                                            </a>
+                                            <a href="#Tiktok"
+                                                class=" cursor-pointer text-gray-700 flex  gap-1 lg:gap-3 ease-in-out duration-300  z-30 rounded-md lg:rounded-xl flex-row border-black bg-black py-3 hover:bg-transparent items-center px-3 h-7 lg:h-14 lg:px-7">
+                                                <img src="https://seeklogo.com/images/T/tiktok-logo-B9AC5FE794-seeklogo.com.png"
+                                                    class="lg:w-7 w-4 p-1 bg-white object-fit rounded-xl" alt="Tiktok">
+                                                <p class="text-white text-xs sm:text-sm lg:text-base">Tiktok</p>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
-                    <!-- Item 2 -->
+                        <!-- Item 2 -->
+                    </div>
+                    {{-- mobile menu slider --}}
+
+                    <!-- Slider controls -->
+                    <div class="hidden md:block">
+
+                        <button type="button"
+                            class="absolute top-1/2 -translate-y-1/2 left-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
+                            onclick="prevSlide()">
+                            <svg class="w-6 h-6 text-white rtl:rotate-180 xs:hidden " aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 1 1 5l4 4" />
+                            </svg>
+                            <span class="sr-only">Previous</span>
+                        </button>
+                        <button type="button"
+                            class="absolute top-1/2 -translate-y-1/2 right-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
+                            onclick="nextSlide()">
+                            <svg class="w-6 h-6 text-white rtl:rotate-180" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m1 9 4-4-4-4" />
+                            </svg>
+                            <span class="sr-only">Next</span>
+                        </button>
+                    </div>
+
                 </div>
-                {{-- mobile menu slider --}}
 
-                <!-- Slider controls -->
-                <div class="hidden md:block">
+                <div>
+                    <h1 id="profil"
+                        class="bg-gradient-to-r  from-green-300 via-blue-500 to-purple-600 flex justify-center bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+                        Dinamika Indo Media
 
-                    <button type="button"
-                        class="absolute top-1/2 -translate-y-1/2 left-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
-                        onclick="prevSlide()">
-                        <svg class="w-6 h-6 text-white rtl:rotate-180 xs:hidden " aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5 1 1 5l4 4" />
-                        </svg>
-                        <span class="sr-only">Previous</span>
-                    </button>
-                    <button type="button"
-                        class="absolute top-1/2 -translate-y-1/2 right-4 z-30 flex items-center justify-center h-12 w-12 rounded-full bg-black/60 group-hover:bg-black/80 group-focus:ring-4 group-focus:ring-white shadow-lg"
-                        onclick="nextSlide()">
-                        <svg class="w-6 h-6 text-white rtl:rotate-180" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 9 4-4-4-4" />
-                        </svg>
-                        <span class="sr-only">Next</span>
-                    </button>
-                </div>
-
-            </div>
-
-            <div>
-                <h1 id="profil"
-                    class="bg-gradient-to-r  from-green-300 via-blue-500 to-purple-600 flex justify-center bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-                    Dinamika Indo Media
-
-                </h1>
-                <div class="w-full  justify-center flex">
-                    <p class="w-full max-w-2xl text-center font-thin text-gray-500 text-sm">PT. DINAMIKA INDO MEDIA berdiri
-                        pada hari Kamis tanggal 10 Februari 2011 di Kabupaten Bekasi, saat ini kami bergerak dibidang
-                        pengadaan barang untuk pemenuhan kebutuhan instansi, Lembaga, dan satuan kerja pemerintahan yang
-                        bertempat di Kota Surabaya.</p>
-                </div>
-            </div>
-            <div class=" w-full flex justify-center crusor-pointer">
-                <a href="">
-                    <img src="img/PT_DINAMIKA_INDO_MEDIA_.png" class="xl:max-w-7xl" alt="Banner">
-                </a>
-            </div>
-            <section class=" text-white ">
-                <div class="mx-auto max-w-screen-2xl  px-4 py-10 lg:flex lg:h-2/4 ">
-                    <div class="mx-auto max-w-3xl text-center ">
-                        <div class="delay-[300ms] duration-[600ms] taos:translate-x-[-200px] ease-in-out duration-300 taos:opacity-0"
-                            data-taos-offset="400 ">
-
-                            <h1
-                                class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-                                Cari mitra tepercaya?
-                                <span class="sm:block">Butuh partner bisnis?</span>
-                            </h1>
-                        </div>
-
-                        <p class="mx-auto mt-4 max-w-xl text-xs sm:text-sm lg:text-base sm:text-xl/relaxed ease-in-out duration-300 delay-[300ms] duration-[600ms] taos:translate-x-[200px] taos:opacity-0"
-                            data-taos-offset="400">
-                            Percayakan proyek Anda kepada PT. Dinamika Indo Media dan nikmati
-                            layanan terbaik dari mitra yang berpengalaman dan berdedikasi.
-                            Hubungi kami sekarang untuk konsultasi lebih lanjut dan temukan bagaimana
-                            kami dapat membantu Anda mencapai kesuksesan bisnis.
-                        </p>
-
-                        <div class="mt-8 flex flex-wrap justify-center gap-4">
-                            <a class="block w-36 lg:w-full rounded border border-blue-600  ease-in-out duration-300  bg-blue-600 lg:px-12 px-8 py-3 text-sm text-center font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
-                                href="https://e-katalog.lkpp.go.id/user/login">
-                                Get Started
-                            </a>
-                        </div>
+                    </h1>
+                    <div class="w-full  justify-center flex">
+                        <p class="w-full max-w-2xl text-center font-thin text-gray-500 text-sm">PT. DINAMIKA INDO MEDIA
+                            berdiri
+                            pada hari Kamis tanggal 10 Februari 2011 di Kabupaten Bekasi, saat ini kami bergerak dibidang
+                            pengadaan barang untuk pemenuhan kebutuhan instansi, Lembaga, dan satuan kerja pemerintahan yang
+                            bertempat di Kota Surabaya.</p>
                     </div>
                 </div>
-            </section>
+                <div class=" w-full flex justify-center crusor-pointer">
+                    <a href="">
+                        <img src="img/PT_DINAMIKA_INDO_MEDIA_.png" class="xl:max-w-7xl" alt="Banner">
+                    </a>
+                </div>
+                <section class=" text-white ">
+                    <div class="mx-auto max-w-screen-2xl  px-4 py-10 lg:flex lg:h-2/4 ">
+                        <div class="mx-auto max-w-3xl text-center ">
+                            <div class="delay-[300ms] duration-[600ms] taos:translate-x-[-200px] ease-in-out duration-300 taos:opacity-0"
+                                data-taos-offset="400 ">
+
+                                <h1
+                                    class="bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+                                    Cari mitra tepercaya?
+                                    <span class="sm:block">Butuh partner bisnis?</span>
+                                </h1>
+                            </div>
+
+                            <p class="mx-auto mt-4 max-w-xl text-xs sm:text-sm lg:text-base sm:text-xl/relaxed ease-in-out duration-300 delay-[300ms] duration-[600ms] taos:translate-x-[200px] taos:opacity-0"
+                                data-taos-offset="400">
+                                Percayakan proyek Anda kepada PT. Dinamika Indo Media dan nikmati
+                                layanan terbaik dari mitra yang berpengalaman dan berdedikasi.
+                                Hubungi kami sekarang untuk konsultasi lebih lanjut dan temukan bagaimana
+                                kami dapat membantu Anda mencapai kesuksesan bisnis.
+                            </p>
+
+                            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                                <a class="block w-36 lg:w-full rounded border border-blue-600  ease-in-out duration-300  bg-blue-600 lg:px-12 px-8 py-3 text-sm text-center font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
+                                    href="https://e-katalog.lkpp.go.id/user/login">
+                                    Get Started
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
         </header>
 
         <body>
@@ -179,64 +182,15 @@
                     <div class="gap-7 flex flex-col">
                         <h1 class="lg:text-4xl text-xl flex justify-center ">Support Brand</h1>
                         <div class="w-full  justify-center flex ">
+
                             <div class="gap-5 flex-wrap mx-10 item-center justify-center w-full flex">
-                                <img src="https://dinamikaindomedia.co.id/brands/BEwtk9M1UwhfRUztL8JXw8w7dIB0HCrugRRu0P18.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/a8pQ5F8EwUfLsNGzogKFG0ydCwqL3IEAt4fPvE7f.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/bPRxWjWq8gJEW9APClpy0d9P2DEECBReBkTAQrpm.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/yIQOqyP0VwLM9H3UowAfamBoyzWXf0pvNrOw6zUC.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/yIQOqyP0VwLM9H3UowAfamBoyzWXf0pvNrOw6zUC.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/jlcaWNCWbRKKlX28VA0ekyanSdfD94qJfsdz4T6c.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/IWWMeqCXJSijxo7F0E3iF97rNuEpbD9yiNwnxaWe.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/YloE7NnpGYJsxPlmfi7C3qmULtjfRlvyHyGw1z5w.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/nTxKCAaA1yktW1N48ezPKFxJBL29INB3rWzPBKsc.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/O4pBLdAZDKVk3q8NJlhIMyVS5IyQoXCbAxQhQmwQ.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/LRUFTEfJAoaID95dfCBJoi3MAh00G5lPGuH1wFSR.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/3ekrDH6aeJL4eBHGagASlpijy4yMg8ktkFtagDmv.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/9HjYzMS80vzhzFyu4qcwZ4IFXu8O4SgdlsthlMT3.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/X9XfkaPw03pwQtDs1s2EO9FMW5Y8D59TgOd0wX1h.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/6bQMeHD8TiSx5yHNPCQjsEVCsp08NrFLBIMDvNL0.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/Kzj3BZwviLfXrohkkgBnzUmxeG4J91dwhmZZlvYh.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/9HmNVYFLUan8hnHcOeJG34MmCMPvg2mFsiFDuQvk.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/3UUAPsSeCn8AyIAOmF52vDnCzqlWe3nlHjC41huL.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
-                                <img src="https://dinamikaindomedia.co.id/brands/Q8voEAdP9NPXsDqjp6rqxrFzGUvij5V1HPf3Xpyn.png"
-                                    class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                    alt="Brand Product">
+                                @forelse ($brands as $item)
+                                    <img src="{{ asset('uploads/' . $item->img) }}"
+                                        class="lg:w-20  w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
+                                        alt="Brand Product">
+                                @empty
+                                    <p class="text-center text-sm text-gray-500">No Data</p>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -298,7 +252,7 @@
                 <div class="flex flex-wrap gap-4 justify-center">
                     @foreach ($products->take(6) as $product)
                         <a href="/product/{{ $product->slug }}"
-                            class="group rounded-xl max-w-xs w-48 object-contain px-1 block overflow-hidden">
+                            class="group rounded-xl md:grow max-w-xs w-48 object-contain px-1 block overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
                                 alt=""
                                 class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />
@@ -330,47 +284,17 @@
                     </div>
                     <div class="w-full  justify-center flex ">
                         <div class="gap-5 flex-wrap mx-10 item-center justify-center w-full flex">
-                            <img src="https://www.dinamikaindomedia.co.id/clients/q2mzIwWksEENHvXlbs0CiguuKAaMFHboo9iYfIMl.png"
+                            @forelse ($customers as $item)
+                            <img src="{{ asset('uploads/' . $item->img) }}"
                                 class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
                                 alt="Brand Product">
-                            <img src="https://www.dinamikaindomedia.co.id/clients/1CdNUAFLpfbAt85R4RYZJLjNoL4PAGmn7zjfn5ll.jpg"
-                                class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                alt="Brand Product">
-                            <img src="https://www.dinamikaindomedia.co.id/clients/mi6PONdxC9UMPAE9Wg33EWRx6lcu2oiyHbhhAbH9.png"
-                                class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                alt="Brand Product">
-                            <img src="https://www.dinamikaindomedia.co.id/clients/nRwH86BcCUAxqbZisXWHM2uYr2tya8z0jzVPL33E.png"
-                                class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                alt="Brand Product">
-                            <img src="https://www.dinamikaindomedia.co.id/clients/2xTQgtw1i3zlof14Y0TlAfvgaeWgT9qbSLTUfbzx.png"
-                                class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                alt="Brand Product">
-                            <img src="https://www.dinamikaindomedia.co.id/clients/AqvWkHCGlTxC1X82FX3oNAaLm6C2vRHuzcseBZXN.jpg"
-                                class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                alt="Brand Product">
-                            <img src="https://www.dinamikaindomedia.co.id/clients/ADiApzk7EDZH6m36C6q3w2KcoHYbR95VxXTTonbf.png"
-                                class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                alt="Brand Product">
-                            <img src="https://www.dinamikaindomedia.co.id/clients/KfpbdaGAyZa9z8LNflwsq9TivUD2TLC11SY1pjdJ.png"
-                                class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                alt="Brand Product">
-                            <img src="https://www.dinamikaindomedia.co.id/clients/qsXLuNLQBNerZr0Gr1uR3L4yhn8P5fSquCeVdKeC.png"
-                                class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                alt="Brand Product">
-                            <img src="https://www.dinamikaindomedia.co.id/clients/MmtUzTRwUcl4bKwdbxRWqxevB3eHvValN7W95D2P.png"
-                                class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                alt="Brand Product">
-                            <img src="https://www.dinamikaindomedia.co.id/clients/1D4aaLQqYGGn6UisGUQg4QTSdQ6XE3xqfCfdRWVP.png"
-                                class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                alt="Brand Product">
-                            <img src="https://www.dinamikaindomedia.co.id/clients/eE3KwH7io3BCVc2umzaosfmN1pFxa6GI23wRwnYL.png"
-                                class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                alt="Brand Product">
+                                
+                            @empty
+                                <p class="text-center text-sm text-gray-500">No Data</p>
+                            @endforelse
                         </div>
                     </div>
             </section>
-
-
 
     </div>
     <script src="https://unpkg.com/taos@1.0.5/dist/taos.js"></script>
@@ -395,7 +319,7 @@
         }
 
         // Pindah slide secara otomatis setiap 5 detik
-         setInterval(nextSlide, 5000);
+        setInterval(nextSlide, 5000);
     </script>
     <script src="js/slider"></script>
     </body>

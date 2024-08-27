@@ -12,18 +12,22 @@ class ProductController extends Controller
 {
     // Tampilkan daftar semua produk
     public function index(Request $request)
-    {
-        $selectedCategory = 'All Product';
-        $sliders = TestZone::all();
-        $products = Product::filter(request(['search', 'kategori']))
-            ->with('kategori_product')
-            ->latest()
-            ->paginate(20) 
-            ->withQueryString();
-        
-        $kategoris = Kategori::all();
-        return view('products', compact('products', 'kategoris', 'selectedCategory','sliders'));
-    }
+{
+    $selectedCategory = 'All Product';
+    $sliders = TestZone::all();
+
+    // Ensure the query builder is paginated
+    $products = Product::filter(request(['search', 'kategori']))
+        ->with('kategori_product')
+        ->latest()
+        ->paginate(20) 
+        ->withQueryString();
+    
+        // dd(get_class($products));
+    $kategoris = Kategori::all();
+    return view('products', compact('products', 'kategoris', 'selectedCategory', 'sliders'));
+}
+
     
 
     // Tampilkan form untuk membuat produk baru

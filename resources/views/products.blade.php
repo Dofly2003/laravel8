@@ -73,8 +73,9 @@
                                 class="inline-flex justify-center items-center w-2/3 px-4 py-2 text-gray-500">
                                 <h1 id="dropdownButton" class="text-lg font-bold">Kategori :</h1>
                             </button>
-                        
-                            <div id="dropdownMenu" class="hidden opacity-0 transition-opacity duration-300 transform scale-95 flex-col">
+
+                            <div id="dropdownMenu"
+                                class="hidden opacity-0 transition-opacity duration-300 transform scale-95 flex-col">
                                 @foreach ($kategoris as $kategori)
                                     <a href="/products/kategories/{{ $kategori->name_kategori }}" id="kategori"
                                         name="kategori"
@@ -94,7 +95,9 @@
                     </div>
                 </div>
                 <div class="py-4 flex justify-center">
-                    {{-- {{ $products->links() }} --}}
+                    @if ($products instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                        {{ $products->links() }}
+                    @endif
                 </div>
         </body>
     </div>
@@ -117,33 +120,33 @@
 
 
         document.getElementById('dropdownButton').addEventListener('click', function() {
-        var dropdown = document.getElementById('dropdownMenu');
-        if (dropdown.classList.contains('hidden')) {
-            dropdown.classList.remove('hidden');
-            setTimeout(function() {
-                dropdown.classList.remove('opacity-0', 'scale-95');
-                dropdown.classList.add('opacity-100', 'scale-100');
-            }, 10); // Small delay to allow the class removal to trigger transition
-        } else {
-            dropdown.classList.add('opacity-0', 'scale-95');
-            dropdown.classList.remove('opacity-100', 'scale-100');
-            setTimeout(function() {
-                dropdown.classList.add('hidden');
-            }, 300); // Matches the duration of the transition
-        }
-    });
-
-    window.onclick = function(event) {
-        if (!event.target.matches('#dropdownButton') && !event.target.closest('#dropdownMenu')) {
             var dropdown = document.getElementById('dropdownMenu');
-            if (!dropdown.classList.contains('hidden')) {
+            if (dropdown.classList.contains('hidden')) {
+                dropdown.classList.remove('hidden');
+                setTimeout(function() {
+                    dropdown.classList.remove('opacity-0', 'scale-95');
+                    dropdown.classList.add('opacity-100', 'scale-100');
+                }, 10); // Small delay to allow the class removal to trigger transition
+            } else {
                 dropdown.classList.add('opacity-0', 'scale-95');
                 dropdown.classList.remove('opacity-100', 'scale-100');
                 setTimeout(function() {
                     dropdown.classList.add('hidden');
-                }, 300);
+                }, 300); // Matches the duration of the transition
             }
-        }
-    };
+        });
+
+        window.onclick = function(event) {
+            if (!event.target.matches('#dropdownButton') && !event.target.closest('#dropdownMenu')) {
+                var dropdown = document.getElementById('dropdownMenu');
+                if (!dropdown.classList.contains('hidden')) {
+                    dropdown.classList.add('opacity-0', 'scale-95');
+                    dropdown.classList.remove('opacity-100', 'scale-100');
+                    setTimeout(function() {
+                        dropdown.classList.add('hidden');
+                    }, 300);
+                }
+            }
+        };
     </script>
 @endsection

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBrandSupport extends Migration
+class CreateBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateBrandSupport extends Migration
      */
     public function up()
     {
-        Schema::create('brand_support', function (Blueprint $table) {
+        Schema::create('brands', function (Blueprint $table) {
             $table->id();
+            $table->string('name_img');
+            $table->string('is_publish');
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateBrandSupport extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brand_support');
+        Schema::dropIfExists('brands');
     }
 }

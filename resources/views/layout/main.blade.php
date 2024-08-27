@@ -57,25 +57,26 @@
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-4 flex items-center md:ml-6">
-                            <div class="ml-10 flex items-baseline text-white space-x-4 border-b-2">
+                            <div class="ml-10 flex items-baseline text-white space-x-4 hover:border-b-2">
                                 <a href="/" id="nav-beranda"
-                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium   ease-in-out duration-300 hover:text-gray-500">
+                                    class="rounded-md nav-link px-3 py-2 text-md font-medium transform scale-75 hover:scale-90 transition ease-in-out duration-300 hover:text-gray-500">
                                     Beranda
+                                    {{-- <span class="absolute bg-white bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 ease-in-out hover:w-full"></span> --}}
                                 </a>
-                                <a href="#profil" id="nav-profil"
-                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium  ease-in-out duration-300 hover:text-gray-500 ">
+                                <a href="/profil" id="nav-profil"
+                                    class="rounded-md nav-link px-3 py-2 text-md font-medium transform scale-75 hover:scale-90 transition ease-in-out duration-300 hover:text-gray-500 ">
                                     Profil
                                 </a>
                                 <a href="/products" id="nav-produkKami"
-                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium  ease-in-out duration-300 hover:text-gray-500 ">
+                                    class="rounded-md nav-link px-3 py-2 text-md font-medium transform scale-75 hover:scale-90 transition ease-in-out duration-300 hover:text-gray-500 ">
                                     Produk Kami
                                 </a>
                                 <a href="#customer" id="nav-customer"
-                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium  ease-in-out duration-300 hover:text-gray-500 ">
+                                    class="rounded-md nav-link px-3 py-2 text-md font-medium transform scale-75 hover:scale-90 transition ease-in-out duration-300 hover:text-gray-500 ">
                                     Customer
                                 </a>
-                                <a href="#kontak" id="nav-kontak"
-                                    class="rounded-md nav-link px-3 py-2 text-sm font-medium  ease-in-out duration-300 hover:text-gray-500 ">
+                                <a href="/kontak" id="nav-kontak"
+                                    class="rounded-md nav-link px-3 py-2 text-md font-medium transform scale-75 hover:scale-90 transition ease-in-out duration-300 hover:text-gray-500 ">
                                     Kontak
                                 </a>
                             </div>
@@ -114,19 +115,19 @@
                 <div class="space-y-1 text-gray-50 px-2 pb-3 pt-2 sm:px-3">
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                     <a href="/"
-                        class="block rounded-md px-3 py-2 text-base font-medium   hover:text-gray-500">
+                        class="block rounded-md px-3 py-2 text-base font-medium transform scale-75 hover:scale-90 transition  hover:text-gray-500">
                         Beranda</a>
-                    <a href="/katalog"
-                        class="block rounded-md px-3 py-2 text-base font-medium   hover:text-gray-500">
+                    <a href="/profil"
+                        class="block rounded-md px-3 py-2 text-base font-medium transform scale-75 hover:scale-90 transition  hover:text-gray-500">
                         Profil</a>
                     <a href="/products"
-                        class="block rounded-md px-3 py-2 text-base font-medium   hover:text-gray-500">
+                        class="block rounded-md px-3 py-2 text-base font-medium transform scale-75 hover:scale-90 transition  hover:text-gray-500">
                         Produk Kami</a>
                     <a href="#customer"
-                        class="block rounded-md px-3 py-2 text-base font-medium   hover:text-gray-500">
+                        class="block rounded-md px-3 py-2 text-base font-medium transform scale-75 hover:scale-90 transition  hover:text-gray-500">
                         Customer</a>
-                    <a href="#kontak"
-                        class="block rounded-md px-3 py-2 text-base font-medium   hover:text-gray-500">
+                    <a href="/kontak"
+                        class="block rounded-md px-3 py-2 text-base font-medium transform scale-75 hover:scale-90 transition  hover:text-gray-500">
                         kontak</a>
                 </div>
             </div>
