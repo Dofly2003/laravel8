@@ -16,6 +16,7 @@ class HomeController extends Controller
         $products =  Product::all();
         $customers = Customer::all();
         $brands = Brand::all();
-        return view('home', compact('sliders', 'products', 'customers', 'brands'));
+        $active = Slider::where('is_publish', 1)->get();
+        return view('home', compact('sliders', 'products', 'customers', 'brands','active'));
     }
 }

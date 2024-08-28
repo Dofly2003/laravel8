@@ -35,8 +35,18 @@
                     <!-- Item 1 -->
                     <div id="carouselExample" class="carousel slide relative" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            @foreach ($sliders as $index => $slider)
-                                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                            @php
+                                // Filter sliders yang sudah dipublish
+                                $publishedSliders = $sliders->filter(function ($slider) {
+                                    return $slider->is_publish;
+                                });
+
+                                // Reset index untuk active slide
+                                $activeIndex = 0;
+                            @endphp
+
+                            @foreach ($publishedSliders as $index => $slider)
+                                <div class="carousel-item {{ $index == $activeIndex ? 'active' : '' }}">
                                     <img src="{{ asset('uploads/' . $slider->img) }}" class="w-full h-full object-cover"
                                         alt="Slide {{ $index + 1 }}">
                                     <div
@@ -65,6 +75,7 @@
                                 </div>
                             @endforeach
                         </div>
+
                         <!-- Item 2 -->
                     </div>
                     {{-- mobile menu slider --}}
@@ -185,9 +196,11 @@
 
                             <div class="gap-5 flex-wrap mx-10 item-center justify-center w-full flex">
                                 @forelse ($brands as $item)
-                                    <img src="{{ asset('uploads/' . $item->img) }}"
-                                        class="lg:w-20  w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                        alt="Brand Product">
+                                    @if ($item->is_publish)
+                                        <img
+                                            class="lg:w-20  w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
+                                            src="{{ asset('uploads/' . $item->img) }}" alt="{{ $item->name }}">
+                                    @endif
                                 @empty
                                     <p class="text-center text-sm text-gray-500">No Data</p>
                                 @endforelse
@@ -285,10 +298,11 @@
                     <div class="w-full  justify-center flex ">
                         <div class="gap-5 flex-wrap mx-10 item-center justify-center w-full flex">
                             @forelse ($customers as $item)
-                            <img src="{{ asset('uploads/' . $item->img) }}"
-                                class="lg:w-20 w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                alt="Brand Product">
-                                
+                                @if ($item->is_publish)
+                                    <img
+                                        class="lg:w-20  w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
+                                        src="{{ asset('uploads/' . $item->img) }}" alt="{{ $item->name }}">
+                                @endif
                             @empty
                                 <p class="text-center text-sm text-gray-500">No Data</p>
                             @endforelse

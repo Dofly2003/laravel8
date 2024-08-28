@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-{{-- @extends('layout.main')
-@section('container') --}}
+@extends('layout.main')
+@section('container')
 
     <head>
         <meta charset="UTF-8">
@@ -62,7 +62,7 @@
             <p>{{ session('success') }}</p>
         @endif
 
-        <form action="{{ route('testZone.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('testZone.store') }}" method="POST" class="text-white" enctype="multipart/form-data">
             @csrf
 
             <label for="name_img">Name Image:</label>
@@ -77,7 +77,7 @@
                 <span class="slider"></span>
             </label>
 
-            <button type="submit">Submit</button>
+            <button type="submit" class="py-2 px-3 bg-gray-500 rounded-md">Submit</button>
         </form>
 
 
@@ -90,7 +90,8 @@
                     <div class="">
                         <h2>{{ $slider->name_img }}</h2>
                         @if ($slider->img)
-                            <img src="{{ asset('uploads/' . $slider->img) }}" alt="{{ $slider->name_img }}" width="200">
+                            <img src="{{ asset('uploads/' . $slider->img) }}" alt="{{ $slider->name_img }}" class="w-10"
+                                width="200">
                         @else
                             <p>No image available.</p>
                         @endif
@@ -98,51 +99,48 @@
                         <form action="{{ route('testZone.toggle', $slider->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('PATCH')
-                            <label class="toggle-switch">
-                                <input type="checkbox" name="is_publish" onchange="this.form.submit()"
-                                    {{ $slider->is_publish ? 'checked' : '' }}>
-                                <span class="slider"></span>
-                            </label>
                         </form>
 
-                        <a href="{{ route('testZone.edit', $slider->id) }}">Edit</a>
+                        <a class="py-2 px-3 bg-gray-500 rounded-md"
+                            href="{{ route('testZone.edit', $slider->id) }}">Edit</a>
 
                         <form action="{{ route('testZone.destroy', $slider->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit"
+                            <button class="py-2 px-3 bg-gray-500 rounded-md" type="submit"
                                 onclick="return confirm('Are you sure you want to delete this slider?');">Delete</button>
                         </form>
                     </div>
                 @endforeach
             </div>
             <div class="text-white">
-{{-- 
-                @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
+                <div class="flex flex-wrap gap-3">
+
+                    @foreach ($sliders as $photo)
+                        <div class="gap-4 flex flex-row">
+                            <img src="{{ $photo->url }}" alt="{{ $photo->name }}">
+                            <form action="{{ route('publish.brands', $photo->id) }}" method="POST">
+                                @csrf
+                                <button class="py-2 px-3 bg-gray-600 gap-4 flex rounded-md" type="submit">
+                                    {{ $photo->is_publish ? 'Unpublish' : 'Publish' }} {{ $photo->name_img }}
+                                </button>
+                            </form>
+
+                        </div>
+                    @endforeach
+                    @foreach ($photos as $photo)
+                        @if ($photo->is_publish)
+                            <div class="gap-4 flex flex-row">
+                                <img style="width: 50px" class="object-contain bg-white rounded-md "
+                                    src="{{ asset('uploads/' . $photo->img) }}" alt="{{ $photo->name }}">
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
-            @endif
-            
-            @foreach ($sliders as $photo)
-                <div class="photo-item">
-                    @if ($photo->is_publish)
-                        <img class="w-44" src="{{ asset('uploads/' . $photo->img) }}" alt="{{ $photo->name_img }}" class="photo-image">
-                    @endif
-            
-                    <form action="{{ route('photos.publish', $photo->id) }}" method="POST" style="display: inline;">
-                        @csrf
-                        @method('PATCH')
-                        <button type="submit" class="btn {{ $photo->is_publish ? 'btn-danger' : 'btn-success' }}">
-                            {{ $photo->is_publish ? 'Unpublish' : 'Publish' }}
-                        </button>
-                    </form>                        
-                </div>
-            @endforeach --}}
             </div>
         @endif
     </body>
-{{-- @endsection --}}
+@endsection
 
 
 </html>

@@ -26,7 +26,10 @@ Route::get('/test/{id}/edit', [TestZoneController::class, 'edit'])->name('testZo
 Route::put('/test/{id}', [TestZoneController::class, 'update'])->name('testZone.update');
 Route::delete('/test/{id}', [TestZoneController::class, 'destroy'])->name('testZone.destroy');
 Route::patch('/testZone/{id}/toggle', [TestZoneController::class, 'toggle'])->name('testZone.toggle');
-Route::patch('/test/{id}', [TestZoneController::class, 'publish'])->name('photos.publish');
+
+// Route::post('/test/{slider:id}', [TestZoneController::class, 'publishSliders'])->name('publish.slider');
+// Route::post('/test/{customer:id}', [TestZoneController::class, 'publishCustomer'])->name('publish.customer');
+Route::post('/test/{brand:id}', [TestZoneController::class, 'publishBrand'])->name('publish.brands');
 
 
 //product

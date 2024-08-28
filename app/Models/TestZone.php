@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TestZone extends Model
 {
-    protected $table = 'customers';
+    protected $table = 'brands';
     use HasFactory;
     protected $fillable = [
         'name_img',
