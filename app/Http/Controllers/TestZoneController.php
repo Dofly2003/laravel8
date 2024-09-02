@@ -13,7 +13,7 @@ class TestZoneController extends Controller
 
     public function index()
     {
-        $photos = Brand::where('is_publish', 1)->get(); //masih nyangkut di slider tabel
+        $photos = Slider::where('is_publish', 1)->get(); //masih nyangkut di slider tabel
         $sliders = TestZone::all(); // Fetch all sliders
         return view('testZone', compact('sliders', 'photos'));
     }
@@ -116,22 +116,22 @@ class TestZoneController extends Controller
         $photo->save();
         return redirect()->back()->with('success', 'Status publikasi berhasil diubah.');
     }
-    public function publishCustomer($id)
-    {
-        $photo = Customer::findOrFail($id);
-        $photo->is_publish = !$photo->is_publish; // Toggle nilai
-        $photo->save();
+    // public function publishCustomer($id)
+    // {
+    //     $photo = Customer::findOrFail($id);
+    //     $photo->is_publish = !$photo->is_publish; // Toggle nilai
+    //     $photo->save();
 
-        return redirect()->back()->with('success', 'Status publikasi berhasil diubah.');
-    }
-    public function publishBrand($id)
-    {
-        $photo = Brand::findOrFail($id);
-        $photo->is_publish = !$photo->is_publish; // Toggle nilai
-        $photo->save();
+    //     return redirect()->back()->with('success', 'Status publikasi berhasil diubah.');
+    // }
+    // public function publishBrand($id)
+    // {
+    //     $photo = Brand::findOrFail($id);
+    //     $photo->is_publish = !$photo->is_publish; // Toggle nilai
+    //     $photo->save();
 
-        return redirect()->back()->with('success', 'Status publikasi berhasil diubah.');
-    }
+    //     return redirect()->back()->with('success', 'Status publikasi berhasil diubah.');
+    // }
     
 
 

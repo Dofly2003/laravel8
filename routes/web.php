@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TestZoneController;
+use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\SliderController;
 use App\Models\Product;
 use App\Models\TestZone;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\test;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TestZoneController;
+use App\Http\Controllers\Auth\LoginController;
 
 //home
 Route::get('/',[HomeController::class, 'index']);
@@ -27,9 +30,28 @@ Route::put('/test/{id}', [TestZoneController::class, 'update'])->name('testZone.
 Route::delete('/test/{id}', [TestZoneController::class, 'destroy'])->name('testZone.destroy');
 Route::patch('/testZone/{id}/toggle', [TestZoneController::class, 'toggle'])->name('testZone.toggle');
 
-// Route::post('/test/{slider:id}', [TestZoneController::class, 'publishSliders'])->name('publish.slider');
-// Route::post('/test/{customer:id}', [TestZoneController::class, 'publishCustomer'])->name('publish.customer');
-Route::post('/test/{brand:id}', [TestZoneController::class, 'publishBrand'])->name('publish.brands');
+Route::post('/{slider:id}', [TestZoneController::class, 'publishSliders'])->name('publish.slider');
+Route::post('/{customer:id}', [TestZoneController::class, 'publishCustomer'])->name('publish.customer');
+Route::post('/{brand:id}', [TestZoneController::class, 'publishBrand'])->name('publish.brand');
+
+Auth::routes();
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+// Route::get('/dashboard', [DashbordController::class, 'index'])->middleware('auth')->name('dashbord');
+Route::get('/dashboard', [DashbordController::class, 'index'])->middleware('auth')->name('dashboard');
+// Route::get('/home', function () {
+//     return redirect('/dashboard');
+// })->name('home');
+
+Route::get('/slider', [SliderController::class, 'index'])->name('slider.index');
+Route::get('/slider/create', [SliderController::class, 'showViewCreate'])->name('slider.create');
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+// Route::resource('sliders', SliderController::class);
+
+// Route::post('/sliders', [SliderController::class, 'store'])->name('sliders.store');
+// Route::get('/sliders/{id}/edit', [SliderController::class, 'edit'])->name('sliders.edit');
+// Route::put('/sliders/{id}', [SliderController::class, 'update'])->name('sliders.update');
+// Route::delete('/sliders/{id}', [SliderController::class, 'destroy'])->name('sliders.destroy');
 
 
 //product
@@ -39,3 +61,7 @@ Route::get('/product/{slug}', [ProductController::class, 'show']);
 Route::get('/products/kategories/{kategori:name_kategori}', [ProductController::class, 'showByKategori']);
 Route::resource('products', ProductController::class);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

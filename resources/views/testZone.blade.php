@@ -66,16 +66,10 @@
             @csrf
 
             <label for="name_img">Name Image:</label>
-            <input type="text" id="name_img" name="name_img" required>
+            <input type="text" id="name_img" name="name_img" class="text-black" required>
 
             <label for="img">Upload Image:</label>
             <input type="file" id="img" name="img" required>
-
-            <label for="is_publish">Publish:</label>
-            <label class="toggle-switch">
-                <input type="checkbox" id="is_publish" name="is_publish">
-                <span class="slider"></span>
-            </label>
 
             <button type="submit" class="py-2 px-3 bg-gray-500 rounded-md">Submit</button>
         </form>
@@ -118,14 +112,12 @@
 
                     @foreach ($sliders as $photo)
                         <div class="gap-4 flex flex-row">
-                            <img src="{{ $photo->url }}" alt="{{ $photo->name }}">
-                            <form action="{{ route('publish.brands', $photo->id) }}" method="POST">
+                            <form action="{{ route('publish.brand', $photo->id) }}" method="POST">
                                 @csrf
                                 <button class="py-2 px-3 bg-gray-600 gap-4 flex rounded-md" type="submit">
                                     {{ $photo->is_publish ? 'Unpublish' : 'Publish' }} {{ $photo->name_img }}
                                 </button>
                             </form>
-
                         </div>
                     @endforeach
                     @foreach ($photos as $photo)

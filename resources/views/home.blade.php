@@ -36,12 +36,10 @@
                     <div id="carouselExample" class="carousel slide relative" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             @php
-                                // Filter sliders yang sudah dipublish
                                 $publishedSliders = $sliders->filter(function ($slider) {
                                     return $slider->is_publish;
                                 });
 
-                                // Reset index untuk active slide
                                 $activeIndex = 0;
                             @endphp
 
@@ -333,7 +331,8 @@
         }
 
         // Pindah slide secara otomatis setiap 5 detik
-        setInterval(nextSlide, 5000);
+       setInterval(nextSlide, 5000);
+
     </script>
     <script src="js/slider"></script>
     </body>

@@ -15,6 +15,8 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name_product');
+            $table->string('img')->nullable();
+            $table->boolean('is_publish')->default(1);
             $table->string('slug')->unique();
             $table->text('description');
             $table->timestamps();
