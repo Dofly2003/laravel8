@@ -1,8 +1,8 @@
 <div class="sticky top-0 w-64 h-screen bg-gray-800 text-white p-6">
     <h2 class="text-2xl font-semibold mb-6">Selamat datang</h2>
     <ul>
-        <li class="mb-4"><a href="{{ route('dashbord') }}" class="text-lg hover:text-gray-300">Dashboard</a></li>
-        <li class="mb-4"><a href="{{ route('slider.index') }}" class="text-lg hover:text-gray-300">Slide</a></li>
+        <li class="mb-4"><a href="{{ route('dashboard') }}" class="text-lg hover:text-gray-300">Dashboard</a></li>
+        <li class="mb-4"><a href="{{ route('Admin.slider.index') }}" class="text-lg hover:text-gray-300">Slide</a></li>
         <li class="mb-4"><a href="" class="text-lg hover:text-gray-300">Products</a></li>
         <li class="mb-4"><a href="" class="text-lg hover:text-gray-300">Kerjasama</a></li>
     </ul>

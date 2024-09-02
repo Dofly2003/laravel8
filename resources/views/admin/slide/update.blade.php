@@ -54,7 +54,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <form action="{{ route('sliders.update', $slides->id) }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('Admin.sliders.update', $slides->id) }}" method="POST" enctype="multipart/form-data"
             class="bg-white p-6 rounded-lg shadow-md">
             @csrf
             @method('PUT') <!-- Spoof the PUT method -->

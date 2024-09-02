@@ -36,22 +36,28 @@ Route::post('/{brand:id}', [TestZoneController::class, 'publishBrand'])->name('p
 
 Auth::routes();
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-// Route::get('/dashboard', [DashbordController::class, 'index'])->middleware('auth')->name('dashbord');
+Route::Post('/login/Auth', [LoginController::class, 'Login']);
+Route::post('/logout/Auth', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashbordController::class, 'index'])->middleware('auth')->name('dashboard');
 // Route::get('/home', function () {
 //     return redirect('/dashboard');
 // })->name('home');
 
-Route::get('/slider', [SliderController::class, 'index'])->name('slider.index');
-Route::get('/slider/create', [SliderController::class, 'showViewCreate'])->name('slider.create');
+
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 // Route::resource('sliders', SliderController::class);
 
-// Route::post('/sliders', [SliderController::class, 'store'])->name('sliders.store');
-// Route::get('/sliders/{id}/edit', [SliderController::class, 'edit'])->name('sliders.edit');
-// Route::put('/sliders/{id}', [SliderController::class, 'update'])->name('sliders.update');
-// Route::delete('/sliders/{id}', [SliderController::class, 'destroy'])->name('sliders.destroy');
+
+Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function (){
+    Route::get('/slider', [SliderController::class, 'index'])->name('slider.index');
+    Route::get('/slider/create', [SliderController::class, 'showViewCreate'])->name('slider.create');
+
+    Route::post('/sliders/Create', [SliderController::class, 'store'])->name('sliders.store');
+    Route::get('/sliders/{id}/edit', [SliderController::class, 'edit'])->name('sliders.edit');
+    Route::put('/sliders/{id}', [SliderController::class, 'update'])->name('sliders.update');
+    Route::delete('/sliders/{id}', [SliderController::class, 'destroy'])->name('sliders.destroy');
+
+});
 
 
 //product
@@ -61,6 +67,10 @@ Route::get('/product/{slug}', [ProductController::class, 'show']);
 Route::get('/products/kategories/{kategori:name_kategori}', [ProductController::class, 'showByKategori']);
 Route::resource('products', ProductController::class);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

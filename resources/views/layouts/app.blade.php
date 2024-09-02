@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +24,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body>
     <div id="app">
         <nav class="bg-white border-b shadow-sm">
@@ -33,8 +35,10 @@
                 </a>
                 <!-- Toggle button for mobile -->
                 <button class="block lg:hidden text-gray-800 focus:outline-none" id="nav-toggle">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
                 <!-- Navbar links -->
@@ -43,35 +47,40 @@
                         @guest
                             @if (Route::has('login'))
                                 <li>
-                                    <a href="{{ route('login') }}" class="text-gray-600 hover:text-gray-900">{{ __('Login') }}</a>
+                                    <a href="{{ route('login') }}"
+                                        class="text-gray-600 hover:text-gray-900">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li>
-                                    <a href="{{ route('register') }}" class="text-gray-600 hover:text-gray-900">{{ __('Register') }}</a>
+                                    <a href="{{ route('register') }}"
+                                        class="text-gray-600 hover:text-gray-900">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li x-data="{ open: false }" class="relative group">
-                                <button @click="open = ! open"   class="flex items-center text-gray-100 hover:text-gray-900 focus:outline-none">
+                                <button @click="open = ! open"
+                                    class="flex items-center text-gray-100 hover:text-gray-900 focus:outline-none">
                                     {{ Auth::user()->name }}
-                                    <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
                                     </svg>
                                 </button>
-                                <div x-show="open" class="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg group-hover:block">
-                                    <a href="{{ route('logout') }}"
-                                       class="block px-4 py-2 text-gray-600 hover:bg-gray-100"
-                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form method="POST" action="{{ route('logout') }}">
+                                <div x-show="open"
+                                    class="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg group-hover:block">
+                                    <form method="POST" action="/logout/Auth">
                                         @csrf
-                                        <button type="submit" class="w-full text-left text-lg hover:text-gray-300">
-                                            Logout
+                                        <button type="submit"
+                                            class="block px-4 py-2 text-gray-600 hover:bg-gray-100">
+                                            {{ __('Logout') }}
                                         </button>
-                                    </form>
+
+                                        
+                                    </form>
                                 </div>
                             </li>
                         @endguest
@@ -80,10 +89,10 @@
             </div>
         </nav>
 
-            <main class="flex flex-row w-full ">
-                @include('layouts.sideBar')
-                @yield('content')
-            </main>
+        <main class="flex flex-row w-full ">
+            @include('layouts.sideBar')
+            @yield('content')
+        </main>
     </div>
 
     <!-- Toggle Script -->
@@ -96,4 +105,5 @@
         });
     </script>
 </body>
+
 </html>

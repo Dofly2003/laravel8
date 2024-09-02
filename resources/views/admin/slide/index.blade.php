@@ -5,7 +5,7 @@
         <h1 class="text-3xl font-bold mb-6">Slides</h1>
 
         <div class="text-xl py-4 text-white">
-            <a href="{{ route('slider.create') }}"
+            <a href="{{ route('Admin.slider.create') }}"
                 class="bg-blue-600 py-2 px-3 rounded-xl hover:bg-blue-700 duration-300 ease-in-out">
                 Create
             </a>
@@ -35,10 +35,10 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">
                                 {{ $slide->is_publish ? 'Active' : 'Nonactive' }}</td>
                             <td class="px-6 py-4 whitespace-nowrap flex text-sm font-medium">
-                                <a href="{{ route('sliders.edit', $slide->id) }}"
+                                <a href="{{ route('Admin.sliders.edit', $slide->id) }}"
                                     class="text-blue-600 hover:text-blue-900">Edit</a>
                                 <span class="mx-2">|</span>
-                                <form action="{{ route('sliders.destroy', $slide->id) }}" method="POST"
+                                <form action="{{ route('Admin.sliders.destroy', $slide->id) }}" method="POST"
                                     class="flex items-center">
                                     @csrf
                                     @method('DELETE')

@@ -16,7 +16,7 @@
                 <h2 class="text-3xl font-extrabold text-gray-900">Welcome Back!</h2>
                 <p class="text-sm text-gray-500">Please sign in to your account</p>
             </div>
-            <form class="space-y-6" action="{{ route('login') }}" method="POST">
+            <form class="space-y-6" action="/login/Auth" method="POST">
                 @csrf
                 <div class="space-y-4">
                     <div>

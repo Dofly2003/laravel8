@@ -39,7 +39,7 @@ class SliderController extends Controller
         ]);
 
         // Redirect to the correct route after creation
-        return redirect()->back()->with('success', 'Slider updated successfully.');
+        return redirect()->route('Admin.slider.index')->with('success', 'New Slider successfully Created.');
     }
 
 
@@ -50,7 +50,7 @@ class SliderController extends Controller
 
         // Check if the slider exists
         if (!$slides) {
-            return redirect()->route('admin.slide.index')->with('error', 'Slider not found.');
+            return redirect()->route('Admin.slider.index')->with('error', 'Slider not found.');
         }
 
         return view('admin.slide.update', compact('slides'));
@@ -91,7 +91,7 @@ class SliderController extends Controller
 
         $slider->update($data);
 
-        return redirect()->route('slider.index')->with('success', 'Slider updated successfully.');
+        return redirect()->route('Admin.slider.index')->with('success', 'Slider updated successfully.');
     }
 
     public function destroy($id)
@@ -108,6 +108,6 @@ class SliderController extends Controller
 
         $slider->delete();
 
-        return redirect()->route('slider.index')->with('success', 'Slider deleted successfully.');
+        return redirect()->route('Admin.slider.index')->with('success', 'Slider deleted successfully.');
     }
 }
