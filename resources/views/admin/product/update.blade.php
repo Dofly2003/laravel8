@@ -54,22 +54,22 @@
                 {{ session('success') }}
             </div>
         @endif
-
-        <form action="{{ route('Admin.sliders.store') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('Admin.product.update', $slides->id) }}" method="POST" enctype="multipart/form-data"
             class="bg-white p-6 rounded-lg shadow-md">
             @csrf
+            @method('PUT') <!-- Spoof the PUT method -->
 
             <!-- Your form fields go here -->
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Name Image:</label>
                 <input type="text" id="name" name="name" required
-                    value=""
+                    value="{{ old('name', $slides->name) }}"
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
             </div>
 
             <div class="mb-4">
                 <label for="img" class="block text-sm font-medium text-gray-700">Upload Image:</label>
-                <input type="file" id="img" name="img" value="" required
+                <input type="file" id="img" name="img" value="{{ old('img', $slides->img) }}"
                     class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:font-medium file:bg-gray-100 hover:file:bg-gray-200">
             </div>
 
@@ -78,5 +78,7 @@
                 Submit
             </button>
         </form>
+
+
     </div>
 @endsection

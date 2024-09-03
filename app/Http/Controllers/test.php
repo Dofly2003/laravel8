@@ -25,7 +25,7 @@ class test extends Controller
         ];
 
         foreach ($kategoriNames as $name) {
-            Kategori::create(['name_kategori' => $name]);
+            Kategori::create(['name' => $name]);
         }
 
         // Buat 30 produk dengan slug unik dan deskripsi
@@ -65,7 +65,7 @@ class test extends Controller
 
         foreach ($products as $product) {
             Product::create([
-                'name_product' => $product[0],
+                'name' => $product[0],
                 'slug' => $product[1],
                 'description' => $product[2]
             ]);

@@ -10,7 +10,7 @@ class TestZone extends Model
     protected $table = 'sliders';
     use HasFactory;
     protected $fillable = [
-        'name_img',
+        'name',
         'img',
         'is_publish',
     ];

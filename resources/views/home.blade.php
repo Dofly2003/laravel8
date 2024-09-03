@@ -270,7 +270,7 @@
 
                             <div class="relative border border-gray-100 bg-white flex py-2 justify-center">
 
-                                <h3 class="text-lg font-medium text-gray-900"> {{ $product->name_product }} </h3>
+                                <h3 class="text-lg font-medium text-gray-900"> {{ $product->name }} </h3>
 
                             </div>
                         </a>

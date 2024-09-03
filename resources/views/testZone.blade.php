@@ -65,8 +65,8 @@
         <form action="{{ route('testZone.store') }}" method="POST" class="text-white" enctype="multipart/form-data">
             @csrf
 
-            <label for="name_img">Name Image:</label>
-            <input type="text" id="name_img" name="name_img" class="text-black" required>
+            <label for="name">Name Image:</label>
+            <input type="text" id="name" name="name" class="text-black" required>
 
             <label for="img">Upload Image:</label>
             <input type="file" id="img" name="img" required>
@@ -82,9 +82,9 @@
             <div class="flex justify-evenly text-white flex-row">
                 @foreach ($sliders as $slider)
                     <div class="">
-                        <h2>{{ $slider->name_img }}</h2>
+                        <h2>{{ $slider->name }}</h2>
                         @if ($slider->img)
-                            <img src="{{ asset('uploads/' . $slider->img) }}" alt="{{ $slider->name_img }}" class="w-10"
+                            <img src="{{ asset('uploads/' . $slider->img) }}" alt="{{ $slider->name }}" class="w-10"
                                 width="200">
                         @else
                             <p>No image available.</p>
@@ -115,7 +115,7 @@
                             <form action="{{ route('publish.brand', $photo->id) }}" method="POST">
                                 @csrf
                                 <button class="py-2 px-3 bg-gray-600 gap-4 flex rounded-md" type="submit">
-                                    {{ $photo->is_publish ? 'Unpublish' : 'Publish' }} {{ $photo->name_img }}
+                                    {{ $photo->is_publish ? 'Unpublish' : 'Publish' }} {{ $photo->name }}
                                 </button>
                             </form>
                         </div>

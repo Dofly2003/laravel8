@@ -61,9 +61,9 @@
 
             <!-- Your form fields go here -->
             <div class="mb-4">
-                <label for="name_img" class="block text-sm font-medium text-gray-700">Name Image:</label>
-                <input type="text" id="name_img" name="name_img" required
-                    value="{{ old('name_img', $slides->name_img) }}"
+                <label for="name" class="block text-sm font-medium text-gray-700">Name Image:</label>
+                <input type="text" id="name" name="name" required
+                    value="{{ old('name', $slides->name) }}"
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
             </div>
 

@@ -52,10 +52,10 @@
                                             @foreach ($product->kategori_product->take(2) as $kategori)
                                                 <p
                                                     class="text-gray-400 w-full justify-center flex flex-wrap flex-row text-xs">
-                                                    {{ Str::limit($kategori->name_kategori) }}</span>
+                                                    {{ Str::limit($kategori->name) }}</span>
                                             @endforeach
                                             <p class="text-md lg:text-lg font-bold text-gray-100 truncate block capitalize">
-                                                {{ $product->name_product }}</p>
+                                                {{ $product->name }}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -77,7 +77,7 @@
                             <div id="dropdownMenu"
                                 class="hidden opacity-0 transition-opacity duration-300 transform scale-95 flex-col">
                                 @foreach ($kategoris as $kategori)
-                                    <a href="/products/kategories/{{ $kategori->name_kategori }}" id="kategori"
+                                    <a href="/products/kategories/{{ $kategori->name }}" id="kategori"
                                         name="kategori"
                                         class="bg-slate-800 m-2 hover:bg-slate-900 ease-in-out duration-300 border w-8/12 border-gray-300 text-gray-300 text-sm rounded-lg flex gap-3 focus:ring-blue-500 focus:border-blue-500 p-2.5">
                                         <svg class="h-5 w-5 text-gray-400 rtl:rotate-180" aria-hidden="true"
@@ -86,7 +86,7 @@
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                                 stroke-width="2" d="m9 5 7 7-7 7" />
                                         </svg>
-                                        <div>{{ $kategori->name_kategori }}</div>
+                                        <div>{{ $kategori->name }}</div>
                                     </a>
                                 @endforeach
                             </div>

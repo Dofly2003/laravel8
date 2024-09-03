@@ -5,7 +5,7 @@
         <h1 class="text-3xl font-bold mb-6">Slides</h1>
 
         <div class="text-xl py-4 text-white">
-            <a href="{{ route('Admin.slider.create') }}"
+            <a href="{{ route('Admin.product.create') }}"
                 class="bg-blue-600 py-2 px-3 rounded-xl hover:bg-blue-700 duration-300 ease-in-out">
                 Create
             </a>
@@ -17,28 +17,36 @@
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">slug</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Img</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Status</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Action</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($slides as $slide)
+                    @foreach ($products as $slide)
                         <tr id="slide-row-{{ $slide->id }}">
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $loop->iteration }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 slide-name"
                                 id="name-{{ $slide->id }}">{{ $slide->name }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <img class="h-10 rounded-md object-contain" src="{{ asset('uploads/' . $slide->img) }}"
-                                    alt="{{ $slide->name }}">
-                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 slide-name"
+                                id="name-{{ $slide->id }}">{{ $slide->slug }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @if ($slide->img)
+                                        <img class="h-10 rounded-md object-contain" src="{{ asset('uploads/' . $slide->img) }}"
+                                             alt="{{ $slide->name }}">
+                                    @else
+                                        <span class="text-sm text-gray-600">No Data</span>
+                                    @endif
+                                </td>
+                                
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">
                                 {{ $slide->is_publish ? 'Active' : 'Nonactive' }}</td>
                             <td class="px-6 py-4 whitespace-nowrap flex text-sm font-medium">
-                                <a href="{{ route('Admin.sliders.edit', $slide->id) }}"
+                                <a href="{{ route('Admin.product.edit', $slide->id) }}"
                                     class="text-blue-600 hover:text-blue-900">Edit</a>
                                 <span class="mx-2">|</span>
-                                <form action="{{ route('Admin.sliders.destroy', $slide->id) }}" method="POST"
+                                <form action="{{ route('Admin.product.destroy', $slide->id) }}" method="POST"
                                     class="flex items-center">
                                     @csrf
                                     @method('DELETE')
@@ -66,8 +74,8 @@
         </div>
     </table>
     <div  class="py-4 flex justify-center">
-        @if ($slides instanceof \Illuminate\Pagination\LengthAwarePaginator)
-        {{ $slides->links() }}
+        @if ($products instanceof \Illuminate\Pagination\LengthAwarePaginator)
+        {{ $products->links() }}
         @endif
     </div>
     </div>

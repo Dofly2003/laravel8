@@ -10,8 +10,8 @@
         @csrf
         @method('PUT')
 
-        <label for="name_img">Name Image:</label>
-        <input type="text" id="name_img" name="name_img" value="{{ old('name_img', $slider->name_img) }}" required>
+        <label for="name">Name Image:</label>
+        <input type="text" id="name" name="name" value="{{ old('name', $slider->name) }}" required>
 
         <label for="img">Upload New Image (optional):</label>
         <input type="file" id="img" name="img">

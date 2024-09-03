@@ -16,7 +16,7 @@ class Product extends Model
         return $this->belongsToMany(Kategori::class, 'kategori_produk', 'product_id', 'kategori_id');
     }
     protected $fillable = [
-        'name_product', 'slug', 'description',
+        'name', 'slug', 'description',
     ];
     protected $guarded = [
         'id',
@@ -26,12 +26,12 @@ class Product extends Model
     {
         // Apply search filter
         $query->when(isset($filters['search']) && $filters['search'], function ($query) use ($filters) {
-            $query->where('name_product', 'like', '%' . $filters['search'] . '%');
+            $query->where('name', 'like', '%' . $filters['search'] . '%');
         });
 
         // Apply category filter
         $query->when(isset($filters['kategori']) && $filters['kategori'], function ($query) use ($filters) {
-            $query->whereHas('kategori_product', function ($query) use ($filters) {
+            $query->whereHas('kategori', function ($query) use ($filters) {
                 $query->where('slug', $filters['kategori']);
             });
         });

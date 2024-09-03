@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\SliderController;
 use App\Models\Product;
@@ -37,6 +38,7 @@ Route::post('/{brand:id}', [TestZoneController::class, 'publishBrand'])->name('p
 Auth::routes();
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::Post('/login/Auth', [LoginController::class, 'Login']);
+Route::Post('/Register/Auth', [RegisterController::class, 'register']);
 Route::post('/logout/Auth', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [DashbordController::class, 'index'])->middleware('auth')->name('dashboard');
 // Route::get('/home', function () {
@@ -49,13 +51,26 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 
 
 Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function (){
-    Route::get('/slider', [SliderController::class, 'index'])->name('slider.index');
-    Route::get('/slider/create', [SliderController::class, 'showViewCreate'])->name('slider.create');
 
-    Route::post('/sliders/Create', [SliderController::class, 'store'])->name('sliders.store');
+    //slider main
+    Route::get('/slider', [SliderController::class, 'index'])->name('slider.index');
+    Route::get('/sliders/create', [SliderController::class, 'showViewCreate'])->name('slider.create');
+    Route::post('/slider/Create', [SliderController::class, 'store'])->name('sliders.store');
     Route::get('/sliders/{id}/edit', [SliderController::class, 'edit'])->name('sliders.edit');
     Route::put('/sliders/{id}', [SliderController::class, 'update'])->name('sliders.update');
     Route::delete('/sliders/{id}', [SliderController::class, 'destroy'])->name('sliders.destroy');
+
+
+    //product main
+    Route::get('/product', [ProductController::class, 'showIndexAdmin'])->name('product.index');
+    Route::get('/products/create', [ProductController::class, 'showViewCreate'])->name('product.create');
+    Route::post('/product/Create', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+    Route::put('/products/{id}', [ProductController::class, 'update'])->name('product.update');
+    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+
+
 
 });
 
@@ -64,7 +79,7 @@ Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function (){
 Route::get('/create', [test::class, 'index']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/product/{slug}', [ProductController::class, 'show']);
-Route::get('/products/kategories/{kategori:name_kategori}', [ProductController::class, 'showByKategori']);
+Route::get('/products/kategories/{kategori:name}', [ProductController::class, 'showByKategori']);
 Route::resource('products', ProductController::class);
 
 

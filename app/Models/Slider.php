@@ -11,6 +11,6 @@ class Slider extends Model
     protected $fillable = [
         'is_publish',
         'img',
-        'name_img'
+        'name'
     ];
 }

@@ -17,14 +17,14 @@
                             <a href="/katalog?kategori={{ $product->slug }}">
 
                                 <h1 class="text-2xl font-extrabold  sm:text-3xl dark:text-white">
-                                    {{ $product->name_product }}
+                                    {{ $product->name }}
                                 </h1>
                             </a>
                             <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
                                 <p class="text-xl  font-semibold sm:text-2xldark:text-white">
                                     @foreach ($product->kategori_product as $kategori)
-                                        <a href="/kategories/{{ $kategori->name_kategori }}">
-                                            <li class="flex hover:underline">{{ $kategori->name_kategori }}</li>
+                                        <a href="/kategories/{{ $kategori->name }}">
+                                            <li class="flex hover:underline">{{ $kategori->name }}</li>
                                         </a>
                                     @endforeach
                                 </p>
@@ -78,7 +78,7 @@
 
                                 <div class="relative flex py-2 justify-center">
 
-                                    <h3 class="text-lg font-medium  text-center"> {{ $product->name_product }} </h3>
+                                    <h3 class="text-lg font-medium  text-center"> {{ $product->name }} </h3>
 
                                 </div>
                             </a>

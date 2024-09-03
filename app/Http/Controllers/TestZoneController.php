@@ -22,7 +22,7 @@ class TestZoneController extends Controller
     {
         // Validate the request
         $request->validate([
-            'name_img' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'is_publish' => 'nullable|boolean',
         ]);
@@ -33,7 +33,7 @@ class TestZoneController extends Controller
 
         // Create a new slider record
         TestZone::create([
-            'name_img' => $request->name_img,
+            'name' => $request->name,
             'img' => $fileName,
             'is_publish' => $request->has('is_publish') ? 1 : 0,
         ]);
@@ -53,14 +53,14 @@ class TestZoneController extends Controller
 
         // Validate the request
         $request->validate([
-            'name_img' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'is_publish' => 'nullable|boolean',
         ]);
 
         // Prepare data for update
         $data = [
-            'name_img' => $request->name_img,
+            'name' => $request->name,
             'is_publish' => $request->has('is_publish') ? 1 : 0,
         ];
 

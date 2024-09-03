@@ -55,7 +55,7 @@
             </div>
         @endif
 
-        <form action="{{ route('Admin.sliders.store') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('Admin.product.store') }}" method="POST" enctype="multipart/form-data"
             class="bg-white p-6 rounded-lg shadow-md">
             @csrf
 

@@ -45,7 +45,7 @@
                         <select id="kategori" name="kategori"
                             class="bg-gray-50 js-example-basic-multiple border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="states[]" multiple="multiple" >
                             @foreach ($kategoris as $kategori)
-                            <option value="{{ $kategori->id }}">{{ $kategori->name_kategori }}</option>
+                            <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
                         @endforeach
                     
                         </select>
@@ -89,7 +89,7 @@
                 <p> slug : {{ $product->slug }}</p>
                 <ul>
                     @foreach ($product->kategori_product as $kategori)
-                        <li class="">Kategori :{{ $kategori->name_kategori }}</li>
+                        <li class="">Kategori :{{ $kategori->name }}</li>
                     @endforeach
                 </ul>
             </div>

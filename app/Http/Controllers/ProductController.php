@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Slider;
 use App\Models\TestZone;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -12,23 +13,29 @@ class ProductController extends Controller
 {
     // Tampilkan daftar semua produk
     public function index(Request $request)
-{
-    $selectedCategory = 'All Product';
-    $sliders = TestZone::all();
+    {
+        $selectedCategory = 'All Product';
+        $sliders = Slider::all();
 
-    // Ensure the query builder is paginated
-    $products = Product::filter(request(['search', 'kategori']))
-        ->with('kategori_product')
-        ->latest()
-        ->paginate(20) 
-        ->withQueryString();
-    
+        // Ensure the query builder is paginated
+        $products = Product::filter(request(['search', 'kategori']))
+            ->with('kategori_product')
+            ->latest()
+            ->paginate(20)
+            ->withQueryString();
+
         // dd(get_class($products));
-    $kategoris = Kategori::all();
-    return view('products', compact('products', 'kategoris', 'selectedCategory', 'sliders'));
-}
+        $kategoris = Kategori::all();
+        return view('products', compact('products', 'kategoris', 'selectedCategory', 'sliders'));
+    }
+    // Tampilkan detail produk
+    public function showIndexAdmin(Product $product)
+    {
+        $products = Product::paginate(7);
+        return view('admin.product.index', compact('products'));
+    }
 
-    
+
 
     // Tampilkan form untuk membuat produk baru
     public function create()
@@ -55,7 +62,7 @@ class ProductController extends Controller
 
         // Simpan data produk ke database
         $product = Product::create([
-            'name_product' => $request->Nama,
+            'name' => $request->Nama,
             'slug' => $request->slug,
             'description' => $request->deskripsi,
         ]);
@@ -102,34 +109,34 @@ class ProductController extends Controller
         ]);
     }
     public function showByKategori(Kategori $kategori = null)
-{
-    $products = Product::whereHas('kategori_product', function ($query) use ($kategori) {
-        $query->where('name_kategori', $kategori->name_kategori);
-    })->with('kategori_product')->get();
-
-    if ($kategori) {
-        // Filter produk berdasarkan kategori yang dipilih
+    {
         $products = Product::whereHas('kategori_product', function ($query) use ($kategori) {
-            $query->where('name_kategori', $kategori->name_kategori);
+            $query->where('name', $kategori->name);
         })->with('kategori_product')->get();
 
-        $selectedCategory = $kategori->name_kategori;
-    } else {
-        // Tampilkan semua produk jika tidak ada kategori yang dipilih
-        $products = Product::with('kategori_product')->paginate(20)->get();
+        if ($kategori) {
+            // Filter produk berdasarkan kategori yang dipilih
+            $products = Product::whereHas('kategori_product', function ($query) use ($kategori) {
+                $query->where('name', $kategori->name);
+            })->with('kategori_product')->get();
 
-        $selectedCategory = 'All';
+            $selectedCategory = $kategori->name;
+        } else {
+            // Tampilkan semua produk jika tidak ada kategori yang dipilih
+            $products = Product::with('kategori_product')->paginate(20)->get();
+
+            $selectedCategory = 'All';
+        }
+
+        $allKategoris = Kategori::all(); // Mengambil semua kategori
+
+        // Mengembalikan view dengan produk yang telah difilter dan semua kategori
+        return view('products', [
+            'products' => $products,
+            'selectedCategory' => $selectedCategory,
+            'kategoris' => $allKategoris, // Mengirimkan semua kategori ke view
+        ]);
     }
-
-    $allKategoris = Kategori::all(); // Mengambil semua kategori
-
-    // Mengembalikan view dengan produk yang telah difilter dan semua kategori
-    return view('products', [
-        'products' => $products,
-        'selectedCategory' => $selectedCategory,
-        'kategoris' => $allKategoris, // Mengirimkan semua kategori ke view
-    ]);
-}
 
 
     // public function showBySlug($slug, Request $request)
@@ -147,7 +154,7 @@ class ProductController extends Controller
     // Tampilkan form untuk mengedit produk
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
+        return view('admin.product.create', compact('product'));
     }
 
     // Update produk di database
