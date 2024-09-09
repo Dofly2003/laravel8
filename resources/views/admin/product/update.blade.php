@@ -1,84 +1,99 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            border-radius: 50%;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-        }
-
-        input:checked+.slider {
-            background-color: #2196F3;
-        }
-
-        input:checked+.slider:before {
-            transform: translateX(26px);
-        }
-    </style>
+    <!-- Load necessary JS libraries -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
     <div class="container mx-auto px-4 py-6">
+        <!-- Display success message -->
         @if (session('success'))
-            <div class="bg-green-100 text-green-800 p-4 rounded-lg mb-4">
-                {{ session('success') }}
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold">{{ session('success') }}</strong>
             </div>
         @endif
-        <form action="{{ route('Admin.product.update', $product->id) }}" method="POST" enctype="multipart/form-data"
-            class="bg-white p-6 rounded-lg shadow-md">
+
+        <!-- Display error message -->
+        @if (session('error'))
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <strong class="font-bold">{{ session('error') }}</strong>
+            </div>
+        @endif
+
+        <!-- Form for creating product -->
+        <form action="{{ route('Admin.product.update', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data" class="bg-gray-100 p-6 rounded-lg shadow-md">
             @csrf
-            @method('PUT') <!-- Spoof the PUT method -->
-
-            <!-- Your form fields go here -->
+            @method('PUT')
+            
+            <!-- Product Name -->
             <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700">Name Image:</label>
-                <input type="text" id="name" name="name" required
-                    value="{{ old('name', $product->name) }}"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                <label for="name" class="block text-sm font-medium text-gray-700">Product Name:</label>
+                <input value="{{ old('name', $product->name) }}" type="text" id="name" name="name" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             </div>
-
+        
+            <!-- Description -->
             <div class="mb-4">
-                <label for="img" class="block text-sm font-medium text-gray-700">Upload Image:</label>
-                <input type="file" id="img" name="img" value="{{ old('img', $product->img) }}"
-                    class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:font-medium file:bg-gray-100 hover:file:bg-gray-200">
+                <label for="deskripsi" class="block text-sm font-medium text-gray-700">Description:</label>
+                <textarea id="deskripsi" name="deskripsi"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    {{ old('deskripsi', $product->description) }}
+                </textarea>
             </div>
-
+        
+            <!-- Categories -->
+            <div class="mb-4">
+                <label for="kategori" class="block text-sm font-medium text-gray-700">Categories:</label>
+                <select id="kategori" name="kategori[]"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm js-example-basic-multiple"
+                    multiple="multiple">
+                    @foreach ($kategoris as $kategori)
+                        <option value="{{ $kategori->id }}"
+                            {{ in_array($kategori->id, old('kategori', $product->categories ? $product->categories->pluck('id')->toArray() : [])) ? 'selected' : '' }}>
+                            {{ $kategori->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+        
+            <!-- Image Upload -->
+            <div class="mb-4">
+                <label for="img" class="block text-sm font-medium text-gray-700">Image:</label>
+                <input type="file" id="img" name="img"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+        
+            <!-- Submit Button -->
             <button type="submit"
-                class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Submit
-            </button>
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Submit</button>
         </form>
-
-
+        
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#deskripsi').summernote({
+                height: 300, // Set editor height
+                minHeight: null, // Set minimum height of editor
+                maxHeight: null, // Set maximum height of editor
+                focus: true, // Set focus to editable area after initializing
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                ],
+                callbacks: {
+                    onInit: function() {
+                        // Add custom Tailwind classes to Summernote buttons
+                        $('.note-btn').addClass('bg-blue-500 text-white hover:bg-blue-700');
+                    }
+                }
+            });
+
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
 @endsection

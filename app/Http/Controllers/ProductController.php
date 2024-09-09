@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Slider;
-use App\Models\TestZone;
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use App\Models\Kategori;
 use App\Models\Product;
@@ -179,38 +178,71 @@ class ProductController extends Controller
 
 
     // Tampilkan form untuk mengedit produk
-    public function edit(Product $product)
+    public function edit($id)
     {
-        $product = Product::all();
-        return view('admin.product.create', compact('product'));
+        $kategoris = Kategori::all();
+        $product = Product::with('kategori_product')->find($id);
+        if (!$product) {
+            return redirect()->route('Admin.product.index')->with('error', 'Slider not found.');
+        }
+        return view('admin.product.update', compact('product', 'kategoris'));
     }
 
     // Update produk di database
+ 
     public function update(Request $request, Product $product)
     {
-        // Validasi input dari form
+        // Validate input from the form
         $request->validate([
             'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
             'description' => 'nullable|string',
-            'kategori' => 'required|array', // Perbarui untuk array kategori
-            'kategori.*' => 'exists:kategoris,id', // Validasi setiap kategori
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi file gambar
+            'kategori' => 'required|array',
+            'kategori.*' => 'exists:kategoris,id',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Update data produk
+        // Debugging: Log the request data
+        Log::info('Update request data:', $request->all());
+
+        // Handle image upload
+        $imagePath = $product->img; // Default to old image path
+
+        if ($request->hasFile('img')) {
+            // Debugging: Log image file information
+            Log::info('Image file uploaded:', [
+                'original_name' => $request->file('img')->getClientOriginalName(),
+                'mime_type' => $request->file('img')->getMimeType(),
+                'size' => $request->file('img')->getSize(),
+            ]);
+
+            // Delete old image if exists
+            if ($product->img) {
+                Storage::disk('public')->delete($product->img);
+            }
+
+            // Store new image
+            $imagePath = $request->file('img')->store('images', 'public');
+        }
+
+        // Update product data
         $product->update([
             'name' => $request->name,
             'price' => $request->price,
             'description' => $request->description,
+            'img' => $imagePath,
         ]);
 
-        // Sinkronisasi kategori dengan produk
+        // Sync categories with product
         $product->kategori_product()->sync($request->kategori);
 
-        // Redirect setelah sukses update
+        // Debugging: Log successful update
+        log::info('Product updated successfully:', $product->toArray());
+
+        // Redirect after successful update
         return redirect()->route('Admin.product.index')->with('success', 'Product updated successfully.');
     }
+
+
 
     public function destroy($id)
     {
