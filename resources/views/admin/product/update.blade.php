@@ -54,7 +54,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <form action="{{ route('Admin.product.update', $slides->id) }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('Admin.product.update', $product->id) }}" method="POST" enctype="multipart/form-data"
             class="bg-white p-6 rounded-lg shadow-md">
             @csrf
             @method('PUT') <!-- Spoof the PUT method -->
@@ -63,13 +63,13 @@
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Name Image:</label>
                 <input type="text" id="name" name="name" required
-                    value="{{ old('name', $slides->name) }}"
+                    value="{{ old('name', $product->name) }}"
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
             </div>
 
             <div class="mb-4">
                 <label for="img" class="block text-sm font-medium text-gray-700">Upload Image:</label>
-                <input type="file" id="img" name="img" value="{{ old('img', $slides->img) }}"
+                <input type="file" id="img" name="img" value="{{ old('img', $product->img) }}"
                     class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:font-medium file:bg-gray-100 hover:file:bg-gray-200">
             </div>
 

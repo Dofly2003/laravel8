@@ -20,8 +20,13 @@
                         </div>
                     @empty
 
-                    no data
+                        no data
                     @endforelse
+                </div>
+                <div class="py-4 flex justify-center">
+                    @if ($slides instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                        {{ $slides->links() }}
+                    @endif
                 </div>
             </section>
 
@@ -47,6 +52,11 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <div class="py-4 flex justify-center">
+                    @if ($products instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                        {{ $products->links() }}
+                    @endif
                 </div>
             </section>
         </div>

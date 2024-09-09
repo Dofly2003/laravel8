@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
     <style>
         .toggle-switch {
             position: relative;
@@ -46,37 +49,83 @@
         input:checked+.slider:before {
             transform: translateX(26px);
         }
-    </style>
 
-    <div class="container mx-auto px-4 py-6">
+        select {
+            scrollbar-width: none;
+        }
+
+        trix-editor {
+            scrollbar-width: none;
+        }
+    </style>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <title>Create Product</title>
+        <!-- Include your CSS files here -->
+    </head>
+
+    <body>
+        <!-- Display success message -->
         @if (session('success'))
-            <div class="bg-green-100 text-green-800 p-4 rounded-lg mb-4">
+            <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
 
-        <form action="{{ route('Admin.product.store') }}" method="POST" enctype="multipart/form-data"
-            class="bg-white p-6 rounded-lg shadow-md">
+        <!-- Display error message -->
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        <!-- Form for creating product -->
+        <form action="{{ route('Admin.product.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <!-- Form fields for product details -->
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" name="name" required>
 
-            <!-- Your form fields go here -->
-            <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700">Name Image:</label>
-                <input type="text" id="name" name="name" required
-                    value=""
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-            </div>
+            <label for="slug">Slug:</label>
+            <input type="text" id="slug" name="slug">
 
-            <div class="mb-4">
-                <label for="img" class="block text-sm font-medium text-gray-700">Upload Image:</label>
-                <input type="file" id="img" name="img" value="" required
-                    class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:font-medium file:bg-gray-100 hover:file:bg-gray-200">
-            </div>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" required>
 
-            <button type="submit"
-                class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                Submit
-            </button>
+            <label for="deskripsi">Description:</label>
+            <textarea id="deskripsi" name="deskripsi"></textarea>
+
+            <label for="kategori">Categories:</label>
+            <select id="kategori" name="kategori[]" required
+                class="bg-gray-50 js-example-basic-multiple border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                multiple="multiple">
+                @foreach ($kategoris as $kategori)
+                    <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
+                @endforeach
+            </select>
+
+            <label for="img">Image:</label>
+            <input type="file" id="img" name="img" required>
+
+            <button type="submit">Submit</button>
         </form>
-    </div>
+    </body>
+
+    </html>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#deskripsi').summernote();
+        });
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+    </script>
 @endsection

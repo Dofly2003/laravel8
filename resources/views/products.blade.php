@@ -75,7 +75,7 @@
                             </button>
 
                             <div id="dropdownMenu"
-                                class="hidden opacity-0 transition-opacity duration-300 transform scale-95 flex-col">
+                                class="hidden opacity-0 transition-opacity animation-display duration-300 transform scale-95 flex-col">
                                 @foreach ($kategoris as $kategori)
                                     <a href="/products/kategories/{{ $kategori->name }}" id="kategori"
                                         name="kategori"

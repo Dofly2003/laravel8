@@ -21,7 +21,11 @@ module.exports = {
         900: '#0f172a',
       },
     },
-    extend: {},
+    extend: {
+      animation: {
+        display: 'calc(1s * var(--))', // Custom animation utility
+      },
+    },
   },
   variants: {},
   plugins: [

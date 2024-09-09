@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\kategoriController;
 use App\Http\Controllers\SliderController;
 use App\Models\Product;
 use App\Models\TestZone;
@@ -14,14 +15,8 @@ use App\Http\Controllers\Auth\LoginController;
 
 //home
 Route::get('/',[HomeController::class, 'index']);
-Route::get('/kontak',
-    function () {
-        return view('kontak');
-    });
-Route::get('/profil',
-    function () {
-        return view('profilPerusahaan');
-    });
+Route::get('/aboutus',function () {return view('kontak');});
+Route::get('/profil',function () {return view('profilPerusahaan');});
 
 
 Route::get('/test', [TestZoneController::class, 'index'])->name('testZone.index');
@@ -63,13 +58,21 @@ Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function (){
 
     //product main
     Route::get('/product', [ProductController::class, 'showIndexAdmin'])->name('product.index');
-    Route::get('/products/create', [ProductController::class, 'showViewCreate'])->name('product.create');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/Create', [ProductController::class, 'store'])->name('product.store');
     Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
     Route::put('/products/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
-
-
+    
+    
+    Route::get('/kategori', [kategoriController::class, 'index'])->name('kategori.index');
+    Route::get('/kategories/create', [kategoriController::class, 'create'])->name('kategori.create');
+    Route::post('/kategories/store', [kategoriController::class, 'store'])->name('kategori.store');
+    Route::get('/kategories/{id}/edit', [kategoriController::class, 'edit'])->name('kategori.edit');
+    Route::put('/kategories/{id}', [kategoriController::class, 'update'])->name('kategori.update');
+    Route::delete('/kategories/{id}', [kategoriController::class, 'destroy'])->name('kategori.destroy');
+    
+    
 
 
 });

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Kategori;
 use App\Models\Product;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -40,45 +41,67 @@ class ProductController extends Controller
     // Tampilkan form untuk membuat produk baru
     public function create()
     {
-        return view('products.create');
+        $kategoris = Kategori::all();
+        return view('Admin.product.create', compact('kategoris'));
     }
 
     // Simpan produk baru ke database
+
+
 
     public function store(Request $request)
     {
         // Validasi input dari form
         $request->validate([
-            'Nama' => 'required|string|max:255',
-            'slug' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'price' => 'required|numeric',
             'deskripsi' => 'nullable|string',
             'kategori' => 'required|array',
             'kategori.*' => 'exists:kategoris,id',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Log data input
-        Log::info('Request Data:', $request->all());
+        try {
+            // Handle file upload
+            $fileName = time() . '.' . $request->img->extension();
+            $request->img->move(public_path('uploads'), $fileName);
 
-        // Simpan data produk ke database
-        $product = Product::create([
-            'name' => $request->Nama,
-            'slug' => $request->slug,
-            'description' => $request->deskripsi,
-        ]);
 
-        // Log produk yang baru dibuat
-        Log::info('Product Created:', $product->toArray());
+            // Generate unique slug
+            $slug = Str::slug($request->name);
+            $originalSlug = $slug;
+            $count = 1;
 
-        // Hubungkan kategori ke produk
-        $hasil = $product->kategoris()->sync($request->kategori);
+            // Check for slug uniqueness and modify if necessary
+            while (Product::where('slug', $slug)->exists()) {
+                $slug = "{$originalSlug}_{$count}";
+                $count++;
+            }
 
-        // Log hasil sync
-        Log::info('Sync Result:', $hasil);
+            // Save product data to the database
+            $product = Product::create([
+                'name' => $request->name,
+                'slug' => $slug, // Save the unique slug
+                'description' => $request->deskripsi,
+                'price' => $request->price,
+                'img' => $fileName, // Save image file name
+            ]);
 
-        // Redirect setelah sukses menyimpan
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+            // Link categories to the product using the pivot table
+            $product->kategori_product()->sync($request->kategori);
+
+            // Redirect after successful save
+            return redirect()->route('Admin.product.index')->with('success', 'Product created successfully.');
+        } catch (\Exception $e) {
+            // Handle errors and provide an error message
+            return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage())->withInput();
+        }
     }
+
+
+
+
+
 
 
 
@@ -86,7 +109,7 @@ class ProductController extends Controller
     // Tampilkan produk berdasarkan ID
     public function show(Product $product, $slug)
     {
-        // Load product with kategori_product relationship
+        // Load product with kategori_product relationship  
         $product->load('kategori_product');
 
         // // Get filters from request
@@ -154,6 +177,7 @@ class ProductController extends Controller
     // Tampilkan form untuk mengedit produk
     public function edit(Product $product)
     {
+        $product = Product::all();
         return view('admin.product.create', compact('product'));
     }
 
@@ -165,27 +189,41 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
             'description' => 'nullable|string',
-            'kategori' => 'required|exists:kategoris,id',
-            'image' => 'nullable|string',
+            'kategori' => 'required|array', // Perbarui untuk array kategori
+            'kategori.*' => 'exists:kategoris,id', // Validasi setiap kategori
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi file gambar
         ]);
 
         // Update data produk
         $product->update([
             'name' => $request->name,
             'price' => $request->price,
-            // 'image' => $request->image,
-            'kategori_id' => $request->kategori,
             'description' => $request->description,
         ]);
 
+        // Sinkronisasi kategori dengan produk
+        $product->kategori_product()->sync($request->kategori);
+
         // Redirect setelah sukses update
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('Admin.product.index')->with('success', 'Product updated successfully.');
     }
 
-    // Hapus produk dari database
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        $product->delete();
-        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+        try {
+            $product = Product::findOrFail($id); // Temukan produk atau gagal
+
+            // Hapus relasi antara produk dan kategori
+            $product->kategori_product()->detach();
+
+            // Hapus produk itu sendiri
+            $product->delete();
+
+            return redirect()->back()->with('success', 'Product deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while deleting the product.');
+        }
     }
+
+
 }

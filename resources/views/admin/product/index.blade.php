@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6">Slides</h1>
+        <h1 class="text-3xl font-bold mb-6">Product</h1>
 
         <div class="text-xl py-4 text-white">
             <a href="{{ route('Admin.product.create') }}"
-                class="bg-blue-600 py-2 px-3 rounded-xl hover:bg-blue-700 duration-300 ease-in-out">
+                class="bg-blue-600 py-2 px-3 rounded-xl hover:bg-blue-700 text-white duration-300 ease-in-out">
                 Create
             </a>
         </div>
@@ -24,29 +24,29 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($products as $slide)
-                        <tr id="slide-row-{{ $slide->id }}">
+                    @foreach ($products as $item)
+                        <tr id="slide-row-{{ $item->id }}">
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $loop->iteration }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 slide-name"
-                                id="name-{{ $slide->id }}">{{ $slide->name }}</td>
+                                id="name-{{ $item->id }}">{{ $item->name }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 slide-name"
-                                id="name-{{ $slide->id }}">{{ $slide->slug }}</td>
+                                id="name-{{ $item->id }}">{{ $item->slug }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    @if ($slide->img)
-                                        <img class="h-10 rounded-md object-contain" src="{{ asset('uploads/' . $slide->img) }}"
-                                             alt="{{ $slide->name }}">
+                                    @if ($item->img)
+                                        <img class="h-10 rounded-md object-contain" src="{{ asset('uploads/' . $item->img) }}"
+                                             alt="{{ $item->name }}">
                                     @else
                                         <span class="text-sm text-gray-600">No Data</span>
                                     @endif
                                 </td>
                                 
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">
-                                {{ $slide->is_publish ? 'Active' : 'Nonactive' }}</td>
+                                {{ $item->is_publish ? 'Active' : 'Nonactive' }}</td>
                             <td class="px-6 py-4 whitespace-nowrap flex text-sm font-medium">
-                                <a href="{{ route('Admin.product.edit', $slide->id) }}"
+                                <a href="{{ route('Admin.product.edit', $item->id) }}"
                                     class="text-blue-600 hover:text-blue-900">Edit</a>
                                 <span class="mx-2">|</span>
-                                <form action="{{ route('Admin.product.destroy', $slide->id) }}" method="POST"
+                                <form action="{{ route('Admin.product.destroy', $item->id) }}" method="POST"
                                     class="flex items-center">
                                     @csrf
                                     @method('DELETE')
@@ -56,15 +56,15 @@
                                 </form>
                                 <span class="mx-2">|</span>
                                 {{-- <button class="text-sm text-blue-600 hover:text-blue-900"
-                                    onclick="toggleHide({{ $slide->id }})">Hide</button> --}}
+                                    onclick="toggleHide({{ $item->id }})">Hide</button> --}}
 
-                                <form action="{{ route('publish.slider', $slide->id) }}" method="POST">
+                                <form action="{{ route('publish.slider', $item->id) }}" method="POST">
                                     @csrf
-                                    <button onclick="toggleHide({{ $slide->id }})"
+                                    <button onclick="toggleHide({{ $item->id }})"
                                         class="text-sm text-blue-600
                                         hover:text-blue-900"
                                         type="submit">
-                                        {{ $slide->is_publish ? 'Unpublish' : 'Publish' }}
+                                        {{ $item->is_publish ? 'Unpublish' : 'Publish' }}
                                     </button>
                                 </form>
                             </td>

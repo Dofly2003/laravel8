@@ -24,6 +24,7 @@ class SliderController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'market_place' => 'nullable|string', 
             'is_publish' => 'nullable|boolean',
         ]);
 
@@ -35,6 +36,7 @@ class SliderController extends Controller
         Slider::create([
             'name' => $request->name,
             'img' => $fileName,
+            'market_place' => $request->market_place,
             'is_publish' => $request->has('is_publish') ? 1 : 0,
         ]);
 

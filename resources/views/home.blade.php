@@ -49,8 +49,10 @@
                                         alt="Slide {{ $index + 1 }}">
                                     <div
                                         class="carousel-caption hidden lg:block absolute bottom-4 lg:bottom-14 left-5 lg:left-10">
-                                        <div class="flex flex-row gap-1 lg:gap-3">
-                                            <a href="#Shopee"
+                                        <div class="flex flex-row gap-1 text-black lg:gap-3">
+
+                                            {!! $slider->market_place !!}
+                                            {{-- <a href="#Shopee"
                                                 class="cursor-pointer z-30 text-gray-700 flex gap-1 lg:gap-3 ease-in-out duration-300 rounded-md lg:rounded-xl flex-row border-orange-600 bg-orange-600 hover:bg-transparent items-center px-3 h-7 lg:h-14 lg:px-7 ">
                                                 <img src="https://www.freepnglogos.com/uploads/shopee-logo-png/shopee-logo-shop-with-the-gentlemen-collection-and-win-the-shopee-0.png"
                                                     class="lg:w-7 w-3 object-fit bg-white rounded-xl" alt="Shopee">
@@ -67,7 +69,7 @@
                                                 <img src="https://seeklogo.com/images/T/tiktok-logo-B9AC5FE794-seeklogo.com.png"
                                                     class="lg:w-7 w-4 p-1 bg-white object-fit rounded-xl" alt="Tiktok">
                                                 <p class="text-white text-xs sm:text-sm lg:text-base">Tiktok</p>
-                                            </a>
+                                            </a> --}}
                                         </div>
                                     </div>
                                 </div>

@@ -43,8 +43,8 @@
 </head>
 
 <body class="h-full ">
-    <div class="min-h-full bg-gray-900 ">
-        <nav class="sticky bg-gray-900 top-0 z-50" x-data="{ isOpen: false }">
+    <div class="min-h-full ">
+        <nav class="sticky bg-blue-500 top-0 z-50" x-data="{ isOpen: false }">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">

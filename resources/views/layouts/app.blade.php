@@ -12,7 +12,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Admin | 
+        {{ Auth::user()->name }}
+
+    </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,12 +26,26 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 </head>
 
 <body>
-    <div id="app">
-        <nav class="bg-white border-b shadow-sm">
-            <div class="container mx-auto px-4 flex justify-between items-center py-4 bg-gray-800 text-white">
+    <div class="" id="app">
+        <nav class="bg-gray-800 border-b shadow-sm">
+            <div class="container mx-auto px-4 flex justify-between items-center py-4  text-white">
                 <!-- Logo -->
                 <a href="{{ url('/') }}" class="text-2xl uppercase font-bold text-gray-100">
                     {{-- {{ config('app.name', 'Laravel') }} --}} dinamikaindomedia
@@ -61,7 +78,7 @@
                         @else
                             <li x-data="{ open: false }" class="relative group">
                                 <button @click="open = ! open"
-                                    class="flex items-center text-gray-100 hover:text-gray-900 focus:outline-none">
+                                    class="flex items-center text-gray-100 hover:text-gray-500 focus:outline-none">
                                     {{ Auth::user()->name }}
                                     <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -103,6 +120,8 @@
         navToggle.addEventListener('click', () => {
             navContent.classList.toggle('hidden');
         });
+
+        
     </script>
 </body>
 

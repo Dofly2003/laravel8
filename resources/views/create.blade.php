@@ -1,6 +1,7 @@
 @extends('layout.main')
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
+
 <style>
     select {
         scrollbar-width: none;

@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add custom styles for Summernote using Tailwind */
+.note-editor .note-toolbar {
+    @apply bg-gray-100 p-4;  /* Tailwind utilities */
+}
+
+.note-editor .note-btn {
+    @apply bg-blue-500 text-white hover:bg-blue-700;  /* Tailwind utilities for buttons */
+}
+
+@layer utilities {
+    .animation-display {
+      animation: calc(1s * var(--));
+    }
+  }

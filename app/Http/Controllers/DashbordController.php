@@ -18,8 +18,8 @@ class DashbordController extends Controller
         // }
 
 
-        $products = Product::all(); // Ambil semua produk dari database
-        $slides = Slider::all(); // Ambil semua slide dari database
+        $products = Product::paginate(5); // Ambil semua produk dari database
+        $slides = Slider::paginate(5); // Ambil semua slide dari database
         return view('dashbord', compact('products', 'slides')); // Pastikan view ini sesuai
     }
 }   

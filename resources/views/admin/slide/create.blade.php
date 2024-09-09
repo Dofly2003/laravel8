@@ -1,53 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <style>
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
 
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            border-radius: 50%;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-        }
-
-        input:checked+.slider {
-            background-color: #2196F3;
-        }
-
-        input:checked+.slider:before {
-            transform: translateX(26px);
-        }
-    </style>
-
+    
     <div class="container mx-auto px-4 py-6">
         @if (session('success'))
             <div class="bg-green-100 text-green-800 p-4 rounded-lg mb-4">
@@ -56,15 +24,19 @@
         @endif
 
         <form action="{{ route('Admin.sliders.store') }}" method="POST" enctype="multipart/form-data"
-            class="bg-white p-6 rounded-lg shadow-md">
+            class="bg-gray-200 p-6 rounded-lg shadow-xl">
             @csrf
 
             <!-- Your form fields go here -->
             <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700">Name Image:</label>
-                <input type="text" id="name" name="name" required
-                    value=""
+                <label for="name" class="block text-sm font-medium text-gray-700">Name Slider :</label>
+                <input type="text" id="name" name="name" required value=""
                     class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+            </div>
+
+            <div class="mt-4 bg-gray-50 p-5 rounded-xl">
+                <label for="market_place" class="block text-sm font-medium leading-6 text-gray-900">Market Place</label>
+                <textarea id="market_place" class=" w-full" name="market_place"></textarea>
             </div>
 
             <div class="mb-4">
@@ -79,4 +51,34 @@
             </button>
         </form>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#market_place').summernote();
+        });
+        $(document).ready(function() {
+            $('#market_place').summernote({
+                height: 300, // Set editor height
+                minHeight: null, // Set minimum height of editor
+                maxHeight: null, // Set maximum height of editor
+                focus: true, // Set focus to editable area after initializing
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                ],
+                callbacks: {
+                    onInit: function() {
+                        // Add custom Tailwind classes to Summernote buttons
+                        $('.note-btn').addClass('bg-blue-500 text-white hover:bg-blue-700');
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

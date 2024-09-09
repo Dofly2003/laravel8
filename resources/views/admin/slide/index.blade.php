@@ -6,7 +6,7 @@
 
         <div class="text-xl py-4 text-white">
             <a href="{{ route('Admin.slider.create') }}"
-                class="bg-blue-600 py-2 px-3 rounded-xl hover:bg-blue-700 duration-300 ease-in-out">
+                class="bg-blue-600 py-2 px-3 rounded-xl hover:bg-blue-700 text-white duration-300 ease-in-out">
                 Create
             </a>
         </div>
