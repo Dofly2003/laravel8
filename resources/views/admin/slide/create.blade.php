@@ -58,9 +58,6 @@
 
     <script>
         $(document).ready(function() {
-            $('#market_place').summernote();
-        });
-        $(document).ready(function() {
             $('#market_place').summernote({
                 height: 300, // Set editor height
                 minHeight: null, // Set minimum height of editor

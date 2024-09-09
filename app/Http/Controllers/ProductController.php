@@ -32,7 +32,12 @@ class ProductController extends Controller
     // Tampilkan detail produk
     public function showIndexAdmin(Product $product)
     {
-        $products = Product::paginate(7);
+        $products = Product::filter(request(['search', 'kategori']))
+        ->with('kategori_product')
+        ->latest()
+        ->paginate(7)
+        ->withQueryString();
+
         return view('admin.product.index', compact('products'));
     }
 
@@ -54,7 +59,6 @@ class ProductController extends Controller
         // Validasi input dari form
         $request->validate([
             'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
             'deskripsi' => 'nullable|string',
             'kategori' => 'required|array',
             'kategori.*' => 'exists:kategoris,id',

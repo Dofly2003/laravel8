@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 class Product extends Model
 {
     use HasFactory;
+
     public function kategori_product()
     {
         return $this->belongsToMany(Kategori::class, 'kategori_produk', 'product_id', 'kategori_id');
