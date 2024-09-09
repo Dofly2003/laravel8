@@ -190,6 +190,13 @@
                         </div>
                     </div>
 
+                    <div class="container mx-auto px-4 py-6">
+                        <h2 class="text-xl font-bold mb-4">Video Tutorial</h2>
+                        <div class="relative pb-9/16">
+                            <iframe  width="560" height="315" class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/watch?v=tpqLrNHqepg&t=6s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+
                     <div class="gap-7 flex flex-col">
                         <h1 class="lg:text-4xl text-xl flex justify-center ">Support Brand</h1>
                         <div class="w-full  justify-center flex ">
@@ -333,7 +340,7 @@
         }
 
         // Pindah slide secara otomatis setiap 5 detik
-       setInterval(nextSlide, 5000);
+       setInterval(nextSlide, 7000);
 
     </script>
     <script src="js/slider"></script>

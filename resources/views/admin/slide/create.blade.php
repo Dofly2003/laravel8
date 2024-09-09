@@ -63,12 +63,6 @@
                 minHeight: null, // Set minimum height of editor
                 maxHeight: null, // Set maximum height of editor
                 focus: true, // Set focus to editable area after initializing
-                toolbar: [
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['height', ['height']]
-                ],
                 callbacks: {
                     onInit: function() {
                         // Add custom Tailwind classes to Summernote buttons

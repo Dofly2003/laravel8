@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mx-auto p-6">
-        <h1 class="text-3xl font-bold mb-6">Slides</h1>
+        <h1 class="text-3xl font-bold mb-6">Kategori</h1>
 
         <div class="text-xl py-4 text-white">
             <a href="{{ route('Admin.kategori.create') }}"

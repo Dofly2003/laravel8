@@ -42,23 +42,26 @@
                         <div class="gap-4 grid grid-cols-2 md:grid-col-3 lg:grid-cols-4 xl:grid-cols-5 ">
 
                             @forelse ($products as $product)
-                                <div
-                                    class="lg:w-48 w-40 max-w-xs h-60 lg:h-72  bg-gray-500 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-                                    <a href="/product/{{ $product->slug }}">
-                                        <img src="https://www.dinamikaindomedia.co.id/katalogs/Pi6sSSyIBPxXY5KzLcgFm5tsVV5y1QlJ8qRKIiHP.jpg"
-                                            alt="Product"
-                                            class="w-48 lg:h-52 h-44 object-cover rounded-t-xl justify-center" />
-                                        <div class=" text-center flex flex-col-reverse items-center">
-                                            @foreach ($product->kategori_product->take(2) as $kategori)
+                                @if ($product->is_publish)
+                                    <div
+                                        class="lg:w-48 w-40 max-w-xs h-60 lg:h-72  bg-gray-500 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+                                        <a href="/product/{{ $product->slug }}">
+                                            <img src="https://www.dinamikaindomedia.co.id/katalogs/Pi6sSSyIBPxXY5KzLcgFm5tsVV5y1QlJ8qRKIiHP.jpg"
+                                                alt="Product"
+                                                class="w-48 lg:h-52 h-44 object-cover rounded-t-xl justify-center" />
+                                            <div class=" text-center flex flex-col-reverse items-center">
+                                                @foreach ($product->kategori_product->take(2) as $kategori)
+                                                    <p
+                                                        class="text-gray-400 w-full justify-center flex flex-wrap flex-row text-xs">
+                                                        {{ Str::limit($kategori->name) }}</span>
+                                                @endforeach
                                                 <p
-                                                    class="text-gray-400 w-full justify-center flex flex-wrap flex-row text-xs">
-                                                    {{ Str::limit($kategori->name) }}</span>
-                                            @endforeach
-                                            <p class="text-md lg:text-lg font-bold text-gray-100 truncate block capitalize">
-                                                {{ $product->name }}</p>
-                                        </div>
-                                    </a>
-                                </div>
+                                                    class="text-md lg:text-lg font-bold text-gray-100 truncate block capitalize">
+                                                    {{ $product->name }}</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endif
                             @empty
                                 <div class="h-96 ">
                                     <p class="font-semibold text-xl overflow-hidden w-11/12 flex justify-center">Product Not
@@ -77,8 +80,7 @@
                             <div id="dropdownMenu"
                                 class="hidden opacity-0 transition-opacity animation-display duration-300 transform scale-95 flex-col">
                                 @foreach ($kategoris as $kategori)
-                                    <a href="/products/kategories/{{ $kategori->name }}" id="kategori"
-                                        name="kategori"
+                                    <a href="/products/kategories/{{ $kategori->name }}" id="kategori" name="kategori"
                                         class="bg-slate-800 m-2 hover:bg-slate-900 ease-in-out duration-300 border w-8/12 border-gray-300 text-gray-300 text-sm rounded-lg flex gap-3 focus:ring-blue-500 focus:border-blue-500 p-2.5">
                                         <svg class="h-5 w-5 text-gray-400 rtl:rotate-180" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"

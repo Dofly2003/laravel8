@@ -9,11 +9,11 @@
     <!-- Include Alpine.js -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
 </head>
-<body class="bg-gray-100">
-    <div class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-400 to-indigo-600 p-6">
-        <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-8 space-y-8">
+<body style="background-image: url('{{ asset('img/image.png') }}'); background-size: cover; background-repeat: no-repeat; background-position: center center;" class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center  p-6">
+        <div class="w-full max-w-md rounded-lg shadow-lg p-8 space-y-8" style="background-color: rgba(40, 38, 38, 0.444);">
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold text-gray-900">Welcome Back!</h2>
+                <h2 class="text-3xl font-extrabold text-gray-200">Welcome Back!</h2>
                 <p class="text-sm text-gray-500">Please sign in to your account</p>
             </div>
             <form class="space-y-6" action="/login/Auth" method="POST">
@@ -32,10 +32,10 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
                         <input id="remember_me" name="remember" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-                        <label for="remember_me" class="ml-2 block text-sm text-gray-900">Remember me</label>
+                        <label for="remember_me" class="ml-2 block text-sm text-gray-200">Remember me</label>
                     </div>
                     <div class="text-sm">
-                        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Lupa Password?</a>
+                        <a href="#" class="font-medium text-indigo-300 hover:text-indigo-500">Lupa Password?</a>
                     </div>
                 </div>
 
@@ -47,8 +47,8 @@
             </form>
 
             <div class="text-center mt-6">
-                <p class="text-sm text-gray-600">Belum Terdaftar? 
-                    <a href="{{ route('register') }}" class="font-medium text-indigo-600 hover:text-indigo-500">
+                <p class="text-sm text-gray-300">Belum Terdaftar? 
+                    <a href="{{ route('register') }}" class="font-medium text-indigo-400 hover:text-indigo-500">
                         Daftar Disini
                     </a>
                 </p>

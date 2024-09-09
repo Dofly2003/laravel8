@@ -109,21 +109,21 @@ class TestZoneController extends Controller
         return redirect()->route('testZone.index')->with('success', 'Slider visibility updated successfully.');
     }
 
-    public function publishSliders($id)
-    {
-        $photo = Slider::findOrFail($id);
-        $photo->is_publish = !$photo->is_publish; // Toggle nilai
-        $photo->save();
-        return redirect()->back()->with('success', 'Status publikasi berhasil diubah.');
-    }
-    // public function publishCustomer($id)
+    // public function publishSliders($id)
     // {
-    //     $photo = Customer::findOrFail($id);
+    //     $photo = Slider::findOrFail($id);
     //     $photo->is_publish = !$photo->is_publish; // Toggle nilai
     //     $photo->save();
-
     //     return redirect()->back()->with('success', 'Status publikasi berhasil diubah.');
     // }
+    public function publishCustomer($id)
+    {
+        $photo = Customer::findOrFail($id);
+        $photo->is_publish = !$photo->is_publish; // Toggle nilai
+        $photo->save();
+
+        return redirect()->back()->with('success', 'Status publikasi berhasil diubah.');
+    }
     // public function publishBrand($id)
     // {
     //     $photo = Brand::findOrFail($id);

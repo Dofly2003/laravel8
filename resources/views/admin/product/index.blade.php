@@ -83,7 +83,7 @@
                                 {{-- <button class="text-sm text-blue-600 hover:text-blue-900"
                                     onclick="toggleHide({{ $item->id }})">Hide</button> --}}
 
-                                <form action="{{ route('publish.slider', $item->id) }}" method="POST">
+                                <form action="{{ route('publish.product', $item->id) }}" method="POST">
                                     @csrf
                                     <button onclick="toggleHide({{ $item->id }})"
                                         class="text-sm text-blue-600

@@ -33,10 +33,10 @@ class ProductController extends Controller
     public function showIndexAdmin(Product $product)
     {
         $products = Product::filter(request(['search', 'kategori']))
-        ->with('kategori_product')
-        ->latest()
-        ->paginate(7)
-        ->withQueryString();
+            ->with('kategori_product')
+            ->latest()
+            ->paginate(7)
+            ->withQueryString();
 
         return view('admin.product.index', compact('products'));
     }
@@ -229,5 +229,13 @@ class ProductController extends Controller
         }
     }
 
+
+    public function publishProduct($id)
+    {
+        $photo = Product::findOrFail($id);
+        $photo->is_publish = !$photo->is_publish; // Toggle nilai
+        $photo->save();
+        return redirect()->back()->with('success', 'Status publikasi berhasil diubah.');
+    }
 
 }

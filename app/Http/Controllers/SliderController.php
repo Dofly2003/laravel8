@@ -112,4 +112,13 @@ class SliderController extends Controller
 
         return redirect()->route('Admin.slider.index')->with('success', 'Slider deleted successfully.');
     }
+
+    public function publishSliders($id)
+    {
+        $photo = Slider::findOrFail($id);
+        $photo->is_publish = !$photo->is_publish; // Toggle nilai
+        $photo->save();
+
+        return redirect()->back()->with('success', 'Status publikasi berhasil diubah.');
+    }
 }

@@ -5,6 +5,7 @@
         <li class="mb-4"><a href="{{ route('Admin.slider.index') }}" class="text-lg text-white hover:text-gray-300">Slide</a></li>
         <li class="mb-4"><a href="{{ route('Admin.product.index') }}" class="text-lg text-white hover:text-gray-300">Products</a></li>
         <li class="mb-4"><a href="{{ route('Admin.kategori.index') }}" class="text-lg text-white hover:text-gray-300">Kategori</a></li>
+        <li class="mb-4"><a href="" class="text-lg text-white hover:text-gray-300">brand</a></li>
         <li class="mb-4"><a href="" class="text-lg text-white hover:text-gray-300">Kerjasama</a></li>
     </ul>
 </div>

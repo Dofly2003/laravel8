@@ -26,9 +26,9 @@ Route::put('/test/{id}', [TestZoneController::class, 'update'])->name('testZone.
 Route::delete('/test/{id}', [TestZoneController::class, 'destroy'])->name('testZone.destroy');
 Route::patch('/testZone/{id}/toggle', [TestZoneController::class, 'toggle'])->name('testZone.toggle');
 
-Route::post('/{slider:id}', [TestZoneController::class, 'publishSliders'])->name('publish.slider');
-Route::post('/{customer:id}', [TestZoneController::class, 'publishCustomer'])->name('publish.customer');
-Route::post('/{brand:id}', [TestZoneController::class, 'publishBrand'])->name('publish.brand');
+Route::post('/slider/{slider:id}', [SliderController::class, 'publishSliders'])->name('publish.slider');
+Route::post('/product/{Product:id}', [ProductController::class, 'publishProduct'])->name('publish.product');
+Route::post('/brand/{brand:id}', [TestZoneController::class, 'publishBrand'])->name('publish.brand');
 
 Auth::routes();
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
