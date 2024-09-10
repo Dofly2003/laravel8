@@ -29,6 +29,7 @@ module.exports = {
   },
   variants: {},
   plugins: [
+    require('@tailwindcss/aspect-ratio'),
     require('taos/plugin'), 
     require('flowbite/plugin'),
   ],

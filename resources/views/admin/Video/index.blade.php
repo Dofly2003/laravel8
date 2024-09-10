@@ -17,28 +17,32 @@
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Img</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracdateking-wider">Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Vid</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Status</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Action</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($slides as $slide)
-                        <tr id="slide-row-{{ $slide->id }}">
+                    @foreach ($videos as $item)
+                        <tr id="slide-row-{{ $item->id }}">
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $loop->iteration }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 slide-name"
-                                id="name-{{ $slide->id }}">{{ $slide->name }}</td>
+                                id="name-{{ $item->id }}">{{ $item->title }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <img class="h-10 rounded-md object-contain" src="{{ asset('uploads/' . $slide->img) }}"
-                                    alt="{{ $slide->name }}">
+                                <div class="w-4/5 max-w-md aspect-w-15  aspect-h-9">
+                                    <iframe 
+                                        class=""
+                                        src="https://www.youtube.com/embed/{{ $item->youtube_url }}"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">
-                                {{ $slide->is_publish ? 'Active' : 'Nonactive' }}</td>
+                                {{ $item->is_publish ? 'Active' : 'Nonactive' }}</td>
                             <td class="px-6 py-4 whitespace-nowrap flex text-sm font-medium">
-                                <a href="{{ route('Admin.sliders.edit', $slide->id) }}"
-                                    class="text-blue-600 hover:text-blue-900">Edit</a>
-                                <span class="mx-2">|</span>
-                                <form action="{{ route('Admin.sliders.destroy', $slide->id) }}" method="POST"
+                                <form action="{{ route('Admin.sliders.destroy', $item->id) }}" method="POST"
                                     class="flex items-center">
                                     @csrf
                                     @method('DELETE')
@@ -48,15 +52,15 @@
                                 </form>
                                 <span class="mx-2">|</span>
                                 {{-- <button class="text-sm text-blue-600 hover:text-blue-900"
-                                    onclick="toggleHide({{ $slide->id }})">Hide</button> --}}
+                                    onclick="toggleHide({{ $item->id }})">Hide</button> --}}
 
-                                <form action="{{ route('publish.slider', $slide->id) }}" method="POST">
+                                <form action="{{ route('publish.videos', $item->id) }}" method="POST">
                                     @csrf
-                                    <button onclick="toggleHide({{ $slide->id }})"
+                                    <button onclick="toggleHide({{ $item->id }})"
                                         class="text-sm text-blue-600
                                         hover:text-blue-900"
                                         type="submit">
-                                        {{ $slide->is_publish ? 'Unpublish' : 'Publish' }}
+                                        {{ $item->is_publish ? 'Unpublish' : 'Publish' }}
                                     </button>
                                 </form>
                             </td>
@@ -65,23 +69,4 @@
                 </tbody>
         </div>
     </table>
-    <div  class="py-4 flex justify-center">
-        @if ($slides instanceof \Illuminate\Pagination\LengthAwarePaginator)
-        {{ $slides->links() }}
-        @endif
-    </div>
-    </div>
-
-    <script>
-        function toggleHide(id) {
-            const nameElement = document.getElementById(`name-${id}`);
-
-            // Toggle strikethrough and red text color
-            if (nameElement.classList.contains('line-through')) {
-                nameElement.classList.remove('line-through', 'text-red-500');
-            } else {
-                nameElement.classList.add('line-through', 'text-red-500');
-            }
-        }
-    </script>
 @endsection

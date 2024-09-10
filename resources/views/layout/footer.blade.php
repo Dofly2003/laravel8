@@ -231,65 +231,21 @@
     </section> --}}
 
 
-
-<footer class="bg-white border-t py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <!-- Column 1 -->
-            <div>
-                <h3 class="text-gray-800 font-semibold mb-4">Selengkapnya di Beranda</h3>
-                <ul class="space-y-2 text-gray-600">
-                    <li><a href="#" class="hover:underline">Beranda</a></li>
-                    <li><a href="#" class="hover:underline">Profil</a></li>
-                    <li><a href="#" class="hover:underline">Produk Kami</a></li>
-                    <li><a href="#" class="hover:underline">Costumers</a></li>
-                    <li><a href="#" class="hover:underline">Kontak</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 2 -->
-            <div>
-                <h3 class="text-gray-800 font-semibold mb-4">Lebih jauh mengenai Kami</h3>
-                <ul class="space-y-2 text-gray-600">
-                    <li><a href="#" class="hover:underline">Siapakah kami</a></li>
-                    <li><a href="#" class="hover:underline">Aktivitas Kami</a></li>
-                    <li><a href="#" class="hover:underline">Karir</a></li>
-                    <li><a href="#" class="hover:underline">Ruang Media</a></li>
-                    <li><a href="#" class="hover:underline">Proyek kami</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 3 -->
-            <div>
-                <h3 class="text-gray-800 font-semibold mb-4">Bagaimana kami membantu Anda?</h3>
-                <ul class="space-y-2 text-gray-600">
-                    <li><a href="#" class="hover:underline">Kontak Layanan Shell</a></li>
-                    <li><a href="#" class="hover:underline">Bantuan dan Layanan Pelanggan</a></li>
-                    <li><a href="#" class="hover:underline">Pencari SPBU Shell</a></li>
-                    <li><a href="#" class="hover:underline">Pencarian kerja untuk profesional</a></li>
-                </ul>
-            </div>
-
-            <!-- Column 4 -->
-            <div>
-                <h3 class="text-gray-800 font-semibold mb-4">Terhubung dengan kami</h3>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-8 border-t pt-4 text-gray-600 text-center sm:text-left">
-            <ul class="flex justify-center sm:justify-start space-x-4">
-                <li><a href="#" class="hover:underline">Aksesibilitas</a></li>
-                <li><a href="#" class="hover:underline">Syarat dan ketentuan</a></li>
-                <li><a href="#" class="hover:underline">Pemberitahuan privasi</a></li>
-                <li><a href="#" class="hover:underline">Kebijakan cookie</a></li>
-                <li><a href="#" class="hover:underline">Modifikasi pengaturan cookie</a></li>
-            </ul>
+<footer class="bg-white py-4 border-t">
+    <div class="container mx-auto flex justify-between items-center">
+        <span class="text-sm text-gray-500">
+            © 2024 Carlo's Bakery, Inc. all rights reserved.
+        </span>
+        <div class="flex space-x-4">
+            <a href="#" class="text-sm text-gray-500 hover:text-gray-900">Return Policy</a>
+            <span class="text-sm text-gray-500">/</span>
+            <a href="#" class="text-sm text-gray-500 hover:text-gray-900">FAQ</a>
+            <span class="text-sm text-gray-500">/</span>
+            <a href="#" class="text-sm text-gray-500 hover:text-gray-900">Shipping</a>
+            <span class="text-sm text-gray-500">/</span>
+            <a href="#" class="text-sm text-gray-500 hover:text-gray-900">Terms of Service</a>
+            <span class="text-sm text-gray-500">/</span>
+            <a href="#" class="text-sm text-gray-500 hover:text-gray-900">Privacy & Security</a>
         </div>
     </div>
 </footer>

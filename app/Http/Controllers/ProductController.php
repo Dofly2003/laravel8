@@ -149,7 +149,7 @@ class ProductController extends Controller
             $selectedCategory = $kategori->name;
         } else {
             // Tampilkan semua produk jika tidak ada kategori yang dipilih
-            $products = Product::with('kategori_product')->paginate(20)->get();
+            $products = Product::with('kategori_product')->paginate(20);
 
             $selectedCategory = 'All';
         }
@@ -189,58 +189,48 @@ class ProductController extends Controller
     }
 
     // Update produk di database
- 
+
     public function update(Request $request, Product $product)
     {
-        // Validate input from the form
+        // Validate input
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'kategori' => 'required|array',
+            'kategori' => 'nullable|array',
             'kategori.*' => 'exists:kategoris,id',
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Debugging: Log the request data
-        Log::info('Update request data:', $request->all());
-
         // Handle image upload
-        $imagePath = $product->img; // Default to old image path
-
         if ($request->hasFile('img')) {
-            // Debugging: Log image file information
-            Log::info('Image file uploaded:', [
-                'original_name' => $request->file('img')->getClientOriginalName(),
-                'mime_type' => $request->file('img')->getMimeType(),
-                'size' => $request->file('img')->getSize(),
-            ]);
-
-            // Delete old image if exists
+            // Delete old image if it exists
             if ($product->img) {
-                Storage::disk('public')->delete($product->img);
+                $oldImagePath = public_path('uploads/' . $product->img);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
             }
 
-            // Store new image
-            $imagePath = $request->file('img')->store('images', 'public');
+            // Save new image
+            $fileName = time() . '.' . $request->img->extension();
+            $request->img->move(public_path('uploads'), $fileName);
+            $product->img = $fileName;
         }
 
-        // Update product data
-        $product->update([
+        // Update product attributes
+        $product->fill([
             'name' => $request->name,
-            'price' => $request->price,
-            'description' => $request->description,
-            'img' => $imagePath,
-        ]);
+            'description' => $request->description ?? '',
+        ])->save();
 
-        // Sync categories with product
-        $product->kategori_product()->sync($request->kategori);
+        // Sync categories
+        $product->kategori_product()->sync($request->kategori ?? []);
 
-        // Debugging: Log successful update
-        log::info('Product updated successfully:', $product->toArray());
-
-        // Redirect after successful update
-        return redirect()->route('Admin.product.index')->with('success', 'Product updated successfully.');
+        // Redirect with success message
+        return redirect()->route('Admin.product.index')->with('success', 'Produk berhasil diperbarui.');
     }
+
+
 
 
 

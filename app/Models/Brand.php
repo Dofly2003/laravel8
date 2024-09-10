@@ -10,6 +10,6 @@ class Brand extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $fillable = ['name', 'img'];
+    protected $fillable = ['name', 'img', 'is_publish'];
     protected $table = 'brands';
 }

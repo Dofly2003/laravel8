@@ -68,9 +68,10 @@
             </div>
 
             <div class="mb-4">
-                <label for="img" class="block text-sm font-medium text-gray-700">Upload Image:</label>
+                <label for="img" class="block text-sm font-medium text-gray-700">Upload Image: </label>
+                <label for="img" class="block text-sm font-medium text-gray-700">Old Image: {{ old('img', $slides->img) }}</label>
                 <input type="file" id="img" name="img" value="{{ old('img', $slides->img) }}"
-                    class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:font-medium file:bg-gray-100 hover:file:bg-gray-200">
+                    class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:font-medium file:bg-gray-100 hover:file:bg-gray-200"> 
             </div>
 
             <button type="submit"

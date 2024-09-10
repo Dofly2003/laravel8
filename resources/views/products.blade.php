@@ -46,10 +46,17 @@
                                     <div
                                         class="lg:w-48 w-40 max-w-xs h-60 lg:h-72  bg-gray-500 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
                                         <a href="/product/{{ $product->slug }}">
-                                            <img src="https://www.dinamikaindomedia.co.id/katalogs/Pi6sSSyIBPxXY5KzLcgFm5tsVV5y1QlJ8qRKIiHP.jpg"
-                                                alt="Product"
-                                                class="w-48 lg:h-52 h-44 object-cover rounded-t-xl justify-center" />
-                                            <div class=" text-center flex flex-col-reverse items-center">
+                                            <div class="h-4/5 ">
+                                                @if (!empty($product->img))
+                                                    <img src="{{ asset('uploads/' . $product->img) }}"
+                                                        alt="{{ $product->name }}" class="h-5/6 object-contain w-full rounded-t-xl bg-slate-300">
+                                                @else
+                                                    <img src="https://p7.hiclipart.com/preview/696/451/637/computer-icons-inventory-business-management-warehouse-warehouse.jpg"
+                                                        alt="Default Image" class="w-full  h-auto">
+                                                @endif
+                                            </div>
+
+                                            <div class="h-1/5 text-center flex flex-col-reverse items-center">
                                                 @foreach ($product->kategori_product->take(2) as $kategori)
                                                     <p
                                                         class="text-gray-400 w-full justify-center flex flex-wrap flex-row text-xs">

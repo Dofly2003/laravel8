@@ -190,12 +190,22 @@
                         </div>
                     </div>
 
-                    <div class="container mx-auto px-4 py-6">
-                        <h2 class="text-xl font-bold mb-4">Video Tutorial</h2>
-                        <div class="relative pb-9/16">
-                            <iframe  width="560" height="315" class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/watch?v=tpqLrNHqepg&t=6s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>
+                    <div class="video-container flex flex-wrap gap-3 h-64 justify-center">
+                        @forelse ($videos->take(1) as $video)
+                            <div class="w-4/5 max-w-md aspect-w-16 aspect-h-9">
+                                <iframe 
+                                    class="w-full h-full"
+                                    src="https://www.youtube.com/embed/{{ $video->youtube_url }}" 
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        @empty
+                            <p class="text-center text-sm text-gray-500">No videos available</p>
+                        @endforelse
+                    </div>                    
+
 
                     <div class="gap-7 flex flex-col">
                         <h1 class="lg:text-4xl text-xl flex justify-center ">Support Brand</h1>
@@ -204,8 +214,7 @@
                             <div class="gap-5 flex-wrap mx-10 item-center justify-center w-full flex">
                                 @forelse ($brands as $item)
                                     @if ($item->is_publish)
-                                        <img
-                                            class="lg:w-20  w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
+                                        <img class="lg:w-20  w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
                                             src="{{ asset('uploads/' . $item->img) }}" alt="{{ $item->name }}">
                                     @endif
                                 @empty
@@ -306,8 +315,7 @@
                         <div class="gap-5 flex-wrap mx-10 item-center justify-center w-full flex">
                             @forelse ($customers as $item)
                                 @if ($item->is_publish)
-                                    <img
-                                        class="lg:w-20  w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
+                                    <img class="lg:w-20  w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
                                         src="{{ asset('uploads/' . $item->img) }}" alt="{{ $item->name }}">
                                 @endif
                             @empty
@@ -340,8 +348,7 @@
         }
 
         // Pindah slide secara otomatis setiap 5 detik
-       setInterval(nextSlide, 7000);
-
+        setInterval(nextSlide, 7000);
     </script>
     <script src="js/slider"></script>
     </body>
