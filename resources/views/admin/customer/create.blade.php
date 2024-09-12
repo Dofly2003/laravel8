@@ -23,24 +23,28 @@
         @endif
 
         <!-- Form for creating product -->
-        <form action="{{ route('Admin.kategori.update', $kategori->id) }}" method="POST" enctype="multipart/form-data" class="bg-gray-100 p-6 rounded-lg shadow-md">
+        <form action="{{ route('Admin.customer.store') }}" method="POST" enctype="multipart/form-data"
+            class="bg-gray-100 p-6 rounded-lg shadow-md">
             @csrf
-            @method('PUT')
-
 
             <!-- Product Name -->
             <div class="mb-4">
                 <label for="name" class="block text-sm font-medium text-gray-700">Kategori Name:</label>
-                <input  value="{{ old('name', $kategori->name) }}" type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-            </div> 
+                <input type="text" id="name" name="name" required
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+            <div class="mb-4">
+                <label for="img" class="block text-sm font-medium text-gray-700">Upload Image:</label>
+                <input type="file" id="img" name="img" value="" required
+                    class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:font-medium file:bg-gray-100 hover:file:bg-gray-200">
+            </div>
 
-           
+
             <!-- Submit Button -->
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Submit</button>
+            <button type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Submit</button>
         </form>
     </div>
 
-    <script>
-        
-    </script>
+    <script></script>
 @endsection

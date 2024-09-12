@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\kategoriController;
 use App\Http\Controllers\SliderController;
@@ -15,9 +16,11 @@ use App\Http\Controllers\TestZoneController;
 use App\Http\Controllers\Auth\LoginController;
 
 //home
-Route::get('/',[HomeController::class, 'index']);
-Route::get('/aboutus',function () {return view('kontak');});
-Route::get('/profil',function () {return view('profilPerusahaan');});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/aboutus', function () {
+    return view('kontak'); });
+Route::get('/profil', function () {
+    return view('profilPerusahaan'); });
 
 
 Route::get('/test', [TestZoneController::class, 'index'])->name('testZone.index');
@@ -42,7 +45,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 // Route::resource('sliders', SliderController::class);
 
 
-Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function (){
+Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function () {
 
     //slider main
     Route::get('/slider', [SliderController::class, 'index'])->name('slider.index');
@@ -54,18 +57,19 @@ Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function (){
 
 
     //product main
-    Route::get('/product', [ProductController::class, 'showIndexAdmin'])->name('product.index');
+    Route::get('/products', [ProductController::class, 'showIndexAdmin'])->name('product.index');
+    Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
     Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/product/Create', [ProductController::class, 'store'])->name('product.store');
     Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
     Route::put('/products/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
-    
+
     //kategori main 
     Route::get('/kategori', [kategoriController::class, 'index'])->name('kategori.index');
     Route::get('/kategories/create', [kategoriController::class, 'create'])->name('kategori.create');
     Route::post('/kategories/store', [kategoriController::class, 'store'])->name('kategori.store');
-    Route::get('/kategories/{id}/edit', [kategoriController::class, 'ed it'])->name('kategori.edit');
+    Route::get('/kategories/{id}/edit', [kategoriController::class, 'edit'])->name('kategori.edit');
     Route::put('/kategories/{id}', [kategoriController::class, 'update'])->name('kategori.update');
     Route::delete('/kategories/{id}', [kategoriController::class, 'destroy'])->name('kategori.destroy');
 
@@ -76,7 +80,7 @@ Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function (){
     Route::get('/videos/{id}/edit', [HomeController::class, 'edit'])->name('video.edit');
     Route::put('/videos/{id}', [HomeController::class, 'update'])->name('video.update');
     Route::delete('/videos/{id}', [HomeController::class, 'destroy'])->name('video.destroy');
-    
+
     //brand
     Route::get('/brand', [BrandController::class, 'index'])->name('brand.index');
     Route::get('/brands/create', [BrandController::class, 'create'])->name('brand.create');
@@ -86,9 +90,12 @@ Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function (){
     Route::delete('/brands/{id}', [BrandController::class, 'destroy'])->name('brand.destroy');
 
     //customers
-    // Route::get('/customer', [CustomerController::class, 'index'])->name('customer.index');
-    // Route::get('/customers/create', [CustomerController::class, 'create'])->name('customer.create');
-
+    Route::get('customer', [CustomerController::class, 'index'])->name('customer.index');
+    Route::get('customers/create', [CustomerController::class, 'create'])->name('customer.create');
+    Route::post('customers/store', [CustomerController::class, 'store'])->name('customer.store');
+    Route::get('customers/{id}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
+    Route::put('customers/{id}', [CustomerController::class, 'update'])->name('customer.update');
+    Route::delete('customers/{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
 
 });
 
@@ -97,12 +104,13 @@ Route::post('/slider/{slider:id}', [SliderController::class, 'publishSliders'])-
 Route::post('/product/{Product:id}', [ProductController::class, 'publishProduct'])->name('publish.product');
 Route::post('/brand/{brand:id}', [BrandController::class, 'publishBrand'])->name('publish.brand');
 Route::post('/videos/{videos:id}', [HomeController::class, 'publishVideos'])->name('publish.videos');
+Route::post('/customer/{customer:id}', [CustomerController::class, 'publishCustomer'])->name('publish.customer');
 
 
 //product
 Route::get('/create', [test::class, 'index']);
 Route::get('/products', [ProductController::class, 'index']);
-Route::get('/product/{slug}', [ProductController::class, 'show']);
+Route::get('/product/{slug}', [ProductController::class, 'SinglePoRoduct']);
 Route::get('/products/kategories/{kategori:name}', [ProductController::class, 'showByKategori']);
 Route::resource('products', ProductController::class);
 

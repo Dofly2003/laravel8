@@ -44,19 +44,19 @@
             </div>
         
             <!-- Categories -->
-            <div class="mb-4">
-                <label for="kategori" class="block text-sm font-medium text-gray-700">Categories:</label>
-                <select id="kategori" name="kategori[]"
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm js-example-basic-multiple"
-                    multiple="multiple">
-                    @foreach ($kategoris as $kategori)
-                        <option value="{{ $kategori->id }}"
-                            {{ in_array($kategori->id, old('kategori', $product->categories ? $product->categories->pluck('id')->toArray() : [])) ? 'selected' : '' }}>
-                            {{ $kategori->name }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
+                <div class="mb-4">
+                    <label for="kategori" class="block text-sm font-medium text-gray-700">Categories:</label>
+                    <select id="kategori" name="kategori[]"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm js-example-basic-multiple"
+                        multiple="multiple">
+                        @foreach ($kategoris as $kategori)
+                            <option value="{{ $kategori->id }}"
+                                {{ in_array($kategori->id, old('kategori', $product->categories ? $product->categories->pluck('id')->toArray() : [])) ? 'selected' : '' }}>
+                                {{ $kategori->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
         
             <!-- Image Upload -->
             <div class="mb-4">

@@ -44,9 +44,8 @@ class kategoriController extends Controller
 
     public function edit($id)
     {
-        // Mengambil data kategori yang akan diedit
         $kategori = Kategori::findOrFail($id);
-        return view('Admin.kategori.edit', compact('kategori'));
+        return view('Admin.kategori.update', compact('kategori'));
     }
 
     public function update(Request $request, $id)

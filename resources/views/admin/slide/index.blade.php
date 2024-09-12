@@ -18,8 +18,9 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Img</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracdateking-wider">Status</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Action</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracdateking-wider">Status
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white flex justify-end uppercase tracking-wider"></th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -34,9 +35,11 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">
                                 {{ $slide->is_publish ? 'Active' : 'Nonactive' }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap flex text-sm font-medium">
+                            <td class="px-6 py-4 whitespace-nowrap flex justify-end  text-sm font-medium">
                                 <a href="{{ route('Admin.sliders.edit', $slide->id) }}"
-                                    class="text-blue-600 hover:text-blue-900">Edit</a>
+                                    class="text-blue-600 hover:text-blue-900">
+                                    <img src="{{ asset('img/edit-svgrepo-com.svg') }}" style="display: inline-block; width: 30px; height: 30px;" class="w-5" alt="Trash">
+                                </a>
                                 <span class="mx-2">|</span>
                                 <form action="{{ route('Admin.sliders.destroy', $slide->id) }}" method="POST"
                                     class="flex items-center">
@@ -44,19 +47,24 @@
                                     @method('DELETE')
                                     <button type="submit"
                                         onclick="return confirm('Are you sure you want to delete this slider?');"
-                                        class="text-red-600 hover:text-red-800">Delete</button>
+                                        class="text-red-600 hover:text-red-800">
+                                        <img src="{{ asset('img/trash-svgrepo-com.svg') }}" class="w-5" alt="Trash">
+                                    </button>
                                 </form>
                                 <span class="mx-2">|</span>
-                                {{-- <button class="text-sm text-blue-600 hover:text-blue-900"
-                                    onclick="toggleHide({{ $slide->id }})">Hide</button> --}}
-
                                 <form action="{{ route('publish.slider', $slide->id) }}" method="POST">
                                     @csrf
                                     <button onclick="toggleHide({{ $slide->id }})"
-                                        class="text-sm text-blue-600
-                                        hover:text-blue-900"
-                                        type="submit">
-                                        {{ $slide->is_publish ? 'Unpublish' : 'Publish' }}
+                                        class="text-sm text-blue-600 hover:text-blue-900" type="submit">
+                                        @if ($slide->is_publish)
+                                            <img src="{{ asset('img/eye-slash-svgrepo-com.svg') }}"
+                                                class="bg-green-300 rounded-3xl" alt="Publish"
+                                                style="display: inline-block; width: 20px; height: 20px;">
+                                        @else
+                                            <img src="{{ asset('img/eye-svgrepo-com.svg') }}"
+                                                class="bg-red-300 rounded-3xl" alt="Unpublish"
+                                                style="display: inline-block; width: 20px; height: 20px;">
+                                        @endif
                                     </button>
                                 </form>
                             </td>
@@ -64,12 +72,12 @@
                     @endforeach
                 </tbody>
         </div>
-    </table>
-    <div  class="py-4 flex justify-center">
-        @if ($slides instanceof \Illuminate\Pagination\LengthAwarePaginator)
-        {{ $slides->links() }}
-        @endif
-    </div>
+        </table>
+        <div class="py-4 flex justify-center">
+            @if ($slides instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                {{ $slides->links() }}
+            @endif
+        </div>
     </div>
 
     <script>

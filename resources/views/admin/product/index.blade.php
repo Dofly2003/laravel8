@@ -20,14 +20,14 @@
                         <input type="search" name="search" id="search-dropdown" placeholder="Search..."
                             class="block p-2 lg:w-full w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-xl  border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
                             value="{{ request('search') }}" />
-    
+
                         <!-- Search Button -->
                         <button type="submit"
                             class="absolute top-0 right-0 p-2.5 text-sm font-medium h-full items-center justify-center  text-white bg-blue-700 rounded-r-xl border w-14 border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <svg class="w-4 h-4 flex" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            <svg class="w-4 h-4 flex" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                             <span class="sr-only">Search</span>
                         </button>
@@ -45,7 +45,7 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">slug</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Img</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Status</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Action</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"></th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -56,20 +56,24 @@
                                 id="name-{{ $item->id }}">{{ $item->name }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 slide-name"
                                 id="name-{{ $item->id }}">{{ $item->slug }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    @if ($item->img)
-                                        <img class="h-10 rounded-md object-contain" src="{{ asset('uploads/' . $item->img) }}"
-                                             alt="{{ $item->name }}">
-                                    @else
-                                        <span class="text-sm text-gray-600">No Data</span>
-                                    @endif
-                                </td>
-                                
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                @if ($item->img)
+                                    <img class="h-10 rounded-md object-contain" src="{{ asset('uploads/' . $item->img) }}"
+                                        alt="{{ $item->name }}">
+                                @else
+                                    <span class="text-sm text-gray-600">No Data</span>
+                                @endif
+                            </td>
+
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">
                                 {{ $item->is_publish ? 'Active' : 'Nonactive' }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap flex text-sm font-medium">
+                            <td class="px-6 py-4 whitespace-nowrap flex justify-end text-sm font-medium">
                                 <a href="{{ route('Admin.product.edit', $item->id) }}"
-                                    class="text-blue-600 hover:text-blue-900">Edit</a>
+                                    class="text-blue-600 hover:text-blue-900">
+                                    <img src="{{ asset('img/edit-svgrepo-com.svg') }}"
+                                        style="display: inline-block; width: 30px; height: 30px;" class="w-5"
+                                        alt="Trash">
+                                </a>
                                 <span class="mx-2">|</span>
                                 <form action="{{ route('Admin.product.destroy', $item->id) }}" method="POST"
                                     class="flex items-center">
@@ -77,32 +81,44 @@
                                     @method('DELETE')
                                     <button type="submit"
                                         onclick="return confirm('Are you sure you want to delete this slider?');"
-                                        class="text-red-600 hover:text-red-800">Delete</button>
+                                        class="text-red-600 hover:text-red-800">
+                                        <img src="{{ asset('img/trash-svgrepo-com.svg') }}" class="w-5" alt="Trash">
+                                    </button>
                                 </form>
                                 <span class="mx-2">|</span>
-                                {{-- <button class="text-sm text-blue-600 hover:text-blue-900"
-                                    onclick="toggleHide({{ $item->id }})">Hide</button> --}}
-
                                 <form action="{{ route('publish.product', $item->id) }}" method="POST">
                                     @csrf
                                     <button onclick="toggleHide({{ $item->id }})"
                                         class="text-sm text-blue-600
                                         hover:text-blue-900"
                                         type="submit">
-                                        {{ $item->is_publish ? 'Unpublish' : 'Publish' }}
+                                        @if ($item->is_publish)
+                                            <img src="{{ asset('img/eye-slash-svgrepo-com.svg') }}"
+                                                class="bg-green-300 rounded-3xl" alt="Publish"
+                                                style="display: inline-block; width: 20px; height: 20px;">
+                                        @else
+                                            <img src="{{ asset('img/eye-svgrepo-com.svg') }}"
+                                                class="bg-red-300 rounded-3xl" alt="Unpublish"
+                                                style="display: inline-block; width: 20px; height: 20px;">
+                                        @endif
                                     </button>
                                 </form>
+                                <span class="mx-2">|</span>
+                                <a href="{{ route('Admin.product.show', $item->id) }}">
+                                    <img src="{{ asset('img/all-application-svgrepo-com.svg') }}"
+                                        style="display: inline-block; width: 20px; height: 20px;" alt="Deskripsi">
+                                </a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-    <div  class="py-4 flex justify-center">
-        @if ($products instanceof \Illuminate\Pagination\LengthAwarePaginator)
-        {{ $products->links() }}
-        @endif
-    </div>
+        <div class="py-4 flex justify-center">
+            @if ($products instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                {{ $products->links() }}
+            @endif
+        </div>
     </div>
 
     <script>
