@@ -1,64 +1,125 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class=" w-full">
-        <div class="p-6 bg-gray-100">
-            <h1 class="text-4xl font-extrabold text-gray-800 mb-8">Admin Dashboard</h1>
+<div class="container my-5">
+    <h1 class="text-center mb-4">  </h1>
 
-            <!-- Slides Section -->
-            <section>
-                <h2 class="text-2xl font-semibold text-blue-600 mb-4">Slides</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-col-6 gap-6">
-                    @forelse ($slides as $slide)
-                        <div
-                            class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                            <img src="{{ asset('uploads/' . $slide->img) }}" alt="{{ $slide->name }}"
-                                class="w-full h-40 object-contain">
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-gray-900">{{ $slide->name }}</h3>
+    <div class="row text-white">
+        <!-- Slides -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-56  bg-primary shadow">
+                <div class="card-body">
+                    <div class="flex flex-col">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="mb-0">Slides</p>
+                            <i class="fas fas fa-images fa-2x"></i>
+                        </div>
+
+                        <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-36 w-full rounded-lg text-white">
+                            <div class="w-1/2 flex justify-center border-r-2">
+                                content1
+                            </div>
+                            <div class="w-1/2 flex justify-center border-l-2">
+                                content2
                             </div>
                         </div>
-                    @empty
-
-                        no data
-                    @endforelse
+                    </div>
                 </div>
-                <div class="py-4 flex justify-center">
-                    @if ($slides instanceof \Illuminate\Pagination\LengthAwarePaginator)
-                        {{ $slides->links() }}
-                    @endif
-                </div>
-            </section>
+            </div>
+        </div>
 
-            <!-- Products Section -->
-            <section class="mt-12">
-                <h2 class="text-2xl font-semibold text-blue-600 mb-4">Products</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-col-6 gap-6">
-                    @foreach ($products as $product)
-                        <div
-                            class="bg-white shadow-lg rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-                            @if (!empty($product->img))
-                                <img src="{{ asset('uploads/' . $product->img) }}" alt="{{ $product->name }}"
-                                    class="w-full h-auto">
-                            @else
-                                <img src="https://p7.hiclipart.com/preview/696/451/637/computer-icons-inventory-business-management-warehouse-warehouse.jpg"
-                                    alt="Default Image" class="w-full h-auto">
-                            @endif
+        <!-- Products -->
+        <div class="col-lg-4 col-md-8 mb-4">
+            <div class="card h-56  bg-success shadow">
+                <div class="card-body">
+                    <div class="flex flex-col">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="mb-0">Products</p>
+                            <i class="fas fa-boxes fa-2x"></i>
+                        </div>
 
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-gray-900">{{ $product->name }}</h3>
-                                <p class="text-gray-700 mt-2">{{ Str::limit($product->description, 20) }}</p>
-                                <p class="text-lg font-semibold text-green-500 mt-4">Price: ${{ $product->price }}</p>
+                        <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-36 w-full rounded-lg text-white">
+                            <div class="w-1/2 flex justify-center border-r-2">
+                                content1
+                            </div>
+                            <div class="w-1/2 flex justify-center border-l-2">
+                                content2
                             </div>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
-                <div class="py-4 flex justify-center">
-                    @if ($products instanceof \Illuminate\Pagination\LengthAwarePaginator)
-                        {{ $products->links() }}
-                    @endif
+            </div>
+        </div>
+
+        <!-- Brands -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-56  bg-warning shadow">
+                <div class="card-body">
+                    <div class="flex flex-col">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="mb-0">Brands</p>
+                            <i class="fas fa-tags fa-2x"></i>
+                        </div>
+
+                        <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-36 w-full rounded-lg text-white">
+                            <div class="w-1/2 flex justify-center border-r-2">
+                                content1
+                            </div>
+                            <div class="w-1/2 flex justify-center border-l-2">
+                                content2
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
+        </div>
+
+        <!-- Kerjasama -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-56  bg-info shadow">
+                <div class="card-body">
+                    <div class="flex flex-col">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="mb-0">Kerjasama</p>
+                            <i class="fas fa-handshake fa-2x"></i>
+                        </div>
+
+                        <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-36 w-full rounded-lg text-white">
+                            <div class="w-1/2 flex justify-center border-r-2">
+                                content1
+                            </div>
+                            <div class="w-1/2 flex justify-center border-l-2">
+                                content2
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Videos -->
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-56  bg-danger shadow">
+                <div class="card-body">
+                    <div class="flex flex-col">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="mb-0">Videos</p>
+                            <i class="fas fa-video fa-2x"></i>
+                        </div>
+
+                        <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-36 w-full rounded-lg text-white">
+                            <div class="w-1/2 flex justify-center border-r-2">
+                                content1
+                            </div>
+                            <div class="w-1/2 flex justify-center border-l-2">
+                                content2
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 @endsection

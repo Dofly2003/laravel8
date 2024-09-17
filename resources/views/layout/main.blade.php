@@ -141,50 +141,7 @@
 
     </div>
     <script>
-        $(document).ready(function(){
-            $('.js-example-basic-single').select2();
-
-        })
-
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault(); // Mencegah perilaku default
-                const targetID = this.getAttribute('href').substring(1); // Ambil ID target
-                const targetElement = document.getElementById(targetID);
-
-                window.scrollTo({
-                    top: targetElement.offsetTop,
-                    behavior: 'smooth' // Scrolling smooth
-                });
-            });
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            function updateActiveLink() {
-                let currentSection = '';
-                const sections = document.querySelectorAll('section');
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 100;
-                    if (pageYOffset >= sectionTop) {
-                        currentSection = section.getAttribute('id');
-                    }
-                });
-
-                // navLinks.forEach(link => {
-                //     link.classList.remove('text-blue-500');
-                //     link.classList.add('text-gray-500');
-                //     if (link.getAttribute('href') === `#${currentSection}`) {
-                //         link.classList.add('text-blue-500');
-                //         link.classList.remove('text-gray-500');
-                //     }
-                // });
-            }
-
-            window.addEventListener('scroll', updateActiveLink);
-            updateActiveLink(); // Call once on load to set the initial active link
-        });
+  
     </script>
 </body>
 

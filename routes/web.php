@@ -5,6 +5,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\kategoriController;
+use App\Http\Controllers\PesanController;
 use App\Http\Controllers\SliderController;
 use App\Models\Product;
 use App\Models\TestZone;
@@ -19,6 +20,7 @@ use App\Http\Controllers\Auth\LoginController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/customers', [CustomerController::class, 'showIndex']);
 Route::get('/kontak', function () {return view('kontak'); });
+Route::post('/kontak/massage', [PesanController::class, 'store'])->name('kontak.massage');
 Route::get('/profil', function () {return view('profilPerusahaan'); });
 
 

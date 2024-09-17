@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('container')
-    <div id="beranda" class="container scroll-smooth mx-auto md:block bg-slate-600 text-white md:px-4 py-0 sm:px-6 lg:px-0">
+    <div id="beranda" class="container scroll-smooth mx-auto md:block bg-gray-200 text-white md:px-4 py-0 sm:px-6 lg:px-0">
 
         <body>
             <div>
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </form>
-                <div class=" text-white w-full mx-auto pt-5 flex justify-center">
+                <div class=" text-gray-700 w-full mx-auto pt-5 flex justify-center">
                     <div>
                         Sortired by: {{ $selectedCategory }}
                     </div>
@@ -38,13 +38,13 @@
                 {{-- produk --}}
                 <div class="flex pb-6 flex-wrap">
 
-                    <div class="pt-10 xl:w-10/12 w-full h-full overflow-hidden flex justify-center ">
+                    <div class="pt-10 xl:w-10/12 w-full h-full overflow-hidden flex justify-center">
                         <div class="gap-4 grid grid-cols-2 md:grid-col-3 lg:grid-cols-4 xl:grid-cols-5 ">
 
                             @forelse ($products as $product)
                                 @if ($product->is_publish)
                                     <div
-                                        class="lg:w-48 w-40 max-w-xs h-60 lg:h-72 overflow-hidden transform transition-transform bg-gray-500 shadow-xl rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+                                        class="lg:w-48 w-52 max-w-xs h-72 lg:h-72 overflow-hidden transform transition-transform border-4 bg-gray-500 shadow-xl rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
                                         <a href="/product/{{ $product->slug }}">
                                             <div class="h-4/5 ">
                                                 @if (!empty($product->img))

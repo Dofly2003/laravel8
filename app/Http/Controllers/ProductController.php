@@ -116,7 +116,9 @@ class ProductController extends Controller
             $products = collect();
         }
 
-            return view('product', compact('product', 'products'));
+        $description = Str::limit($product->description, 2000);
+
+        return view('product', compact('product', 'products','description'));
     }
 
 
