@@ -30,14 +30,22 @@
 
             <!-- Product Name -->
             <div class="mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700">Kategori Name:</label>
+                <label for="name" class="block text-sm font-medium text-gray-700">Costumer Name:</label>
                 <input type="text" id="name" name="name" value="{{ old('name', $customer->name) }}"
                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             </div>
-            <div class="mb-4">
-                <label for="img" class="block text-sm font-medium text-gray-700">Upload Image:</label>
-                <input type="file" id="img" name="img" value="{{ old('name', $customer->img) }}"
-                    class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:font-medium file:bg-gray-100 hover:file:bg-gray-200">
+            <div class="relative mb-4 flex flex-row gap-4 rounded-md shadow-sm border px-3 py-2 focus:outline-none">
+                <div class="">
+                    <label for="img" class="block text-sm font-medium text-gray-700">Image:</label>
+                    @if ($customer->img)
+                        <div class=" flex items-end mb-2">
+                            <img src="{{ asset('uploads/' . $customer->img) }}" alt="Current Image"
+                                class=" w-32 object-contain bg-gray-600 p-1 rounded-md">
+                        </div>
+                    @endif
+                </div>
+                <input type="file" id="img" name="img"
+                    class="mt-1  w-full relative top-16 h-32 border-gray-300  focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
             </div>
 
 

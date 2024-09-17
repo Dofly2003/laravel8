@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('container')
-    <div id="beranda" class="container scroll-smooth mx-auto md:block bg-gray-900 text-white md:px-4 py-0 sm:px-6 lg:px-0">
+    <div id="beranda" class="container scroll-smooth mx-auto md:block bg-slate-600 text-white md:px-4 py-0 sm:px-6 lg:px-0">
 
         <body>
             <div>
@@ -44,27 +44,29 @@
                             @forelse ($products as $product)
                                 @if ($product->is_publish)
                                     <div
-                                        class="lg:w-48 w-40 max-w-xs h-60 lg:h-72  bg-gray-500 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+                                        class="lg:w-48 w-40 max-w-xs h-60 lg:h-72 overflow-hidden transform transition-transform bg-gray-500 shadow-xl rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
                                         <a href="/product/{{ $product->slug }}">
                                             <div class="h-4/5 ">
                                                 @if (!empty($product->img))
                                                     <img src="{{ asset('uploads/' . $product->img) }}"
-                                                        alt="{{ $product->name }}" class="h-5/6 object-contain w-full rounded-t-xl bg-slate-300">
+                                                        alt="{{ $product->name }}"
+                                                        class="h-5/6 object-cover w-full rounded-t-xl bg-slate-300">
                                                 @else
                                                     <img src="https://p7.hiclipart.com/preview/696/451/637/computer-icons-inventory-business-management-warehouse-warehouse.jpg"
                                                         alt="Default Image" class="w-full  h-auto">
                                                 @endif
                                             </div>
-
                                             <div class="h-1/5 text-center flex flex-col-reverse items-center">
                                                 @foreach ($product->kategori_product->take(2) as $kategori)
                                                     <p
                                                         class="text-gray-400 w-full justify-center flex flex-wrap flex-row text-xs">
-                                                        {{ Str::limit($kategori->name) }}</span>
+                                                        {{ Str::limit($kategori->name) }}
+                                                    </p>
                                                 @endforeach
                                                 <p
-                                                    class="text-md lg:text-lg font-bold text-gray-100 truncate block capitalize">
-                                                    {{ $product->name }}</p>
+                                                    class="text-md lg:text-lg font-bold text-gray-100 truncate block capitalize  text-wrap w-full">
+                                                    {{ Str::limit($product->name, 20) }}
+                                                </p>
                                             </div>
                                         </a>
                                     </div>
@@ -80,8 +82,17 @@
                     <div class="hidden md:block py-10 w-2/12  sticky text-gray-400 ">
                         <div id="" class="flex gap-1 flex-col">
                             <button id="dropdownButton"
-                                class="inline-flex justify-center items-center w-2/3 px-4 py-2 text-gray-500">
-                                <h1 id="dropdownButton" class="text-lg font-bold">Kategori :</h1>
+                                class="inline-flex justify-center items-center w-2/3 px-2 py-2 text-gray-900">
+                                <h1 id="dropdownButton" class="text-lg flex flex-row font-bold">Show Kategori
+                                    <div class="my-auto">
+                                        <svg id="dropdownButton" class="w-4 h-4 ml-1 " fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                </h1>
                             </button>
 
                             <div id="dropdownMenu"

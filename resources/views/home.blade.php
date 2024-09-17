@@ -4,9 +4,7 @@
         scroll-behavior: smooth;
         overflow: auto;
         scrollbar-width: none;
-        /* Firefox */
         -ms-overflow-style: none;
-        /* Internet Explorer 10+ */
     }
 
     .carousel-item {
@@ -28,7 +26,7 @@
 @section('container')
     <div id="beranda"
         class="container w-screen scroll-smooth mx-auto md:block bg-gray-900 text-white md:px-4 py-0 sm:px-6 lg:px-0">
-        <header class="flex flex-col justify-center item-center">
+        <div class="flex flex-col justify-center item-center">
             <div id="carouselExample" class="relative xl:max-w-full h-4/6">
                 <!-- Carousel wrapper -->
                 <div class="relative w-full h-full overflow-hidden rounded-lg">
@@ -107,26 +105,30 @@
 
                 </div>
 
-                <div>
-                    <h1 id="profil"
-                        class="bg-gradient-to-r  from-green-300 via-blue-500 to-purple-600 flex justify-center bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-                        Dinamika Indo Media
+                <section class="bg-gray-900 pt-7 text-white">
+                    <div>
+                        <h1 id="profil"
+                            class="bg-gradient-to-r  from-green-300 via-blue-500 to-purple-600 flex justify-center bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+                            Dinamika Indo Media
 
-                    </h1>
-                    <div class="w-full  justify-center flex">
-                        <p class="w-full max-w-2xl text-center font-thin text-gray-500 text-sm">PT. DINAMIKA INDO MEDIA
-                            berdiri
-                            pada hari Kamis tanggal 10 Februari 2011 di Kabupaten Bekasi, saat ini kami bergerak dibidang
-                            pengadaan barang untuk pemenuhan kebutuhan instansi, Lembaga, dan satuan kerja pemerintahan yang
-                            bertempat di Kota Surabaya.</p>
+                        </h1>
+                        <div class="w-full  justify-center flex">
+                            <p class="w-full max-w-2xl text-center font-thin text-gray-500 text-sm">PT. DINAMIKA INDO MEDIA
+                                berdiri
+                                pada hari Kamis tanggal 10 Februari 2011 di Kabupaten Bekasi, saat ini kami bergerak
+                                dibidang
+                                pengadaan barang untuk pemenuhan kebutuhan instansi, Lembaga, dan satuan kerja pemerintahan
+                                yang
+                                bertempat di Kota Surabaya.</p>
+                        </div>
                     </div>
-                </div>
-                <div class=" w-full flex justify-center crusor-pointer">
-                    <a href="">
-                        <img src="img/PT_DINAMIKA_INDO_MEDIA_.png" class="xl:max-w-7xl" alt="Banner">
-                    </a>
-                </div>
-                <section class=" text-white ">
+                    <div class=" w-full p-8 flex justify-center crusor-pointer">
+                        <a href="">
+                            <img src="img/20240913_154039.png" class="xl:max-w-7xl" alt="Banner">
+                        </a>
+                    </div>
+                </section>
+                <section class=" bg-gray-900 p-8 text-white">
                     <div class="mx-auto max-w-screen-2xl  px-4 py-10 lg:flex lg:h-2/4 ">
                         <div class="mx-auto max-w-3xl text-center ">
                             <div class="delay-[300ms] duration-[600ms] taos:translate-x-[-200px] ease-in-out duration-300 taos:opacity-0"
@@ -155,12 +157,6 @@
                             </div>
                         </div>
                     </div>
-                </section>
-        </header>
-
-        <body>
-            <div class="flex flex-col gap-8">
-                <section class="gap-10 flex flex-col">
                     <div>
                         <h1 class="lg:text-4xl text-2xl flex justify-center">Unit Bisnis</h1>
                         <div class="w-full  justify-center flex">
@@ -189,13 +185,15 @@
                             </div>
                         </div>
                     </div>
+                </section>
+            </div>
 
+            <div class="flex flex-col gap-8">
+                <section class="gap-10 flex flex-col">
                     <div class="video-container flex flex-wrap gap-3 h-64 justify-center">
                         @forelse ($videos->take(1) as $video)
                             <div class="w-4/5 max-w-md aspect-w-16 aspect-h-9">
-                                <iframe 
-                                    class="w-full h-full"
-                                    src="https://www.youtube.com/embed/{{ $video->youtube_url }}" 
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/{{ $video->youtube_url }}"
                                     frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen>
@@ -204,7 +202,7 @@
                         @empty
                             <p class="text-center text-sm text-gray-500">No videos available</p>
                         @endforelse
-                    </div>                    
+                    </div>
 
 
                     <div class="gap-7 flex flex-col">
@@ -280,18 +278,33 @@
                 </div>
                 <div class="flex flex-wrap gap-4 justify-center">
                     @foreach ($products->take(6) as $product)
-                        <a href="/product/{{ $product->slug }}"
-                            class="group rounded-xl md:grow max-w-xs w-48 object-contain px-1 block overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2664&q=80"
-                                alt=""
-                                class="h-52 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-64" />
-
-                            <div class="relative border border-gray-100 bg-white flex py-2 justify-center">
-
-                                <h3 class="text-lg font-medium text-gray-900"> {{ $product->name }} </h3>
-
+                        @if ($product->is_publish)
+                            <div
+                                class="lg:w-48 w-40 max-w-xs h-60 lg:h-72 overflow-hidden transform transition-transform bg-gray-500 shadow-xl rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+                                <a href="/product/{{ $product->slug }}">
+                                    <div class="h-4/5 ">
+                                        @if (!empty($product->img))
+                                            <img src="{{ asset('uploads/' . $product->img) }}" alt="{{ $product->name }}"
+                                                class="h-5/6 object-cover w-full rounded-t-xl bg-slate-300">
+                                        @else
+                                            <img src="https://p7.hiclipart.com/preview/696/451/637/computer-icons-inventory-business-management-warehouse-warehouse.jpg"
+                                                alt="Default Image" class="w-full  h-auto">
+                                        @endif
+                                    </div>
+                                    <div class="h-1/5 text-center flex flex-col-reverse items-center">
+                                        @foreach ($product->kategori_product->take(2) as $kategori)
+                                            <p class="text-gray-400 w-full justify-center flex flex-wrap flex-row text-xs">
+                                                {{ Str::limit($kategori->name) }}
+                                            </p>
+                                        @endforeach
+                                        <p
+                                            class="text-md lg:text-lg font-bold text-gray-100 truncate block capitalize  text-wrap w-full">
+                                            {{ Str::limit($product->name, 20) }}
+                                        </p>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
+                        @endif
                     @endforeach
                 </div>
                 <div class=" flex justify-center text-gray-50 py-5">
@@ -325,32 +338,32 @@
                     </div>
             </section>
 
-    </div>
-    <script src="https://unpkg.com/taos@1.0.5/dist/taos.js"></script>
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-item');
+        </div>
+        <script src="https://unpkg.com/taos@1.0.5/dist/taos.js"></script>
+        <script>
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.carousel-item');
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-        }
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+            }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
 
-        // Pindah slide secara otomatis setiap 5 detik
-        setInterval(nextSlide, 7000);
-    </script>
-    <script src="js/slider"></script>
-    </body>
+            // Pindah slide secara otomatis setiap 5 detik
+            setInterval(nextSlide, 7000);
+        </script>
+        <script src="js/slider"></script>
+        </body>
     </div>
 @endsection

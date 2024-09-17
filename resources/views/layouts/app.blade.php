@@ -40,72 +40,14 @@
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 
 <body>
     <div class="" id="app">
-        <nav class="bg-gray-800 border-b shadow-sm">
-            <div class="container mx-auto px-4 flex justify-between items-center py-4  text-white">
-                <!-- Logo -->
-                <a href="{{ url('/') }}" class="text-2xl uppercase font-bold text-gray-100">
-                    {{-- {{ config('app.name', 'Laravel') }} --}} dinamikaindomedia
-                </a>
-                <!-- Toggle button for mobile -->
-                <button class="block lg:hidden text-gray-800 focus:outline-none" id="nav-toggle">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-                <!-- Navbar links -->
-                <div class="hidden lg:flex lg:items-center lg:space-x-6" id="nav-content">
-                    <ul class="flex items-center space-x-4">
-                        @guest
-                            @if (Route::has('login'))
-                                <li>
-                                    <a href="{{ route('login') }}"
-                                        class="text-gray-600 hover:text-gray-900">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li>
-                                    <a href="{{ route('register') }}"
-                                        class="text-gray-600 hover:text-gray-900">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li x-data="{ open: false }" class="relative group">
-                                <button @click="open = ! open"
-                                    class="flex items-center text-gray-100 hover:text-gray-500 focus:outline-none">
-                                    {{ Auth::user()->name }}
-                                    <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
-                                <div x-show="open"
-                                    class="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg group-hover:block">
-                                    <form method="POST" action="/logout/Auth">
-                                        @csrf
-                                        <button type="submit"
-                                            class="block px-4 py-2 text-gray-600 hover:bg-gray-100">
-                                            {{ __('Logout') }}
-                                        </button>
-
-                                        
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
         <main class="flex flex-row w-full ">
             @include('layouts.sideBar')
             @yield('content')

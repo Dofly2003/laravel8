@@ -19,7 +19,7 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">img</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Status</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Action</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"></th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -28,15 +28,19 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $loop->iteration }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 slide-name"
                                 id="name-{{ $item->id }}">{{ $item->name }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <img class="h-10 rounded-md object-contain" src="{{ asset('uploads/' . $item->img) }}"
-                                        alt="{{ $item->name }}">
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">
-                                    {{ $item->is_publish ? 'Active' : 'Nonactive' }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap flex text-sm font-medium">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <img class="h-10 rounded-md object-contain" src="{{ asset('uploads/' . $item->img) }}"
+                                    alt="{{ $item->name }}">
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">
+                                {{ $item->is_publish ? 'Active' : 'Nonactive' }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap flex justify-end text-sm font-medium">
                                 <a href="{{ route('Admin.customer.edit', $item->id) }}"
-                                    class="text-blue-600 hover:text-blue-900">Edit</a>
+                                    class="text-blue-600 hover:text-blue-900">
+                                    <img src="{{ asset('img/edit-svgrepo-com.svg') }}"
+                                        style="display: inline-block; width: 30px; height: 30px;" class="w-5"
+                                        alt="edit">
+                                </a>
                                 <span class="mx-2">|</span>
                                 <form action="{{ route('Admin.customer.destroy', $item->id) }}" method="POST"
                                     class="flex items-center">
@@ -44,7 +48,9 @@
                                     @method('DELETE')
                                     <button type="submit"
                                         onclick="return confirm('Are you sure you want to delete this slider?');"
-                                        class="text-red-600 hover:text-red-800">Delete</button>
+                                        class="text-red-600 hover:text-red-800">
+                                        <img src="{{ asset('img/icons8-trash.svg') }}" class="w-6 h-6 rounded-lg bg-red-700" alt="Trash">
+                                    </button>
                                 </form>
                                 <span class="mx-2">|</span>
                                 <form action="{{ route('publish.customer', $item->id) }}" method="POST">
@@ -53,7 +59,15 @@
                                         class="text-sm text-blue-600
                                         hover:text-blue-900"
                                         type="submit">
-                                        {{ $item->is_publish ? 'Unpublish' : 'Publish' }}
+                                        @if ($item->is_publish)
+                                            <img src="{{ asset('img/eye-slash-svgrepo-com.svg') }}"
+                                                class="bg-green-300 rounded-3xl" alt="Publish"
+                                                style="display: inline-block; width: 20px; height: 20px;">
+                                        @else
+                                            <img src="{{ asset('img/eye-svgrepo-com.svg') }}"
+                                                class="bg-red-300 rounded-3xl" alt="Unpublish"
+                                                style="display: inline-block; width: 20px; height: 20px;">
+                                        @endif
                                     </button>
                                 </form>
                             </td>
@@ -61,12 +75,12 @@
                     @endforeach
                 </tbody>
         </div>
-    </table>
-    <div  class="py-4 flex justify-center">
-        @if ($customers instanceof \Illuminate\Pagination\LengthAwarePaginator)
-        {{ $customers->links() }}
-        @endif
-    </div>
+        </table>
+        <div class="py-4 flex justify-center">
+            @if ($customers instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                {{ $customers->links() }}
+            @endif
+        </div>
     </div>
 
     <script>

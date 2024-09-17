@@ -53,9 +53,10 @@
                         <tr id="slide-row-{{ $item->id }}">
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $loop->iteration }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 slide-name"
-                                id="name-{{ $item->id }}">{{ $item->name }}</td>
+                                id="name-{{ $item->id }}">{{ Str::limit($item->name, 20) }}</td>
+
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 slide-name"
-                                id="name-{{ $item->id }}">{{ $item->slug }}</td>
+                                id="name-{{ $item->id }}">{{ Str::limit($item->slug, 20) }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 @if ($item->img)
                                     <img class="h-10 rounded-md object-contain" src="{{ asset('uploads/' . $item->img) }}"
@@ -72,7 +73,7 @@
                                     class="text-blue-600 hover:text-blue-900">
                                     <img src="{{ asset('img/edit-svgrepo-com.svg') }}"
                                         style="display: inline-block; width: 30px; height: 30px;" class="w-5"
-                                        alt="Trash">
+                                        alt="edit">
                                 </a>
                                 <span class="mx-2">|</span>
                                 <form action="{{ route('Admin.product.destroy', $item->id) }}" method="POST"
@@ -82,7 +83,7 @@
                                     <button type="submit"
                                         onclick="return confirm('Are you sure you want to delete this slider?');"
                                         class="text-red-600 hover:text-red-800">
-                                        <img src="{{ asset('img/trash-svgrepo-com.svg') }}" class="w-5" alt="Trash">
+                                        <img src="{{ asset('img/icons8-trash.svg') }}" class="w-6 h-6 rounded-lg bg-red-700" alt="Trash">
                                     </button>
                                 </form>
                                 <span class="mx-2">|</span>
@@ -122,6 +123,15 @@
     </div>
 
     <script>
+        function showAlert() {
+            swal({
+                title: "Good job!",
+                text: "Data Product Updated",
+                icon: "success",
+                button: "Ok",
+            });
+        }
+
         function toggleHide(id) {
             const nameElement = document.getElementById(`name-${id}`);
 
@@ -131,6 +141,13 @@
             } else {
                 nameElement.classList.add('line-through', 'text-red-500');
             }
+
+            swal({
+                title: "Good job!",
+                text: "You clicked the button!",
+                icon: "success",
+                button: "Aww yiss!",
+            });
         }
     </script>
 @endsection

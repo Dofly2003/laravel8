@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-100">
+<html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,7 +44,7 @@
 
 <body class="h-full ">
     <div class="min-h-full ">
-        <nav class="sticky bg-blue-500 top-0 z-50" x-data="{ isOpen: false }">
+        <nav class="sticky bg-blue-800 top-0 z-50" x-data="{ isOpen: false }">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
@@ -61,7 +61,6 @@
                                 <a href="/" id="nav-beranda"
                                     class="rounded-md nav-link px-3 py-2 text-md font-medium transform scale-75 hover:scale-90 transition ease-in-out duration-300 hover:text-gray-500">
                                     Beranda
-                                    {{-- <span class="absolute bg-white bottom-0 left-0 w-0 h-1 bg-blue-500 transition-all duration-300 ease-in-out hover:w-full"></span> --}}
                                 </a>
                                 <a href="/profil" id="nav-profil"
                                     class="rounded-md nav-link px-3 py-2 text-md font-medium transform scale-75 hover:scale-90 transition ease-in-out duration-300 hover:text-gray-500 ">
@@ -71,7 +70,7 @@
                                     class="rounded-md nav-link px-3 py-2 text-md font-medium transform scale-75 hover:scale-90 transition ease-in-out duration-300 hover:text-gray-500 ">
                                     Produk Kami
                                 </a>
-                                <a href="#customer" id="nav-customer"
+                                <a href="/customers" id="nav-customer"
                                     class="rounded-md nav-link px-3 py-2 text-md font-medium transform scale-75 hover:scale-90 transition ease-in-out duration-300 hover:text-gray-500 ">
                                     Customer
                                 </a>
@@ -86,7 +85,7 @@
                     <div class="-mr-2 flex md:hidden">
                         <!-- Mobile menu button -->
                         <button @click="isOpen = !isOpen" type="button"
-                            class="relative inline-flex items-center justify-center rounded-md bg-blue-500 p-2 text-gray-50 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-50"
+                            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-50 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-50"
                             aria-controls="mobile-menu" aria-expanded="false">
                             <span class="absolute -inset-0.5"></span>
                             <span class="sr-only">Open main menu</span>
@@ -123,7 +122,7 @@
                     <a href="/products"
                         class="block rounded-md px-3 py-2 text-base font-medium transform scale-75 hover:scale-90 transition  hover:text-gray-500">
                         Produk Kami</a>
-                    <a href="#customer"
+                    <a href="/customers"
                         class="block rounded-md px-3 py-2 text-base font-medium transform scale-75 hover:scale-90 transition  hover:text-gray-500">
                         Customer</a>
                     <a href="/kontak"
@@ -173,15 +172,15 @@
                     }
                 });
 
-            //     navLinks.forEach(link => {
-            //         link.classList.remove('text-blue-500');
-            //         link.classList.add('text-gray-500');
-            //         if (link.getAttribute('href') === `#${currentSection}`) {
-            //             link.classList.add('text-blue-500');
-            //             link.classList.remove('text-gray-500');
-            //         }
-            //     });
-            // }
+                // navLinks.forEach(link => {
+                //     link.classList.remove('text-blue-500');
+                //     link.classList.add('text-gray-500');
+                //     if (link.getAttribute('href') === `#${currentSection}`) {
+                //         link.classList.add('text-blue-500');
+                //         link.classList.remove('text-gray-500');
+                //     }
+                // });
+            }
 
             window.addEventListener('scroll', updateActiveLink);
             updateActiveLink(); // Call once on load to set the initial active link

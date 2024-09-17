@@ -102,16 +102,24 @@ class ProductController extends Controller
     }
 
 
-    // Tampilkan produk berdasarkan ID
-    public function SinglePoRoduct(Product $product, $slug)
+    public function SinglePoRoduct($slug)
     {
-        $product->load('kategori_product');
         $product = Product::where('slug', $slug)->with('kategori_product')->firstOrFail();
-        return view('product', compact('product'), [
-            'product' => $product,
-            'products' => Product::all(),
-        ]);
+
+        if ($product->kategori_product->isNotEmpty()) {
+            $kategoriId = $product->kategori_product->first()->id;
+
+            $products = Product::whereHas('kategori_product', function ($query) use ($kategoriId) {
+                $query->where('kategori_id', $kategoriId);
+            })->where('id', '!=', $product->id)->get();
+        } else {
+            $products = collect();
+        }
+
+            return view('product', compact('product', 'products'));
     }
+
+
 
     public function show($id, Product $product)
     {
@@ -127,22 +135,18 @@ class ProductController extends Controller
     }
     public function showByKategori(Kategori $kategori = null)
     {
-        $products = Product::whereHas('kategori_product', function ($query) use ($kategori) {
-            $query->where('name', $kategori->name);
-        })->with('kategori_product')->get();
+        $query = Product::with('kategori_product'); // Gunakan eager load
 
         if ($kategori) {
-            $products = Product::whereHas('kategori_product', function ($query) use ($kategori) {
+            $query->whereHas('kategori_product', function ($query) use ($kategori) {
                 $query->where('name', $kategori->name);
-            })->with('kategori_product')->get();
-
+            });
             $selectedCategory = $kategori->name;
         } else {
-            $products = Product::with('kategori_product')->paginate(20);
-
             $selectedCategory = 'All';
         }
 
+        $products = $query->paginate(20); // Ambil data produk yang difilter dengan pagination
         $allKategoris = Kategori::all();
 
         return view('products', [
@@ -153,15 +157,27 @@ class ProductController extends Controller
     }
 
 
+
+
     public function edit($id)
     {
-        $kategoris = Kategori::all();
-        $product = Product::with('kategori_product')->find($id);
+        $kategoris = Kategori::all(); // Mengambil semua kategori
+
+        // Memuat produk beserta relasi kategori yang sesuai
+        $product = Product::with('kategori_product')->find($id); // Menggunakan relasi yang benar
+
+        // Cek apakah produk ditemukan
         if (!$product) {
-            return redirect()->route('Admin.product.index')->with('error', 'Slider not found.');
+            return redirect()->route('Admin.product.index')->with('error', 'Product not found.');
         }
-        return view('admin.product.update', compact('product', 'kategoris'));
+
+        // Mengambil ID kategori yang sudah dipilih
+        $selectedCategories = $product->kategori_product->pluck('id')->toArray(); // Gunakan nama relasi yang benar
+
+        // Mengirim data ke view
+        return view('admin.product.update', compact('product', 'kategoris', 'selectedCategories'));
     }
+
 
     // Update produk di database
 

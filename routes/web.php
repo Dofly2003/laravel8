@@ -17,10 +17,9 @@ use App\Http\Controllers\Auth\LoginController;
 
 //home
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/aboutus', function () {
-    return view('kontak'); });
-Route::get('/profil', function () {
-    return view('profilPerusahaan'); });
+Route::get('/customers', [CustomerController::class, 'showIndex']);
+Route::get('/kontak', function () {return view('kontak'); });
+Route::get('/profil', function () {return view('profilPerusahaan'); });
 
 
 Route::get('/test', [TestZoneController::class, 'index'])->name('testZone.index');
@@ -75,7 +74,8 @@ Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function () {
 
 
     //videos 
-    Route::get('/video', [HomeController::class, 'create'])->name('video.index');
+    Route::get('/videos', [HomeController::class, 'showVideos'])->name('video.showVideos');
+    Route::get('/video', [HomeController::class, 'create'])->name('video.create');
     Route::post('/videos/store', [HomeController::class, 'store'])->name('video.store');
     Route::get('/videos/{id}/edit', [HomeController::class, 'edit'])->name('video.edit');
     Route::put('/videos/{id}', [HomeController::class, 'update'])->name('video.update');

@@ -23,10 +23,13 @@ class HomeController extends Controller
         return view('home', compact('sliders', 'products', 'customers', 'brands', 'active', 'videos'));
     }
 
-
-    public function create(){
+    public function showVideos(){
         $videos = videos::all();
         return view('Admin.video.index', compact('videos'));
+    }
+    public function create(){
+        $videos = videos::all();
+        return view('Admin.video.create', compact('videos'));
     }
 
 
@@ -62,7 +65,7 @@ class HomeController extends Controller
                 'youtube_url' => $videoId, // Hanya simpan ID Video
             ]);
 
-            return redirect()->back()->with('success', 'Video berhasil disimpan!');
+            return redirect()->route('Admin.video.showVideos')->with('success', 'Video berhasil disimpan!');
         } else {
             return redirect()->back()->with('error', 'URL YouTube tidak valid.');
         }
@@ -71,8 +74,11 @@ class HomeController extends Controller
     public function publishVideos($id)
     {
         $photo = videos::findOrFail($id);
-        $photo->is_publish = !$photo->is_publish; // Toggle nilai
+        $photo->is_publish = !$photo->is_publish; 
         $photo->save();
+        videos::where('id','!=',$id)->update([
+            'is_publish' => 0
+        ]);
         return redirect()->back()->with('success', 'Status publikasi berhasil diubah.');
     }
 
