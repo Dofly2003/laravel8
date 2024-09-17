@@ -16,10 +16,10 @@
                         </div>
 
                         <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-36 w-full rounded-lg text-white">
-                            <div class="w-1/2 flex justify-center border-r-2">
+                            <div class="w-1/2 flex justify-center border-r-2 border-black border-opacity-20">
                                 content1
                             </div>
-                            <div class="w-1/2 flex justify-center border-l-2">
+                            <div class="w-1/2 flex justify-center border-l-2 border-black border-opacity-20">
                                 content2
                             </div>
                         </div>
@@ -39,10 +39,10 @@
                         </div>
 
                         <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-36 w-full rounded-lg text-white">
-                            <div class="w-1/2 flex justify-center border-r-2">
+                            <div class="w-1/2 flex justify-center border-r-2 border-black border-opacity-20">
                                 content1
                             </div>
-                            <div class="w-1/2 flex justify-center border-l-2">
+                            <div class="w-1/2 flex justify-center border-l-2 border-black border-opacity-20">
                                 content2
                             </div>
                         </div>
@@ -62,10 +62,10 @@
                         </div>
 
                         <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-36 w-full rounded-lg text-white">
-                            <div class="w-1/2 flex justify-center border-r-2">
+                            <div class="w-1/2 flex justify-center border-r-2 border-black border-opacity-20">
                                 content1
                             </div>
-                            <div class="w-1/2 flex justify-center border-l-2">
+                            <div class="w-1/2 flex justify-center border-l-2 border-black border-opacity-20">
                                 content2
                             </div>
                         </div>
@@ -85,10 +85,10 @@
                         </div>
 
                         <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-36 w-full rounded-lg text-white">
-                            <div class="w-1/2 flex justify-center border-r-2">
+                            <div class="w-1/2 flex justify-center border-r-2 border-black border-opacity-20">
                                 content1
                             </div>
-                            <div class="w-1/2 flex justify-center border-l-2">
+                            <div class="w-1/2 flex justify-center border-l-2 border-black border-opacity-20">
                                 content2
                             </div>
                         </div>
@@ -108,10 +108,10 @@
                         </div>
 
                         <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-36 w-full rounded-lg text-white">
-                            <div class="w-1/2 flex justify-center border-r-2">
+                            <div class="w-1/2 flex justify-center border-r-2 border-black border-opacity-20">
                                 content1
                             </div>
-                            <div class="w-1/2 flex justify-center border-l-2">
+                            <div class="w-1/2 flex justify-center border-l-2 border-black border-opacity-20">
                                 content2
                             </div>
                         </div>
