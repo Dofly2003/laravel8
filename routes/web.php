@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\kategoriController;
 use App\Http\Controllers\PesanController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SliderController;
 use App\Models\Product;
 use App\Models\TestZone;
@@ -19,12 +20,8 @@ use App\Http\Controllers\Auth\LoginController;
 //home
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/customers', [CustomerController::class, 'showIndex']);
-Route::get('/kontak', function () {return view('kontak',[
-    'title' => 'Kontak'
-]); });
-Route::get('/profil', function () {return view('profilPerusahaan',[
-    'title' => 'Profil'
-]); });
+Route::get('/kontak', function () {return view('kontak',['title' => 'Kontak']);});
+Route::get('/profil',[ProfilController::class, 'index'] );
 Route::post('/kontak/massage', [PesanController::class, 'store'])->name('kontak.massage');
 
 
@@ -102,6 +99,18 @@ Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function () {
     Route::get('customers/{id}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
     Route::put('customers/{id}', [CustomerController::class, 'update'])->name('customer.update');
     Route::delete('customers/{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
+    
+    //Profil
+
+    Route::get('profil', [ProfilController::class, 'showIndex'])->name('profil.index');
+    Route::get('profil/show/{id}', [ProfilController::class, 'show'])->name('profil.show');
+    Route::get('profil/create', [ProfilController::class, 'create'])->name('profil.create');
+    Route::post('profil/store', [ProfilController::class, 'store'])->name('profil.store');
+    Route::get('profil/{id}/edit', [ProfilController::class, 'edit'])->name('profil.edit');
+    Route::put('profil/{id}', [ProfilController::class, 'update'])->name('profil.update');
+    Route::delete('profil/{id}', [ProfilController::class, 'destroy'])->name('profil.destroy');
+    
+    
 
 });
 
@@ -111,6 +120,7 @@ Route::post('/product/{Product:id}', [ProductController::class, 'publishProduct'
 Route::post('/brand/{brand:id}', [BrandController::class, 'publishBrand'])->name('publish.brand');
 Route::post('/videos/{videos:id}', [HomeController::class, 'publishVideos'])->name('publish.videos');
 Route::post('/customer/{customer:id}', [CustomerController::class, 'publishCustomer'])->name('publish.customer');
+Route::post('/profil/{profil:id}', [ProfilController::class, 'publishProfil'])->name('publish.profil');
 
 
 //product

@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <div class="flex flex-col">
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-0">Slides</p>
+                                <p class="">Slides</p>
                                 <i class="fas fas fa-images fa-2x"></i>
                             </div>
 
@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <div class="flex flex-col">
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-0">Products</p>
+                                <p class="">Products</p>
                                 <i class="fas fa-boxes fa-2x"></i>
                             </div>
 
@@ -57,7 +57,7 @@
                     <div class="card-body">
                         <div class="flex flex-col">
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-0">Brands</p>
+                                <p class="">Brands</p>
                                 <i class="fas fa-tags fa-2x"></i>
                             </div>
 
@@ -80,7 +80,7 @@
                     <div class="card-body">
                         <div class="flex flex-col">
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-0">Kerjasama</p>
+                                <p class="">Kerjasama</p>
                                 <i class="fas fa-handshake fa-2x"></i>
                             </div>
 
@@ -103,7 +103,7 @@
                     <div class="card-body">
                         <div class="flex flex-col">
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-0">Videos</p>
+                                <p class="">Videos</p>
                                 <i class="fas fa-video fa-2x"></i>
                             </div>
 
@@ -127,8 +127,8 @@
                     <div class="card-body">
                         <div class="flex flex-col">
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-0">Pesan</p>
-                                <i class="fas fa-video fa-2x"></i>
+                                <p class="">User Admin</p>
+                                <i class="fa fa-user fa-2x"  aria-hidden="true"></i>
                             </div>
 
                             <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-36 w-full rounded-lg text-white">
@@ -146,15 +146,15 @@
             </div>
         </div>
         <div>
-            <div class="card h-56 bg-secondary shadow">
+            <div class="card h-64 bg-dark shadow">
                 <div class="card-body">
                     <div class="flex flex-col">
                         <div class="d-flex justify-content-between align-items-center">
-                            <p class="mb-0">Pesan</p>
+                            <p class="">Pesan</p>
                             <i class="fas fa-envelope fa-2x"></i>
                         </div>
 
-                        <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-40 w-full rounded-lg text-white">
+                        <div class="bg-black flex flex-row bg-opacity-25 p-2 mt-1 h-44 w-full rounded-lg text-white">
                             <div class="w-full flex">
                                 <table class=" relative table-auto w-full text-left">
                                     <thead>
@@ -166,7 +166,7 @@
                                     </thead>
                                     <tbody>
                                         @forelse ($pesan as $item)
-                                            <tr>
+                                            <tr class="">
                                                 <td class="px-2 w-1/6">{{ $item->name }}</td>
                                                 <td class="px-2 w-1/6">{{ $item->instansi }}</td>
                                                 <td class="px-2 w-2/6">{{ $item->message }}</td>

@@ -1,6 +1,6 @@
 <div class="sticky top-0 w-64 h-screen bg-gray-800 text-white p-6 flex flex-col justify-around">
     <div>
-        <h2 class="text-xl font-semibold mb-5">Selamat datang {{ Auth::user()->name }}</h2>
+        <h2 class="text-xl font-semibold mb-5 flex-wrap flex">Selamat datang {{ Auth::user()->name }}</h2>
         <ul>
             <li class="mb-4"><a href="{{ route('dashboard') }}" class="text-lg text-white hover:text-gray-300"> <i
                         class="fas fa-home text-xl mr-2"></i>Dashboard</a></li>
@@ -18,9 +18,18 @@
             </li>
             <li class="mb-4"><a href="{{ route('Admin.brand.index') }}"
                     class="text-lg text-white hover:text-gray-300"><i class="fas fa-tag text-xl mr-2"></i>Brand</a></li>
-            <li class="mb-4"><a href="{{ route('Admin.customer.index') }}"
-                    class="text-lg text-white hover:text-gray-300"><i
-                        class="fas fa-handshake text-xl mr-2"></i>Kerjasama</a></li>
+            <li class="mb-4">
+                <a href="{{ route('Admin.customer.index') }}" class="text-lg text-white hover:text-gray-300">
+                    <i class="fas fa-handshake text-xl mr-2"></i>
+                    Kerjasama
+                </a>
+            </li>
+            <li class="mb-4">
+                <a href="{{ route('Admin.profil.index') }}" class="text-lg text-white hover:text-gray-300">
+                    <i class="fas fa-handshake text-xl mr-2"></i>
+                    Profil
+                </a>
+            </li>
         </ul>
     </div>
     <form method="POST" action="{{ route('logout') }}">
@@ -44,4 +53,4 @@
         @endif
     @else
     @endguest
-    </div>
+</div>
