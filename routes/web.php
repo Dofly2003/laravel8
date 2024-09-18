@@ -19,9 +19,13 @@ use App\Http\Controllers\Auth\LoginController;
 //home
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/customers', [CustomerController::class, 'showIndex']);
-Route::get('/kontak', function () {return view('kontak'); });
+Route::get('/kontak', function () {return view('kontak',[
+    'title' => 'Kontak'
+]); });
+Route::get('/profil', function () {return view('profilPerusahaan',[
+    'title' => 'Profil'
+]); });
 Route::post('/kontak/massage', [PesanController::class, 'store'])->name('kontak.massage');
-Route::get('/profil', function () {return view('profilPerusahaan'); });
 
 
 Route::get('/test', [TestZoneController::class, 'index'])->name('testZone.index');

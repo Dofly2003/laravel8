@@ -15,7 +15,8 @@ class CustomerController extends Controller
     public function showIndex()
     {
         $customers = Customer::all();
-        return view('Customer', compact( 'customers'));
+        $title = 'Customer';
+        return view('Customer', compact( 'customers','title'));
     }
 
 

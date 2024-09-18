@@ -26,7 +26,8 @@ class ProductController extends Controller
 
         // dd(get_class($products));
         $kategoris = Kategori::all();
-        return view('products', compact('products', 'kategoris', 'selectedCategory', 'sliders'));
+        $title = 'Products';
+        return view('products', compact('products', 'kategoris', 'selectedCategory', 'sliders','title'));
     }
     // Tampilkan detail produk
     public function showIndexAdmin(Product $product)
@@ -117,8 +118,8 @@ class ProductController extends Controller
         }
 
         $description = Str::limit($product->description, 2000);
-
-        return view('product', compact('product', 'products','description'));
+        $title = 'Products';
+        return view('product', compact('product', 'products','description','title'));
     }
 
 

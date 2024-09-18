@@ -40,7 +40,7 @@
                                 <div
                                     class="group relative w-32 h-10 flex justify-center items-center overflow-hidden rounded-md">
                                     <button type="submit"
-                                        class="relative z-10 bg-blue-600 text-white cursor-pointer w-full h-full">
+                                        class="relative z-10 bg-blue-700  text-white cursor-pointer w-full h-full">
                                         Kirim Pesan
                                     </button>
                                 </div>
@@ -78,7 +78,8 @@
                         <p class="mb-5 mt-1 h-10">No Whatsapp</p>
                         <p class="mb-5 mt-1 h-10">Pesan</p>
                     </div>
-                    <div class="flex flex-col w-full">
+                    <form  action="{{ route('kontak.massage') }}" method="POST" class="flex flex-col w-full">
+                        @csrf
                         <input required name="name" class="border-solid mb-5 h-10 w-full border-2 rounded-md"
                             type="text">
                         <input required name="instansi" class="border-solid mb-5 h-10 w-full border-2 rounded-md"
@@ -92,7 +93,7 @@
                         <textarea required name="message" placeholder="message" name="message"
                             class="border-solid mb-5 h-20 w-full border-2 rounded-md"></textarea>
                         <div class=" flex justify-center items-center ">
-                            <input type="button"class=" text-white rounded-md w-32 h-10 " value="Kirim Pesan">
+                            <button type="submit"class=" text-white rounded-md w-32 h-10 bg-blue-700 border-2 border-gray-400" >Kirim Pesan</button>
                         </div>
 
                     </div>

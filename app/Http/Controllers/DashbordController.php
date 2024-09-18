@@ -2,6 +2,7 @@
 // App/Http/Controllers/DashboardController.php
 namespace App\Http\Controllers;
 
+use App\Models\Pesan;
 use App\Models\Slider;
 use Illuminate\Support\Facades\Auth;
 // use Illuminate\Http\Request;
@@ -12,14 +13,8 @@ class DashbordController extends Controller
 {
     public function index()
     {
-        // Pastikan hanya admin yang bisa mengakses dashboard
-        // if (!Auth::check() || !Auth::user()->isAdmin()) {
-        //     return redirect('/'); // Redirect jika bukan admin
-        // }
 
-
-        $products = Product::paginate(5); // Ambil semua produk dari database
-        $slides = Slider::paginate(5); // Ambil semua slide dari database
-        return view('dashbord', compact('products', 'slides')); // Pastikan view ini sesuai
+       $pesan = Pesan::latest()->get();
+        return view('dashbord', compact('pesan', )); // Pastikan view ini sesuai
     }
 }   

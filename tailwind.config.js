@@ -4,7 +4,7 @@ module.exports = {
     './resources/**/*.blade.php',
     './resources/**/*.js',
     './resources/**/*.vue',
-     "./node_modules/flowbite/**/*.js",
+    "./node_modules/flowbite/**/*.js",
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -20,6 +20,19 @@ module.exports = {
         800: '#1e293b',
         900: '#0f172a',
       },
+      'sky': {
+        100: '#e0f2fe',
+        200: '#bae6fd',
+        300: '#7dd3fc',
+        400: '#38bdf8',
+        500: '#0ea5e9',
+        600: '#0284c7',
+        700: '#0369a1',
+        800: '#075985',
+        900: '#0c4a6e',
+        950: '#082f49',
+      },
+
     },
     extend: {
       animation: {
@@ -30,7 +43,7 @@ module.exports = {
   variants: {},
   plugins: [
     require('@tailwindcss/aspect-ratio'),
-    require('taos/plugin'), 
+    require('taos/plugin'),
     require('flowbite/plugin'),
   ],
   safelist: [
@@ -42,7 +55,7 @@ module.exports = {
     relative: true,
     transform: (content) => content.replace(/taos:/g, ''),
     files: ['./src/*.{html,js}'],
-    
+
   },
   // content:[
   //    "./node_modules/flowbite/**/*.js"

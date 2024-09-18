@@ -20,7 +20,9 @@ class HomeController extends Controller
         $customers = Customer::all();
         $brands = Brand::all();
         $active = Slider::where('is_publish', 1)->get();
-        return view('home', compact('sliders', 'products', 'customers', 'brands', 'active', 'videos'));
+        $title = 'Home';
+        return view('home', compact('sliders', 'products', 'customers', 'brands', 'active', 'videos','title'));
+
     }
 
     public function showVideos(){
