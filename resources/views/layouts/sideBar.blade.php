@@ -30,6 +30,13 @@
                     Profil
                 </a>
             </li>
+            <li class="mb-4">
+                <a href="{{ route('Admin.massages.index') }}" class="text-lg text-white hover:text-gray-300">
+                    <i class="fas fa-envelope text-xl mr-2"></i>
+
+                    Pesan
+                </a>
+            </li>
         </ul>
     </div>
     <form method="POST" action="{{ route('logout') }}">

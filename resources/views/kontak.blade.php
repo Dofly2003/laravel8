@@ -1,6 +1,15 @@
 @extends('layout.main')
 
 @section('container')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="hidden mx-auto bg-gray-100 w-full md:block text-gray-900">
         <div class="max-w-7xl px-4 py-6 sm:px-6 lg:px-8 mx-auto">
             <h1 class="ml-5 upercase h-10">Hubungi Kami</h1>
@@ -30,10 +39,12 @@
                             <input name="jabatan" required class="border-solid mb-5 h-10 w-full border-2 rounded-md"
                                 type="text" placeholder="Jabatan">
                             <input name="kota" required class="border-solid mb-5 h-10 w-full border-2 rounded-md"
-                                type="text" placeholder="Kota">
+                                type="text" placeholder="Kota asal">
                             <input name="no_whatsapp" required class="border-solid mb-5 h-10 w-full border-2 rounded-md"
-                                type="text" placeholder="No Whatsapp">
-
+                                type="text">
+                            @error('no_whatsapp')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
                             <textarea name="message" required placeholder="Pesan" class="border-solid mb-5 h-20 w-full border-2 rounded-md"></textarea>
 
                             <div class="flex justify-center">
@@ -45,11 +56,7 @@
                                     </button>
                                 </div>
                             </div>
-                            @if ($errors->has('error'))
-                                <div id="alert-error" class="alert alert-danger" role="alert">
-                                    <p>{{ $errors->first('error') }}</p>
-                                </div>
-                            @endif
+
                         </form>
 
                     </div>
@@ -78,28 +85,34 @@
                         <p class="mb-5 mt-1 h-10">No Whatsapp</p>
                         <p class="mb-5 mt-1 h-10">Pesan</p>
                     </div>
-                    <form  action="{{ route('kontak.massage') }}" method="POST" class="flex flex-col w-full">
+                    <form action="{{ route('kontak.massage') }}" method="POST" class="flex flex-col w-full">
                         @csrf
-                        <input required name="name" class="border-solid mb-5 h-10 w-full border-2 rounded-md"
-                            type="text">
-                        <input required name="instansi" class="border-solid mb-5 h-10 w-full border-2 rounded-md"
-                            type="text">
-                        <input required name="jabatan" class="border-solid mb-5 h-10 w-full border-2 rounded-md"
-                            type="text">
-                        <input required name="kota" class="border-solid mb-5 h-10 w-full border-2 rounded-md"
-                            type="text">
-                        <input required name="no_whatsapp" class="border-solid mb-5 h-10 w-full border-2 rounded-md"
-                            type="text">
+                        <input required placeholder="Name" name="name"
+                            class="border-solid mb-5 h-10 w-full border-2 rounded-md" type="text">
+                        <input required placeholder="Instansi" name="instansi"
+                            class="border-solid mb-5 h-10 w-full border-2 rounded-md" type="text">
+                        <input required placeholder="Jabatan" name="jabatan"
+                            class="border-solid mb-5 h-10 w-full border-2 rounded-md" type="text">
+                        <input required placeholder="Kota asal" name="kota"
+                            class="border-solid mb-5 h-10 w-full border-2 rounded-md" type="text">
+                        <input required placeholder="no whatsapp" name="no_whatsapp"
+                            class="border-solid mb-5 h-10 w-full border-2 rounded-md" type="text">
+                        @error('no_whatsapp')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+
                         <textarea required name="message" placeholder="message" name="message"
                             class="border-solid mb-5 h-20 w-full border-2 rounded-md"></textarea>
                         <div class=" flex justify-center items-center ">
-                            <button type="submit"class=" text-white rounded-md w-32 h-10 bg-blue-700 border-2 border-gray-400" >Kirim Pesan</button>
+                            <button
+                                type="submit"class=" text-white rounded-md w-32 h-10 bg-blue-700 border-2 border-gray-400">Kirim
+                                Pesan</button>
                         </div>
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <script>
         // Menghilangkan alert error setelah 5 detik

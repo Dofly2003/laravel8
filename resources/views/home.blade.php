@@ -52,7 +52,7 @@
                                             {!! $slider->market_place !!}
 
                                             {{-- tamplate  --}}
-                                            
+
                                             {{-- <a href="#Shopee"
                                                 class="cursor-pointer z-30 text-gray-700 flex gap-1 lg:gap-3 ease-in-out duration-300 rounded-md lg:rounded-xl flex-row border-orange-600 bg-orange-600 hover:bg-transparent items-center px-3 h-7 lg:h-14 lg:px-7 ">
                                                 <img src="https://www.freepnglogos.com/uploads/shopee-logo-png/shopee-logo-shop-with-the-gentlemen-collection-and-win-the-shopee-0.png"
@@ -209,21 +209,23 @@
 
 
                     <div class="gap-7 flex flex-col">
-                        <h1 class="lg:text-4xl text-xl flex justify-center ">Support Brand</h1>
-                        <div class="w-full  justify-center flex ">
-
-                            <div class="gap-5 flex-wrap mx-10 item-center justify-center w-full flex">
+                        <h1 class="text-xl lg:text-4xl flex justify-center">Support Brand</h1>
+                        <div class="w-full flex justify-center">
+                            <div class="flex flex-wrap gap-5 items-center justify-center w-full mx-4 lg:mx-10">
                                 @forelse ($brands as $item)
                                     @if ($item->is_publish)
-                                        <img class="lg:w-24  w-15 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                            src="{{ asset('uploads/' . $item->img) }}" alt="{{ $item->name }}">
+                                        <div class="w-20 lg:w-24">
+                                            <img class="w-full object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
+                                                 src="{{ asset('uploads/' . $item->img) }}" alt="{{ $item->name }}">
+                                        </div>
                                     @endif
                                 @empty
-                                    <p class="text-center text-sm text-gray-500">No Data</p>
+                                    <p class="text-center text-sm text-gray-500 w-full">No Data</p>
                                 @endforelse
                             </div>
                         </div>
                     </div>
+                    
                 </section>
 
                 <section class="overflow-hidden text sm:grid sm:grid-cols-2 sm:items-center">
@@ -327,18 +329,21 @@
                             pelanggan dan kami memiliki visi untuk
                             mengembangan produk kami hingga ke luar negeri.</p>
                     </div>
-                    <div class="w-full  justify-center flex ">
-                        <div class="gap-5 flex-wrap mx-10 item-center justify-center w-full flex">
+                    <<div class="w-full flex justify-center">
+                        <div class="flex flex-wrap gap-5 mx-10 items-center justify-center w-full">
                             @forelse ($customers as $item)
                                 @if ($item->is_publish)
-                                    <img class="lg:w-24  w-15 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
-                                        src="{{ asset('uploads/' . $item->img) }}" alt="{{ $item->name }}">
+                                    <div class="w-24 lg:w-32">
+                                        <img class="w-full object-cover bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
+                                            src="{{ asset('uploads/' . $item->img) }}" alt="{{ $item->name }}">
+                                    </div>
                                 @endif
                             @empty
-                                <p class="text-center text-sm text-gray-500">No Data</p>
+                                <p class="text-center text-sm text-gray-500 w-full">No Data</p>
                             @endforelse
                         </div>
-                    </div>
+                </div>
+
             </section>
 
         </div>

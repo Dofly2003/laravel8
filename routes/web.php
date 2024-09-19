@@ -107,6 +107,12 @@ Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function () {
     Route::delete('profil/{id}', [ProfilController::class, 'destroy'])->name('profil.destroy');
 
 
+    //massage
+
+    Route::get('massages', [PesanController::class, 'Index'])->name('massages.index');
+    Route::get('/massages/{id}', [PesanController::class, 'show'])->name('massages.show');
+
+    
 
 });
 

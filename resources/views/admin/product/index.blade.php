@@ -36,7 +36,7 @@
             </form>
         </div>
 
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto shadow ">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-dark">
                     <tr>

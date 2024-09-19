@@ -3,7 +3,7 @@
 @section('container')
     <div class="mx-auto md:block max-w-9xl py-6 mb-3">
         <section class=" md:pt-16 dark:bg-gray-900 antialiased">
-            <div class="bg-gray-900 bg-opacity-20 mx-10 rounded-lg py-2">
+            <div class="bg-gray-900 bg-opacity-20 mx-10 rounded-lg py-2 shadow-xl">
                 <div class="max-w-screen-xl pb-10 gap-8 flex flex-col px-4 text-gray-700 mx-auto 2xl:px-0">
                     <div class="lg:grid lg:grid-cols-2 lg:gap-8">
                         <div class="shrink-0 items-start justify-center flex max-w-md lg:max-w-lg mx-auto">
@@ -27,9 +27,11 @@
                                 <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
                                     <p class="text-xl font-semibold sm:text-2xldark:text-white">
                                         @foreach ($product->kategori_product as $kategori)
-                                            <a href="/kategories/{{ $kategori->name }}">
-                                                <li class="flex hover:underline">{{ $kategori->name }}</li>
-                                            </a>
+                                            @if ($kategori->is_publish)
+                                                <a href="/kategories/{{ $kategori->name }}">
+                                                    <li class="flex hover:underline">{{ $kategori->name }}</li>
+                                                </a>
+                                            @endif
                                         @endforeach
                                     </p>
                                 </div>

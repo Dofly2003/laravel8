@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Cache;
 
 class PesanController extends Controller
 {
+    public function index()
+    {
+        $title = 'Pesan';
+        $pesan = Pesan::all();
+        return view('admin.pesan.index', compact('title', 'pesan'));
+    }
     public function store(Request $request)
     {
         // Validasi input
@@ -16,8 +22,15 @@ class PesanController extends Controller
             'instansi' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
             'kota' => 'required|string|max:255',
-            'no_whatsapp' => 'required|string|max:255',
+            'no_whatsapp' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[0-9]{10,15}$/' // Validasi untuk memastikan hanya nomor telepon (10-15 digit)
+            ],
             'message' => 'required|string',
+        ], [
+            'no_whatsapp.regex' => 'Nomor WhatsApp harus berupa angka dan memiliki panjang 10 hingga 15 digit.', // Custom error message
         ]);
 
         // Buat cache key berdasarkan nomor WhatsApp dan IP Address
@@ -46,4 +59,14 @@ class PesanController extends Controller
         // Redirect dengan pesan sukses
         return redirect()->back()->with('success', 'Pesan Anda telah dikirim!');
     }
+
+
+    public function show(Pesan $pesan, $id)
+    {
+        $title = 'Single View';
+        $pesan = Pesan::findOrFail($id);
+        return view('admin.pesan.show', compact('pesan', 'title'));
+    }
+
+
 }

@@ -58,10 +58,12 @@
                                             </div>
                                             <div class="h-1/5 text-center flex flex-col-reverse items-center">
                                                 @foreach ($product->kategori_product->take(2) as $kategori)
-                                                    <p
-                                                        class="text-gray-400 w-full justify-center flex flex-wrap flex-row text-xs">
-                                                        {{ Str::limit($kategori->name) }}
-                                                    </p>
+                                                    @if ($kategori->is_publish)
+                                                        <p
+                                                            class="text-gray-400 w-full justify-center flex flex-wrap flex-row text-xs">
+                                                            {{ Str::limit($kategori->name) }}
+                                                        </p>
+                                                    @endif
                                                 @endforeach
                                                 <p
                                                     class="text-md lg:text-lg font-bold text-gray-100 truncate block capitalize  text-wrap w-full">
@@ -85,29 +87,31 @@
                                 class="inline-flex justify-center items-center w-2/3 px-2 py-2 text-gray-900">
                                 <h1 id="dropdownButton" class="text-lg flex flex-row font-bold">Show Kategori
                                     <div class="my-auto">
-                                        <svg id="dropdownButton" class="w-4 h-4 ml-1 " fill="currentColor" viewBox="0 0 20 20"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
+                                        <svg id="dropdownButton" class="w-4 h-4 ml-1 " fill="currentColor"
+                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
                                 </h1>
                             </button>
 
                             <div id="dropdownMenu"
                                 class="hidden opacity-0 transition-opacity animation-display duration-300 transform scale-95 flex-col">
                                 @foreach ($kategoris as $kategori)
-                                    <a href="/products/kategories/{{ $kategori->name }}" id="kategori" name="kategori"
-                                        class="bg-slate-800 m-2 hover:bg-slate-900 ease-in-out duration-300 border w-8/12 border-gray-300 text-gray-300 text-sm rounded-lg flex gap-3 focus:ring-blue-500 focus:border-blue-500 p-2.5">
-                                        <svg class="h-5 w-5 text-gray-400 rtl:rotate-180" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                            viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="m9 5 7 7-7 7" />
-                                        </svg>
-                                        <div>{{ $kategori->name }}</div>
-                                    </a>
+                                    @if ($kategori->is_publish)
+                                        <a href="/products/kategories/{{ $kategori->name }}" id="kategori" name="kategori"
+                                            class="bg-slate-800 m-2 hover:bg-slate-900 ease-in-out duration-300 border w-8/12 border-gray-300 text-gray-300 text-sm rounded-lg flex gap-3 focus:ring-blue-500 focus:border-blue-500 p-2.5">
+                                            <svg class="h-5 w-5 text-gray-400 rtl:rotate-180" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" d="m9 5 7 7-7 7" />
+                                            </svg>
+                                            <div>{{ $kategori->name }}</div>
+                                        </a>
+                                    @endif
                                 @endforeach
                             </div>
                         </div>
