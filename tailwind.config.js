@@ -38,6 +38,9 @@ module.exports = {
       animation: {
         display: 'calc(1s * var(--))', // Custom animation utility
       },
+      screens: {
+        '2xl': '1536px', // Aturan khusus untuk layar lebih dari 1536px
+      },
     },
   },
   variants: {},

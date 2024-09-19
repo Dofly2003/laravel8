@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <head>
     <meta charset="UTF-8">
@@ -19,16 +21,6 @@
     {{-- app.css --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    {{-- select2 --}}
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
-
-    {{-- select2 js --}}
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-    {{-- trix editor js --}}
-    <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
-
     {{-- alphine js --}}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
@@ -43,7 +35,7 @@
     <title> DIM | {{ $title }} </title>
 </head>
 
-<body class="h-full ">
+<body class="h-full">
     <div class="min-h-full ">
         <nav class="sticky bg-blue-800 top-0 z-50" x-data="{ isOpen: false }">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -215,11 +207,13 @@
             </div>
         </nav>
 
-        <body class="">
+        <body class="bg-gray-900  min-h-full">
             <div class="">
                 @yield('container')
             </div>
-            @include('layout.footer')
+            <div class="">
+                @include('layout.footer')
+            </div>
         </body>
 
     </div>

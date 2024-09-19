@@ -10,7 +10,7 @@
             </ul>
         </div>
     @endif
-    <div class="hidden mx-auto bg-gray-100 w-full md:block text-gray-900">
+    <div class="hidden mx-auto  w-full md:block text-gray-900">
         <div class="max-w-7xl px-4 py-6 sm:px-6 lg:px-8 mx-auto">
             <h1 class="ml-5 upercase h-10">Hubungi Kami</h1>
             <div class="flex flex-row mt-10 flex-wrap">

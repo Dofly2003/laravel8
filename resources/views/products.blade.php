@@ -1,6 +1,15 @@
 @extends('layout.main')
 @section('container')
-    <div id="beranda" class="container scroll-smooth mx-auto md:block bg-gray-200 text-white md:px-4 py-0 sm:px-6 lg:px-0">
+    <style>
+        .full-width-container {
+            width: 100%;
+            height: auto;
+            /* atau tentukan tinggi sesuai kebutuhan */
+            /* atau warna yang diinginkan */
+        }
+    </style>
+    <div id="beranda"
+        class="container scroll-smooth mx-auto md:block min-w-full bg-slate-400  text-white md:px-4 py-0 sm:px-6 lg:px-0 full-width-container">
 
         <body>
             <div>
