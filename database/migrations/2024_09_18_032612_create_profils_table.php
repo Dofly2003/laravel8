@@ -17,7 +17,7 @@ class CreateProfilsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('code');
-            $table->boolean('is_publish')->default(0);
+            $table->boolean('is_publish')->default(1);
             $table->timestamps();
         });
     }

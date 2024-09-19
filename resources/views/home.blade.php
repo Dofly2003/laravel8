@@ -50,6 +50,9 @@
                                         <div class="flex flex-row gap-1 text-black lg:gap-3">
 
                                             {!! $slider->market_place !!}
+
+                                            {{-- tamplate  --}}
+                                            
                                             {{-- <a href="#Shopee"
                                                 class="cursor-pointer z-30 text-gray-700 flex gap-1 lg:gap-3 ease-in-out duration-300 rounded-md lg:rounded-xl flex-row border-orange-600 bg-orange-600 hover:bg-transparent items-center px-3 h-7 lg:h-14 lg:px-7 ">
                                                 <img src="https://www.freepnglogos.com/uploads/shopee-logo-png/shopee-logo-shop-with-the-gentlemen-collection-and-win-the-shopee-0.png"
@@ -212,7 +215,7 @@
                             <div class="gap-5 flex-wrap mx-10 item-center justify-center w-full flex">
                                 @forelse ($brands as $item)
                                     @if ($item->is_publish)
-                                        <img class="lg:w-20  w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
+                                        <img class="lg:w-24  w-15 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
                                             src="{{ asset('uploads/' . $item->img) }}" alt="{{ $item->name }}">
                                     @endif
                                 @empty
@@ -328,7 +331,7 @@
                         <div class="gap-5 flex-wrap mx-10 item-center justify-center w-full flex">
                             @forelse ($customers as $item)
                                 @if ($item->is_publish)
-                                    <img class="lg:w-20  w-10 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
+                                    <img class="lg:w-24  w-15 object-contain bg-white rounded-md lg:rounded-xl lg:py-1 lg:px-1"
                                         src="{{ asset('uploads/' . $item->img) }}" alt="{{ $item->name }}">
                                 @endif
                             @empty

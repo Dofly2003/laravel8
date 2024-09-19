@@ -9,8 +9,16 @@ class ProfilController extends Controller
 {
     public function index()
     {
+        
+        $profil = Profil::where('is_publish', true)->get();
         $title = 'Profil';
-        return view('profilPerusahaan', compact('title'));
+        return view('profilPerusahaan', compact('title', 'profil'));
+    }
+    public function show(Profil $profil, $id)
+    {
+        $title = 'Single View';
+        $profil = Profil::findOrFail($id);
+        return view('admin.Profile.show', compact('profil','title'));
     }
 
     public function store(Request $request)
@@ -36,11 +44,7 @@ class ProfilController extends Controller
         return view('admin.Profile.index', compact('code'));
     }
 
-    public function show(Profil $profil, $id)
-    {
-        $profil = Profil::findOrFail($id);
-        return view('admin.Profile.show', compact('profil'));
-    }
+    
 
     public function create()
     {

@@ -48,7 +48,7 @@
                                     <button type="submit"
                                         onclick="return confirm('Are you sure you want to delete this slider?');"
                                         class="text-red-600 hover:text-red-800">
-                                        <img src="{{ asset('img/icons8-trash.svg') }}" class="w-6 h-6 rounded-lg bg-red-700" alt="Trash">
+                                        <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form>
                                 <span class="mx-2">|</span>

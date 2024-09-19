@@ -17,7 +17,11 @@
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">No</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Nama</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-white  justify-end flex uppercase tracking-wider"></th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Status</th>
+
+                        <th
+                            class="px-6 py-3 text-left text-xs font-medium text-white  justify-end flex uppercase tracking-wider">
+                        </th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -26,6 +30,8 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $loop->iteration }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 slide-name"
                                 id="name-{{ $item->id }}">{{ $item->name }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">
+                                {{ $item->is_publish ? 'Active' : 'Nonactive' }}</td>
                             <td class="px-6 py-4  justify-end whitespace-nowrap flex text-sm font-medium">
                                 <a href="{{ route('Admin.kategori.edit', $item->id) }}"
                                     class="text-blue-600 hover:text-blue-900">
@@ -40,10 +46,23 @@
                                     @method('DELETE')
                                     <button type="submit"
                                         onclick="return confirm('Are you sure you want to delete this slider?');"
-                                        class="bg-red-600 hover:text-red-800">
-                                        <img src="{{ asset('img/icons8-trash.svg') }}" class="w-6 h-6 rounded-lg bg-red-700" alt="Trash">
+                                        class="text-red-600 hover:text-red-800">
+                                        <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form>
+                                <span class="mx-2">|</span>
+                                <form action="{{ route('publish.Kategori', $item->id) }}" method="POST">
+                                    @csrf
+                                    <button onclick="toggleHide({{ $item->id }})"
+                                        class="text-sm text-blue-600 hover:text-blue-900 h-full" type="submit">
+                                        @if ($item->is_publish)
+                                            <i class="fa-solid fa-eye-slash text-red-600"></i>
+                                        @else
+                                            <i class="fa-solid text-green-600 fa-eye"></i>
+                                        @endif
+                                    </button>
+                                </form>
+
                             </td>
                         </tr>
                     @endforeach

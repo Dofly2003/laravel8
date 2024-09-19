@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login/Auth';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -82,6 +82,6 @@ class RegisterController extends Controller
         // Log in user setelah berhasil registrasi
         $this->guard()->login($user);
 
-        return redirect($this->redirectPath());
+        return view('auth.login');
     }
 }

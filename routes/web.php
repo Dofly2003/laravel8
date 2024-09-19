@@ -9,43 +9,39 @@ use App\Http\Controllers\PesanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\SliderController;
 use App\Models\Product;
-use App\Models\TestZone;
 use App\Http\Controllers\test;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\TestZoneController;
 use App\Http\Controllers\Auth\LoginController;
 
 //home
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/customers', [CustomerController::class, 'showIndex']);
-Route::get('/kontak', function () {return view('kontak',['title' => 'Kontak']);});
-Route::get('/profil',[ProfilController::class, 'index'] );
+Route::get('/kontak', function () {
+    return view('kontak', ['title' => 'Kontak']); });
+Route::get('/profil', [ProfilController::class, 'index']);
 Route::post('/kontak/massage', [PesanController::class, 'store'])->name('kontak.massage');
-
-
-Route::get('/test', [TestZoneController::class, 'index'])->name('testZone.index');
-Route::post('/test', [TestZoneController::class, 'store'])->name('testZone.store');
-Route::get('/test/{id}/edit', [TestZoneController::class, 'edit'])->name('testZone.edit');
-Route::put('/test/{id}', [TestZoneController::class, 'update'])->name('testZone.update');
-Route::delete('/test/{id}', [TestZoneController::class, 'destroy'])->name('testZone.destroy');
-Route::patch('/testZone/{id}/toggle', [TestZoneController::class, 'toggle'])->name('testZone.toggle');
-
 
 // auth 
 
 Auth::routes();
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::Post('/login/Auth', [LoginController::class, 'Login']);
-Route::Post('/Register/Auth', [RegisterController::class, 'register']);
-Route::post('/logout/Auth', [LoginController::class, 'logout'])->name('logout');
+Route::post('/login/Auth', [LoginController::class, 'login'])->name('login.post'); 
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/Register/Auth', [RegisterController::class, 'register'])->name('register.post'); // Menangani form registrasi
+Route::post('/logout/Auth', [LoginController::class, 'logout'])->name('logout'); // Logout
 Route::get('/dashboard', [DashbordController::class, 'index'])->middleware('auth')->name('dashboard');
 
+Route::get('/create', [test::class, 'index']);
 
+//product
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-// Route::resource('sliders', SliderController::class);
-
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/product/{slug}', [ProductController::class, 'SinglePoRoduct']);
+Route::get('/products/kategories/{kategori:name}', [ProductController::class, 'showByKategori']);
+Route::resource('products', ProductController::class);
 
 Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function () {
 
@@ -99,7 +95,7 @@ Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function () {
     Route::get('customers/{id}/edit', [CustomerController::class, 'edit'])->name('customer.edit');
     Route::put('customers/{id}', [CustomerController::class, 'update'])->name('customer.update');
     Route::delete('customers/{id}', [CustomerController::class, 'destroy'])->name('customer.destroy');
-    
+
     //Profil
 
     Route::get('profil', [ProfilController::class, 'showIndex'])->name('profil.index');
@@ -109,8 +105,8 @@ Route::prefix('admin')->name('Admin.')->middleware('auth')->group(function () {
     Route::get('profil/{id}/edit', [ProfilController::class, 'edit'])->name('profil.edit');
     Route::put('profil/{id}', [ProfilController::class, 'update'])->name('profil.update');
     Route::delete('profil/{id}', [ProfilController::class, 'destroy'])->name('profil.destroy');
-    
-    
+
+
 
 });
 
@@ -121,20 +117,6 @@ Route::post('/brand/{brand:id}', [BrandController::class, 'publishBrand'])->name
 Route::post('/videos/{videos:id}', [HomeController::class, 'publishVideos'])->name('publish.videos');
 Route::post('/customer/{customer:id}', [CustomerController::class, 'publishCustomer'])->name('publish.customer');
 Route::post('/profil/{profil:id}', [ProfilController::class, 'publishProfil'])->name('publish.profil');
+Route::post('/kategori/{kategori:id}', [kategoriController::class, 'publishKategori'])->name('publish.Kategori');
 
 
-//product
-Route::get('/create', [test::class, 'index']);
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/product/{slug}', [ProductController::class, 'SinglePoRoduct']);
-Route::get('/products/kategories/{kategori:name}', [ProductController::class, 'showByKategori']);
-Route::resource('products', ProductController::class);
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

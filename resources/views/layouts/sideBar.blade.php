@@ -26,7 +26,7 @@
             </li>
             <li class="mb-4">
                 <a href="{{ route('Admin.profil.index') }}" class="text-lg text-white hover:text-gray-300">
-                    <i class="fas fa-handshake text-xl mr-2"></i>
+                    <i class="fa-solid fa-building text-xl mr-2"></i>
                     Profil
                 </a>
             </li>

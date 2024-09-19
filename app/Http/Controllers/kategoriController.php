@@ -74,4 +74,11 @@ class kategoriController extends Controller
         // Redirect kembali ke index dengan pesan sukses
         return redirect()->back()->with('success', 'Kategori berhasil dihapus!');
     }
+    public function publishKategori($id)
+    {
+        $photo = Kategori::findOrFail($id);
+        $photo->is_publish = !$photo->is_publish; 
+        $photo->save();
+        return redirect()->back()->with('success', 'Status publikasi berhasil diubah.');
+    }
 }

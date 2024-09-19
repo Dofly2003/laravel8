@@ -49,24 +49,18 @@
                                     <button type="submit"
                                         onclick="return confirm('Are you sure you want to delete this slider?');"
                                         class="text-red-600 hover:text-red-800">
-                                        <img src="{{ asset('img/icons8-trash.svg') }}" class="w-6 h-6 rounded-lg bg-red-700" alt="Trash">
+                                        <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form>
                                 <span class="mx-2">|</span>
                                 <form action="{{ route('publish.customer', $item->id) }}" method="POST">
                                     @csrf
                                     <button onclick="toggleHide({{ $item->id }})"
-                                        class="text-sm text-blue-600
-                                        hover:text-blue-900"
-                                        type="submit">
+                                        class="text-sm text-blue-600 hover:text-blue-900 h-full" type="submit">
                                         @if ($item->is_publish)
-                                            <img src="{{ asset('img/eye-slash-svgrepo-com.svg') }}"
-                                                class="bg-green-300 rounded-3xl" alt="Publish"
-                                                style="display: inline-block; width: 20px; height: 20px;">
+                                            <i class="fa-solid fa-eye-slash text-red-600"></i>
                                         @else
-                                            <img src="{{ asset('img/eye-svgrepo-com.svg') }}"
-                                                class="bg-red-300 rounded-3xl" alt="Unpublish"
-                                                style="display: inline-block; width: 20px; height: 20px;">
+                                            <i class="fa-solid text-green-600 fa-eye"></i>
                                         @endif
                                     </button>
                                 </form>

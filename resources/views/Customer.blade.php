@@ -7,7 +7,7 @@
 
             <div class="py-5 bg-slate-800">
                 <h1 class="p-5 text-2xl text-gray-300">This Is a Customers</h1>
-                <div class="pt-10 w-full h-full overflow-hidden flex justify-center ">
+                <div class="pt-10 w-full h-screen overflow-hidden flex justify-center ">
                     <div class="gap-4 grid grid-cols-2 sm:grid-cols-3 md:grid-col-4 lg:grid-cols-4 xl:grid-cols-6 ">
 
                         @forelse ($customers as $product)
@@ -28,8 +28,8 @@
                                 </div>
                             @endif
                         @empty
-                            <div class="h-96 ">
-                                <p class="font-semibold text-xl overflow-hidden w-11/12 flex justify-center">Customer Not
+                            <div class="h-screen flex justify-center w-screen">
+                                <p class="font-semibold  text-white text-xl overflow-hidden w-11/12 flex justify-center">Customer Not
                                     Found</p>
                             </div>
                         @endforelse
